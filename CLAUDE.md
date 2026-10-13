@@ -13,7 +13,7 @@ Persönliche Portfolio-Website (Wirtschaftsinformatik, Ziel: ERP/Odoo, Automatis
 - Alle Texte, Projekte und Links stehen fest im Komponentencode (z. B. `projectData` in `src/components/Projects.tsx`).
 - Styles: Design-Variablen in `src/index.css`, Komponenten-Styles in `src/App.css` (ca. 2200 Zeilen).
 - Bilder: `public/` (`avatar.jpg`, `public/projects/`).
-- Ausführliche Design-Beschreibung (Referenzvideo): `AGENTS.md`, nur bei Bedarf lesen.
+- Ausführliche Design-Beschreibung (Referenzvideo): `docs/design-referenz.md`, nur bei Bedarf lesen.
 
 ## Hauptaufgabe: Struktur verbessern
 Adrian will Inhalte später ohne Codeänderung pflegen (kein WordPress, kein CMS-Server). Umgesetzt wird **Option A: Inhalte in eigene Dateien auslagern**.
