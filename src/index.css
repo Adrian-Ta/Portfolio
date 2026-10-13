@@ -3,15 +3,23 @@
   --portfolio-bg: #fcfcfd;
   --portfolio-surface: #ffffff;
   --portfolio-surface-translucent: rgba(255, 255, 255, 0.82);
+  /* Text-Hierarchie: Überschrift (text) > Fließtext (text-secondary) > Nebentext (muted).
+     Alle drei erreichen WCAG AA (4.5:1) auf Fläche und Hintergrund. */
   --portfolio-text: #111114;
+  --portfolio-text-secondary: #43434d;
   --portfolio-muted: #666670;
   --portfolio-border: #e8e8ee;
   --portfolio-border-hover: #d3d3de;
+  /* Rahmen von Formularfeldern: mind. 3:1 (WCAG 1.4.11) */
+  --portfolio-input-border: #8a8a9a;
   --portfolio-dot: #d7d7df;
   --portfolio-purple: #9029ff;
   --portfolio-blue: #4555ff;
   --portfolio-cyan: #08b8e8;
   --portfolio-success: #22c781;
+  /* Textvarianten: Flächenfarben oben sind für Punkte/Rahmen, diese für Schrift (AA auf hellen Tönungen) */
+  --portfolio-success-text: #0e7a4a;
+  --portfolio-cyan-text: #04708f;
   --portfolio-accent: linear-gradient(100deg, #9029ff, #4555ff 58%, #08b8e8);
   --portfolio-card-radius: 18px;
   --portfolio-pill-radius: 999px;
@@ -27,14 +35,19 @@
   --portfolio-surface: #121218;
   --portfolio-surface-translucent: rgba(18, 18, 24, 0.82);
   --portfolio-text: #f5f5f8;
+  --portfolio-text-secondary: #c4c4d2;
   --portfolio-muted: #9494a8;
   --portfolio-border: #232330;
   --portfolio-border-hover: #37374a;
+  --portfolio-input-border: #707088;
   --portfolio-dot: #242436;
-  --portfolio-purple: #9c3eff;
-  --portfolio-blue: #5565ff;
+  /* Im Dunkelmodus heller als der Verlauf-Startwert, damit Schrift AA erreicht (Verlauf bleibt #9c3eff/#5565ff) */
+  --portfolio-purple: #b077ff;
+  --portfolio-blue: #8a98ff;
   --portfolio-cyan: #19c3f0;
   --portfolio-success: #26d88f;
+  --portfolio-success-text: #26d88f;
+  --portfolio-cyan-text: #19c3f0;
   --portfolio-accent: linear-gradient(100deg, #9c3eff, #5565ff 58%, #19c3f0);
   --portfolio-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   --portfolio-badge-shadow: 0 24px 50px rgba(0, 0, 0, 0.65);
