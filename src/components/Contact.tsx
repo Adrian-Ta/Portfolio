@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Send, CheckCircle, MapPin, Copy, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
+import { profile } from '../content/profile';
 
 export const Contact: React.FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -13,7 +14,7 @@ export const Contact: React.FC = () => {
   });
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('kontakt@adrian-tajik.de');
+    navigator.clipboard.writeText(profile.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2500);
   };
@@ -47,7 +48,7 @@ export const Contact: React.FC = () => {
               </div>
               <div className="contact-card-body">
                 <span className="contact-label">Direkte E-Mail</span>
-                <span className="contact-value">kontakt@adrian-tajik.de</span>
+                <span className="contact-value">{profile.email}</span>
                 <button
                   type="button"
                   onClick={handleCopyEmail}
@@ -75,30 +76,34 @@ export const Contact: React.FC = () => {
               </div>
               <div className="contact-card-body">
                 <span className="contact-label">Standort & Verfügbarkeit</span>
-                <span className="contact-value">Deutschland (Remote & Vor Ort)</span>
-                <p className="contact-note">Offen für Praktika, Werkstudententätigkeiten & spannende Projekte.</p>
+                <span className="contact-value">{profile.location} (Remote & Vor Ort)</span>
+                <p className="contact-note">{profile.availabilityNote}</p>
               </div>
             </div>
 
             <div className="contact-social-pills">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="social-pill-item"
-              >
-                <GithubIcon size={18} />
-                <span>GitHub Profil</span>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="social-pill-item"
-              >
-                <LinkedinIcon size={18} />
-                <span>LinkedIn Netzwerk</span>
-              </a>
+              {profile.github.url && (
+                <a
+                  href={profile.github.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-pill-item"
+                >
+                  <GithubIcon size={18} />
+                  <span>GitHub Profil</span>
+                </a>
+              )}
+              {profile.linkedin.url && (
+                <a
+                  href={profile.linkedin.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-pill-item"
+                >
+                  <LinkedinIcon size={18} />
+                  <span>LinkedIn Netzwerk</span>
+                </a>
+              )}
             </div>
           </div>
 
@@ -181,7 +186,7 @@ export const Contact: React.FC = () => {
                       id="message"
                       required
                       rows={4}
-                      placeholder="Hallo Adri, ich habe Interesse an einer Zusammenarbeit bezüglich..."
+                      placeholder={`Hallo ${profile.name}, ich habe Interesse an einer Zusammenarbeit bezüglich...`}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="form-textarea"

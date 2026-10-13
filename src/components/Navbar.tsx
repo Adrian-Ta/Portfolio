@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
+import { profile } from '../content/profile';
 
 interface NavbarProps {
   theme: 'light' | 'dark';
@@ -33,9 +34,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       <div className="container header-container">
         {/* Brand / Logo */}
         <a href="#hero" className="brand-logo" aria-label="Zur Startseite">
-          <div className="logo-badge">AT</div>
+          <div className="logo-badge">{profile.initials}</div>
           <div className="brand-text">
-            <span className="brand-name">Adri</span>
+            <span className="brand-name">{profile.name}</span>
             <span className="brand-sub">Portfolio</span>
           </div>
         </a>

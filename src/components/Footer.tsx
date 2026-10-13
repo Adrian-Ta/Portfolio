@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
+import { profile } from '../content/profile';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -13,13 +14,10 @@ export const Footer: React.FC = () => {
         <div className="footer-top-row">
           <div className="footer-brand">
             <div className="brand-logo">
-              <div className="logo-badge small">AT</div>
-              <span className="brand-name">Adri</span>
+              <div className="logo-badge small">{profile.initials}</div>
+              <span className="brand-name">{profile.name}</span>
             </div>
-            <p className="footer-bio">
-              Wirtschaftsinformatik & moderne Softwareentwicklung.
-              Kombination aus analytischer Struktur und detailgetreuem Design.
-            </p>
+            <p className="footer-bio">{profile.footerText}</p>
           </div>
 
           <div className="footer-nav-groups">
@@ -34,15 +32,19 @@ export const Footer: React.FC = () => {
 
             <div className="footer-links-col">
               <span className="footer-col-title">Netzwerk</span>
-              <a href="https://github.com" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <GithubIcon size={15} />
-                <span>GitHub</span>
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <LinkedinIcon size={15} />
-                <span>LinkedIn</span>
-              </a>
-              <a href="mailto:kontakt@adrian-tajik.de" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              {profile.github.url && (
+                <a href={profile.github.url} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <GithubIcon size={15} />
+                  <span>GitHub</span>
+                </a>
+              )}
+              {profile.linkedin.url && (
+                <a href={profile.linkedin.url} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <LinkedinIcon size={15} />
+                  <span>LinkedIn</span>
+                </a>
+              )}
+              <a href={`mailto:${profile.email}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                 <Mail size={15} />
                 <span>E-Mail</span>
               </a>
@@ -54,7 +56,7 @@ export const Footer: React.FC = () => {
 
         <div className="footer-bottom-row">
           <p className="footer-copyright">
-            © {new Date().getFullYear()} Adri (Adrian Tajik) — Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} {profile.name} ({profile.fullName}) — Alle Rechte vorbehalten.
           </p>
 
           <button

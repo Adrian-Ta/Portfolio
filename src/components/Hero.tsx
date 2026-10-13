@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, FileText, Mail } from 'lucide-react';
 import { InteractiveBadge } from './InteractiveBadge';
 import { GithubIcon, LinkedinIcon } from './Icons';
+import { profile } from '../content/profile';
 
 export const Hero: React.FC = () => {
   return (
@@ -15,21 +16,17 @@ export const Hero: React.FC = () => {
               <span className="status-dot-core" />
               <span className="status-dot-ring" />
             </span>
-            <span className="status-pill-text">Verfügbar für Projekte & neue Herausforderungen</span>
+            <span className="status-pill-text">{profile.availability}</span>
           </div>
 
           {/* Heading */}
           <div className="hero-heading-block">
             <span className="hero-greeting">Hi, ich bin</span>
-            <h1 className="hero-title text-gradient">Adri</h1>
+            <h1 className="hero-title text-gradient">{profile.name}</h1>
           </div>
 
           {/* Tagline / Subtitle */}
-          <p className="hero-subtext">
-            Wirtschaftsinformatiker mit Leidenschaft für moderne Frontend-Entwicklung,
-            robuste Systemarchitekturen und intelligente Prozessautomatisierung.
-            Ich verbinde analytisches Business-Denken mit sauberem, performantem Code.
-          </p>
+          <p className="hero-subtext">{profile.heroText}</p>
 
           {/* CTA Action Buttons */}
           <div className="hero-buttons">
@@ -48,28 +45,32 @@ export const Hero: React.FC = () => {
           <div className="hero-socials">
             <span className="social-label">Connect:</span>
             <div className="social-icons-group">
+              {profile.github.url && (
+                <a
+                  href={profile.github.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-icon-link"
+                  aria-label="GitHub Profil"
+                  title="GitHub"
+                >
+                  <GithubIcon size={19} />
+                </a>
+              )}
+              {profile.linkedin.url && (
+                <a
+                  href={profile.linkedin.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="social-icon-link"
+                  aria-label="LinkedIn Profil"
+                  title="LinkedIn"
+                >
+                  <LinkedinIcon size={19} />
+                </a>
+              )}
               <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon-link"
-                aria-label="GitHub Profil"
-                title="GitHub"
-              >
-                <GithubIcon size={19} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="social-icon-link"
-                aria-label="LinkedIn Profil"
-                title="LinkedIn"
-              >
-                <LinkedinIcon size={19} />
-              </a>
-              <a
-                href="mailto:kontakt@adrian-tajik.de"
+                href={`mailto:${profile.email}`}
                 className="social-icon-link"
                 aria-label="E-Mail senden"
                 title="E-Mail"

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Sparkles, Move } from 'lucide-react';
+import { profile } from '../content/profile';
 
 export const InteractiveBadge: React.FC = () => {
   // Container & Card dimensions - tuned for exact AGENTS.md proportions (270px width x 380px height)
@@ -338,20 +339,20 @@ export const InteractiveBadge: React.FC = () => {
           <div className="badge-avatar-wrap">
             {!imageError ? (
               <img
-                src="/avatar.jpg"
-                alt="Adri Profilfoto"
+                src={profile.photo}
+                alt={`${profile.name} Profilfoto`}
                 className="badge-avatar-img"
                 onError={() => setImageError(true)}
               />
             ) : (
-              <div className="badge-avatar-fallback">AT</div>
+              <div className="badge-avatar-fallback">{profile.initials}</div>
             )}
             <div className="badge-status-dot" title="Aktiv & Verfügbar" />
           </div>
 
           <div className="badge-identity">
-            <h3 className="badge-name">Adri</h3>
-            <p className="badge-role">Wirtschaftsinformatik & IT</p>
+            <h3 className="badge-name">{profile.name}</h3>
+            <p className="badge-role">{profile.role}</p>
           </div>
 
           <div className="badge-divider" />
@@ -364,7 +365,7 @@ export const InteractiveBadge: React.FC = () => {
             </div>
             <div className="badge-info-cell">
               <span className="badge-info-label">STANDORT</span>
-              <span className="badge-info-value">Deutschland</span>
+              <span className="badge-info-value">{profile.location}</span>
             </div>
             <div className="badge-info-cell">
               <span className="badge-info-label">STATUS</span>
