@@ -1,34 +1,16 @@
 import React from 'react';
 import { Layout, GitPullRequest, Cpu, Database } from 'lucide-react';
+import { services } from '../content/services';
+import type { Service } from '../content/services';
+
+const serviceIcons: Record<Service['icon'], React.ReactNode> = {
+  layout: <Layout size={24} />,
+  process: <GitPullRequest size={24} />,
+  cpu: <Cpu size={24} />,
+  database: <Database size={24} />,
+};
 
 export const Services: React.FC = () => {
-  const services = [
-    {
-      icon: <Layout size={24} />,
-      title: 'Web- & Frontend-Entwicklung',
-      desc: 'Entwicklung zeitgemäßer Single-Page und Server-Side Web-Apps mit React, TypeScript und moderner CSS-Architektur. Fokus auf Performance, Barrierefreiheit und flüssige Interaktionen.',
-      tags: ['React', 'TypeScript', 'Responsive', 'UX/UI'],
-    },
-    {
-      icon: <GitPullRequest size={24} />,
-      title: 'Prozessanalyse & BPMN',
-      desc: 'Strukturierte Modellierung und Digitalisierung von Unternehmensprozessen nach BPMN 2.0. Identifikation von Engpässen und Übersetzung in klare IT-Anforderungsprofile.',
-      tags: ['BPMN 2.0', 'Prozessoptimierung', 'Anforderungsanalyse'],
-    },
-    {
-      icon: <Cpu size={24} />,
-      title: 'IT-Automatisierung & Scripting',
-      desc: 'Konzeption von Workflows und Automatisierungs-Pipelines mit Python. Automatisierte Dokumentenverarbeitung, Datenextraktion und API-basierte Tool-Verknüpfungen.',
-      tags: ['Python', 'Automation', 'Gradio', 'Pydantic'],
-    },
-    {
-      icon: <Database size={24} />,
-      title: 'API-Integration & Datenarchitektur',
-      desc: 'Saubere Schnittstellenanbindung über REST und GraphQL. Konzeption solider relationaler Datenmodelle in PostgreSQL und strukturierte Datenvalidierung.',
-      tags: ['REST APIs', 'PostgreSQL', 'Systemintegration'],
-    },
-  ];
-
   return (
     <section id="services" className="section-wrapper services-section">
       <div className="container">
@@ -46,15 +28,15 @@ export const Services: React.FC = () => {
 
         {/* 4 Clean Service Cards */}
         <div className="services-grid">
-          {services.map((srv, idx) => (
-            <div key={idx} className="service-card">
-              <div className="service-icon-box">{srv.icon}</div>
+          {services.map((srv) => (
+            <div key={srv.title} className="service-card">
+              <div className="service-icon-box">{serviceIcons[srv.icon]}</div>
               <h3 className="service-title">{srv.title}</h3>
               <p className="service-desc">{srv.desc}</p>
 
               <div className="service-tags">
-                {srv.tags.map((t, ti) => (
-                  <span key={ti} className="service-tag-pill">
+                {srv.tags.map((t) => (
+                  <span key={t} className="service-tag-pill">
                     {t}
                   </span>
                 ))}
