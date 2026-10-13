@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   padding: 10px 20px;
   background-color: var(--portfolio-surface-translucent);
   backdrop-filter: blur(16px);
@@ -66,6 +67,7 @@
 .brand-text {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .brand-name {
@@ -86,7 +88,7 @@
   display: none;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1080px) {
   .desktop-nav {
     display: block;
   }
@@ -100,6 +102,7 @@
 }
 
 .nav-link {
+  white-space: nowrap;
   text-decoration: none;
   color: var(--portfolio-muted);
   font-size: 14px;
@@ -199,7 +202,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1080px) {
   .mobile-menu-btn {
     display: none;
   }
