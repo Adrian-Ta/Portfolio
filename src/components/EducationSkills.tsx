@@ -1,31 +1,12 @@
 import React from 'react';
 import { GraduationCap, Award, BookOpen, Check } from 'lucide-react';
+import { techSkills, softSkills, education, learningFocus } from '../content/skills';
+import type { Education } from '../content/skills';
 
-interface TechSkill {
-  name: string;
-  levelText: string;
-  percentage: number;
-}
-
-const techSkills: TechSkill[] = [
-  { name: 'TypeScript & Modern JavaScript', levelText: 'Vertiefte Praxis', percentage: 90 },
-  { name: 'React & Komponenten-Design', levelText: 'Vertiefte Praxis', percentage: 88 },
-  { name: 'Python, Automation & APIs', levelText: 'Projektpraxis', percentage: 82 },
-  { name: 'CSS Architektur & Responsive Design', levelText: 'Vertiefte Praxis', percentage: 85 },
-  { name: 'SQL, Datenbanken & PostgreSQL', levelText: 'Projektpraxis', percentage: 78 },
-  { name: 'Git, DevOps & Docker Tools', levelText: 'Projektpraxis', percentage: 75 },
-];
-
-const softSkills = [
-  { label: 'BPMN 2.0 Prozessmodellierung', tint: 'purple' },
-  { label: 'Agiles Vorgehen & Scrum', tint: 'blue' },
-  { label: 'Anforderungsanalyse (Requirements)', tint: 'cyan' },
-  { label: 'Analytisches Denken', tint: 'emerald' },
-  { label: 'Clean Code & Wartbarkeit', tint: 'purple' },
-  { label: 'Barrierefreiheit (a11y) & UX', tint: 'blue' },
-  { label: 'Schnittstellenkonzeption', tint: 'cyan' },
-  { label: 'Teamorientiertes Arbeiten', tint: 'emerald' },
-];
+const educationIcons: Record<Education['icon'], React.ReactNode> = {
+  cap: <GraduationCap size={22} />,
+  award: <Award size={22} />,
+};
 
 export const EducationSkills: React.FC = () => {
   return (
@@ -45,47 +26,22 @@ export const EducationSkills: React.FC = () => {
 
         {/* 1. Education: 2 Side-by-Side Cards */}
         <div className="education-grid">
-          <div className="education-card">
-            <div className="education-card-top">
-              <div className="education-icon-box">
-                <GraduationCap size={22} />
+          {education.map((edu) => (
+            <div key={edu.title} className="education-card">
+              <div className="education-card-top">
+                <div className="education-icon-box">{educationIcons[edu.icon]}</div>
+                <span className="education-status-pill">{edu.status}</span>
               </div>
-              <span className="education-status-pill">Laufendes Studium</span>
-            </div>
-            <h3 className="education-title">B.Sc. Wirtschaftsinformatik</h3>
-            <p className="education-subtitle">Akademische Hochschulausbildung</p>
-            <p className="education-desc">
-              Ganzheitliche Verbindung aus Wirtschaftswissenschaften und fundierter Informatik.
-              Schwerpunkte in Systemanalyse, Softwarearchitektur, Geschäftsprozessen und Datenbanken.
-            </p>
-            <div className="education-highlights">
-              <span className="edu-tag">Software Engineering</span>
-              <span className="edu-tag">Datenbanken</span>
-              <span className="edu-tag">BPMN & Prozesse</span>
-              <span className="edu-tag">IT-Management</span>
-            </div>
-          </div>
-
-          <div className="education-card">
-            <div className="education-card-top">
-              <div className="education-icon-box">
-                <Award size={22} />
+              <h3 className="education-title">{edu.title}</h3>
+              <p className="education-subtitle">{edu.subtitle}</p>
+              <p className="education-desc">{edu.desc}</p>
+              <div className="education-highlights">
+                {edu.tags.map((tag) => (
+                  <span key={tag} className="edu-tag">{tag}</span>
+                ))}
               </div>
-              <span className="education-status-pill">Praxis & Spezialisierung</span>
             </div>
-            <h3 className="education-title">Moderne Webtechnologien & Automation</h3>
-            <p className="education-subtitle">Autodidaktische Vertiefung & Projektpraxis</p>
-            <p className="education-desc">
-              Kontinuierliche Weiterbildung in modernen Frontend-Frameworks, TypeScript, Python-Pipelines
-              und aktuellen Architekturmustern zur Erstellung praxistauglicher Softwareprodukte.
-            </p>
-            <div className="education-highlights">
-              <span className="edu-tag">React Ecosystem</span>
-              <span className="edu-tag">TypeScript Deep-Dive</span>
-              <span className="edu-tag">Python & LLM Integration</span>
-              <span className="edu-tag">UI/UX Standards</span>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* 2. Skills: Left Progress Bars, Right Soft Skill Pills + Learning Card */}
@@ -98,8 +54,8 @@ export const EducationSkills: React.FC = () => {
             </div>
 
             <div className="skills-list">
-              {techSkills.map((skill, idx) => (
-                <div key={idx} className="skill-item">
+              {techSkills.map((skill) => (
+                <div key={skill.name} className="skill-item">
                   <div className="skill-label-row">
                     <span className="skill-name">{skill.name}</span>
                     <span className="skill-level-text">{skill.levelText}</span>
@@ -123,8 +79,8 @@ export const EducationSkills: React.FC = () => {
             </div>
 
             <div className="soft-skills-cluster">
-              {softSkills.map((sk, sIdx) => (
-                <span key={sIdx} className={`soft-skill-pill tint-${sk.tint}`}>
+              {softSkills.map((sk) => (
+                <span key={sk.label} className={`soft-skill-pill tint-${sk.tint}`}>
                   <Check size={13} className="soft-skill-check" />
                   {sk.label}
                 </span>
@@ -132,18 +88,17 @@ export const EducationSkills: React.FC = () => {
             </div>
 
             {/* Current Learning Card */}
-            <div className="current-learning-card">
-              <div className="learning-icon-box">
-                <BookOpen size={18} />
+            {learningFocus && (
+              <div className="current-learning-card">
+                <div className="learning-icon-box">
+                  <BookOpen size={18} />
+                </div>
+                <div className="learning-content">
+                  <h4 className="learning-title">{learningFocus.title}</h4>
+                  <p className="learning-desc">{learningFocus.desc}</p>
+                </div>
               </div>
-              <div className="learning-content">
-                <h4 className="learning-title">Aktueller Lern- & Erkundungsfokus</h4>
-                <p className="learning-desc">
-                  Vertiefung in KI-Agenten-Architekturen, Fullstack Serverless mit Next.js App Router
-                  und skalierbare Event-Architekturen.
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
