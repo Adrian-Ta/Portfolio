@@ -11,7 +11,7 @@ export const Timeline: React.FC = () => {
           <span className="section-pill">Laufbahn</span>
           <h2 className="section-title">
             Stationen & <br />
-            <span className="text-gradient">Praxiserfahrung</span>
+            <span className="text-accent">Praxiserfahrung</span>
           </h2>
           <p className="section-subtitle">
             Die kontinuierliche Verbindung von theoretischem Wissen und praktischer Softwareentwicklung.

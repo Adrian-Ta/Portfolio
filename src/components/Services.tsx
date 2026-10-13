@@ -19,7 +19,7 @@ export const Services: React.FC = () => {
           <span className="section-pill">Leistungen</span>
           <h2 className="section-title">
             Kompetenzen an der Schnittstelle von <br />
-            <span className="text-gradient">Business & Code</span>
+            <span className="text-accent">Business & Code</span>
           </h2>
           <p className="section-subtitle">
             Gezielte Lösungen für effiziente digitale Abläufe und hochwertige Oberflächen.

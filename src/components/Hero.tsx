@@ -22,7 +22,7 @@ export const Hero: React.FC = () => {
           {/* Heading */}
           <div className="hero-heading-block">
             <span className="hero-greeting">Hi, ich bin</span>
-            <h1 className="hero-title text-gradient">{profile.name}</h1>
+            <h1 className="hero-title text-accent">{profile.name}</h1>
           </div>
 
           {/* Tagline / Subtitle */}

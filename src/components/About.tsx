@@ -20,7 +20,7 @@ export const About: React.FC = () => {
             <span className="section-pill">Über mich</span>
             <h2 className="section-title">
               Technologie verstehen, <br />
-              <span className="text-gradient">Werte schaffen.</span>
+              <span className="text-accent">Werte schaffen.</span>
             </h2>
 
             <p className="about-lead">{profile.about.lead}</p>

@@ -5,53 +5,59 @@
   --portfolio-surface-translucent: rgba(255, 255, 255, 0.82);
   /* Text-Hierarchie: Überschrift (text) > Fließtext (text-secondary) > Nebentext (muted).
      Alle drei erreichen WCAG AA (4.5:1) auf Fläche und Hintergrund. */
-  --portfolio-text: #111114;
-  --portfolio-text-secondary: #43434d;
-  --portfolio-muted: #666670;
-  --portfolio-border: #e8e8ee;
-  --portfolio-border-hover: #d3d3de;
+  --portfolio-text: #14161a;
+  --portfolio-text-secondary: #4b5563;
+  --portfolio-muted: #6b7280;
+  --portfolio-border: #e5e7eb;
+  --portfolio-border-hover: #d1d5db;
   /* Rahmen von Formularfeldern: mind. 3:1 (WCAG 1.4.11) */
-  --portfolio-input-border: #8a8a9a;
-  --portfolio-dot: #d7d7df;
-  --portfolio-purple: #9029ff;
-  --portfolio-blue: #4555ff;
-  --portfolio-cyan: #08b8e8;
+  --portfolio-input-border: #8a8f9a;
+  --portfolio-dot: #d9dce1;
   --portfolio-success: #22c781;
-  /* Textvarianten: Flächenfarben oben sind für Punkte/Rahmen, diese für Schrift (AA auf hellen Tönungen) */
+  /* Textvariante für Grün: Flächenfarbe oben ist für Punkte/Rahmen, diese für Schrift */
   --portfolio-success-text: #0e7a4a;
-  --portfolio-cyan-text: #04708f;
-  --portfolio-accent: linear-gradient(100deg, #9029ff, #4555ff 58%, #08b8e8);
+
+  /* Akzent: eine einfache Farbe, kein Verlauf. Alle Akzentflächen, -texte und -tönungen
+     leiten sich von diesen drei Variablen ab. */
+  --portfolio-accent: #0f766e;
+  --portfolio-accent-hover: #115e59;
+  /* Schrift/Icons auf einer Akzentfläche */
+  --portfolio-on-accent: #ffffff;
+  /* Tönungen des Akzents (Pills, Icon-Kästchen, Hover-Flächen, Schatten) */
+  --portfolio-accent-faint: color-mix(in srgb, var(--portfolio-accent) 5%, transparent);
+  --portfolio-accent-soft: color-mix(in srgb, var(--portfolio-accent) 8%, transparent);
+  --portfolio-accent-medium: color-mix(in srgb, var(--portfolio-accent) 12%, transparent);
+  --portfolio-accent-strong: color-mix(in srgb, var(--portfolio-accent) 25%, transparent);
+  --portfolio-glow: var(--portfolio-accent-strong);
+  /* Neutrale Tönung für Pills ohne Akzent */
+  --portfolio-neutral-soft: color-mix(in srgb, var(--portfolio-text) 6%, transparent);
+
   --portfolio-card-radius: 18px;
   --portfolio-pill-radius: 999px;
   --portfolio-shadow: 0 8px 28px rgba(20, 20, 40, 0.07);
   --portfolio-badge-shadow: 0 20px 42px rgba(20, 20, 40, 0.18);
-  --portfolio-glow: rgba(144, 41, 255, 0.18);
 
   color-scheme: light dark;
 }
 
 [data-theme="dark"] {
-  --portfolio-bg: #09090d;
-  --portfolio-surface: #121218;
-  --portfolio-surface-translucent: rgba(18, 18, 24, 0.82);
-  --portfolio-text: #f5f5f8;
-  --portfolio-text-secondary: #c4c4d2;
-  --portfolio-muted: #9494a8;
-  --portfolio-border: #232330;
-  --portfolio-border-hover: #37374a;
-  --portfolio-input-border: #707088;
-  --portfolio-dot: #242436;
-  /* Im Dunkelmodus heller als der Verlauf-Startwert, damit Schrift AA erreicht (Verlauf bleibt #9c3eff/#5565ff) */
-  --portfolio-purple: #b077ff;
-  --portfolio-blue: #8a98ff;
-  --portfolio-cyan: #19c3f0;
+  --portfolio-bg: #0e1116;
+  --portfolio-surface: #151a21;
+  --portfolio-surface-translucent: rgba(21, 26, 33, 0.82);
+  --portfolio-text: #eceef1;
+  --portfolio-text-secondary: #b4bac4;
+  --portfolio-muted: #8b93a0;
+  --portfolio-border: #262c35;
+  --portfolio-border-hover: #353d49;
+  --portfolio-input-border: #6b7380;
+  --portfolio-dot: #232a33;
   --portfolio-success: #26d88f;
   --portfolio-success-text: #26d88f;
-  --portfolio-cyan-text: #19c3f0;
-  --portfolio-accent: linear-gradient(100deg, #9c3eff, #5565ff 58%, #19c3f0);
+  --portfolio-accent: #5eead4;
+  --portfolio-accent-hover: #2dd4bf;
+  --portfolio-on-accent: #0e1116;
   --portfolio-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   --portfolio-badge-shadow: 0 24px 50px rgba(0, 0, 0, 0.65);
-  --portfolio-glow: rgba(156, 62, 255, 0.28);
 }
 
 *, *::before, *::after {
@@ -86,11 +92,8 @@ body {
 }
 
 /* Typography Helpers */
-.text-gradient {
-  background: var(--portfolio-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.text-accent {
+  color: var(--portfolio-accent);
 }
 
 .mono-font {
@@ -99,7 +102,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(144, 41, 255, 0.2);
+  background: var(--portfolio-accent-strong);
   color: var(--portfolio-text);
 }
 
@@ -119,7 +122,7 @@ body {
 
 /* Focus styles */
 :focus-visible {
-  outline: 2px solid var(--portfolio-purple);
+  outline: 2px solid var(--portfolio-accent);
   outline-offset: 3px;
 }
 

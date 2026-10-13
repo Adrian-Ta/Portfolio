@@ -49,11 +49,11 @@
   height: 36px;
   border-radius: 10px;
   background: var(--portfolio-accent);
-  color: #ffffff;
+  color: var(--portfolio-on-accent);
   font-weight: 800;
   font-size: 15px;
   letter-spacing: -0.5px;
-  box-shadow: 0 4px 12px rgba(144, 41, 255, 0.3);
+  box-shadow: 0 4px 12px var(--portfolio-accent-strong);
 }
 
 .logo-badge.small {
@@ -151,8 +151,8 @@
 
 .theme-toggle-btn:hover {
   border-color: var(--portfolio-border-hover);
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent-hover);
   transform: rotate(15deg);
 }
 
@@ -251,13 +251,13 @@
 }
 
 .mobile-nav-link:hover {
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent-hover);
 }
 
 .mobile-nav-link.cta {
   background: var(--portfolio-accent);
-  color: #ffffff;
+  color: var(--portfolio-on-accent);
   margin-top: 6px;
   text-align: center;
 }
@@ -451,7 +451,7 @@
 
 .btn-secondary:hover {
   border-color: var(--portfolio-border-hover);
-  background: rgba(144, 41, 255, 0.05);
+  background: var(--portfolio-accent-faint);
   transform: translateY(-2px);
 }
 
@@ -502,8 +502,8 @@
 }
 
 .social-icon-link:hover {
-  color: var(--portfolio-purple);
-  border-color: var(--portfolio-purple);
+  color: var(--portfolio-accent-hover);
+  border-color: var(--portfolio-accent-hover);
   transform: translateY(-2px);
 }
 
@@ -548,10 +548,10 @@
   border-radius: var(--portfolio-pill-radius);
   background: var(--portfolio-surface);
   border: 1px solid var(--portfolio-border);
-  box-shadow: 0 4px 14px rgba(144, 41, 255, 0.15);
+  box-shadow: 0 4px 14px var(--portfolio-accent-medium);
   font-size: 11px;
   font-weight: 600;
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent);
   z-index: 15;
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
@@ -603,13 +603,13 @@
 }
 
 [data-theme="dark"] .id-badge-card {
-  background: #14141d;
-  border-color: rgba(60, 60, 85, 0.8);
+  background: #151a22;
+  border-color: rgba(75, 85, 99, 0.7);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
 }
 
 .id-badge-card.is-dragging {
-  box-shadow: 0 32px 70px rgba(144, 41, 255, 0.35);
+  box-shadow: 0 32px 70px var(--portfolio-accent-strong);
 }
 
 /* Slot punch hole */
@@ -673,14 +673,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px 0;
-  color: #ffffff;
+  color: var(--portfolio-on-accent);
 }
 
 .badge-org-tag {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 1.2px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--portfolio-on-accent);
 }
 
 .badge-chip-icon {
@@ -690,7 +690,7 @@
   width: 22px;
   height: 22px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.25);
+  background: color-mix(in srgb, var(--portfolio-on-accent) 22%, transparent);
   backdrop-filter: blur(4px);
 }
 
@@ -726,7 +726,7 @@
   height: 72px;
   border-radius: 50%;
   background: var(--portfolio-accent);
-  color: #ffffff;
+  color: var(--portfolio-on-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -783,7 +783,7 @@
 }
 
 .badge-info-cell {
-  background: rgba(144, 41, 255, 0.04);
+  background: var(--portfolio-accent-faint);
   border: 1px solid var(--portfolio-border);
   border-radius: 8px;
   padding: 5px 6px;
@@ -913,14 +913,14 @@
 }
 
 .marquee-pill:hover {
-  border-color: var(--portfolio-purple);
+  border-color: var(--portfolio-accent-hover);
   transform: translateY(-1px);
 }
 
 .marquee-pill-icon {
   display: flex;
   align-items: center;
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent);
 }
 
 .marquee-pill-name {
@@ -932,7 +932,7 @@
 .marquee-pill-cat {
   font-size: 11px;
   color: var(--portfolio-muted);
-  background: rgba(144, 41, 255, 0.08);
+  background: var(--portfolio-accent-soft);
   padding: 2px 7px;
   border-radius: 4px;
 }
@@ -955,8 +955,8 @@
   display: inline-block;
   padding: 5px 14px;
   border-radius: var(--portfolio-pill-radius);
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1083,8 +1083,8 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   margin-bottom: 14px;
 }
 
@@ -1138,16 +1138,16 @@
 
 .service-card:hover {
   transform: translateY(-4px);
-  border-color: var(--portfolio-purple);
-  box-shadow: 0 16px 36px rgba(144, 41, 255, 0.1);
+  border-color: var(--portfolio-accent-hover);
+  box-shadow: 0 16px 36px var(--portfolio-accent-soft);
 }
 
 .service-icon-box {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1280,8 +1280,8 @@
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 6px;
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
 }
 
 .project-title-row {
@@ -1322,8 +1322,8 @@
 }
 
 .project-action-btn:hover {
-  background: var(--portfolio-accent);
-  color: #ffffff;
+  background: var(--portfolio-accent-hover);
+  color: var(--portfolio-on-accent);
   border-color: transparent;
 }
 
@@ -1374,7 +1374,7 @@
   bottom: 0;
   left: 20px;
   width: 3px;
-  background: linear-gradient(180deg, var(--portfolio-purple), var(--portfolio-blue));
+  background: var(--portfolio-accent);
   border-radius: 2px;
 }
 
@@ -1419,8 +1419,8 @@
   height: 14px;
   border-radius: 50%;
   background: #ffffff;
-  border: 3.5px solid var(--portfolio-purple);
-  box-shadow: 0 0 12px var(--portfolio-purple);
+  border: 3.5px solid var(--portfolio-accent);
+  box-shadow: 0 0 12px var(--portfolio-accent);
 }
 
 [data-theme="dark"] .node-dot {
@@ -1432,7 +1432,7 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(144, 41, 255, 0.25);
+  background: var(--portfolio-accent-strong);
   animation: pulseNode 2.5s infinite;
 }
 
@@ -1497,8 +1497,8 @@
   gap: 6px;
   padding: 4px 10px;
   border-radius: var(--portfolio-pill-radius);
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   font-size: 12px;
   font-weight: 700;
 }
@@ -1538,7 +1538,7 @@
 }
 
 .timeline-point-bullet {
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1584,8 +1584,8 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1610,7 +1610,7 @@
 
 .education-subtitle {
   font-size: 13px;
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent);
   font-weight: 600;
   margin-bottom: 12px;
 }
@@ -1699,7 +1699,7 @@
 .skill-level-text {
   font-size: 12px;
   font-weight: 600;
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent);
 }
 
 .skill-progress-track {
@@ -1738,18 +1738,18 @@
 }
 
 .soft-skill-pill.tint-purple {
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
 }
 
 .soft-skill-pill.tint-blue {
-  background: rgba(69, 85, 255, 0.08);
-  color: var(--portfolio-blue);
+  background: var(--portfolio-neutral-soft);
+  color: var(--portfolio-text-secondary);
 }
 
 .soft-skill-pill.tint-cyan {
-  background: rgba(8, 184, 232, 0.08);
-  color: var(--portfolio-cyan-text);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent-hover);
 }
 
 .soft-skill-pill.tint-emerald {
@@ -1776,8 +1776,8 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(144, 41, 255, 0.1);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1831,16 +1831,16 @@
 }
 
 .contact-card.highlight {
-  border-color: rgba(144, 41, 255, 0.3);
-  background: linear-gradient(135deg, var(--portfolio-surface) 0%, rgba(144, 41, 255, 0.03) 100%);
+  border-color: var(--portfolio-accent-strong);
+  background: color-mix(in srgb, var(--portfolio-accent) 4%, var(--portfolio-surface));
 }
 
 .contact-card-icon {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(144, 41, 255, 0.08);
-  color: var(--portfolio-purple);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1882,7 +1882,7 @@
   border-radius: var(--portfolio-pill-radius);
   background: var(--portfolio-bg);
   border: 1px solid var(--portfolio-border);
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent);
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
@@ -1891,8 +1891,8 @@
 }
 
 .copy-email-btn:hover {
-  border-color: var(--portfolio-purple);
-  background: rgba(144, 41, 255, 0.08);
+  border-color: var(--portfolio-accent-hover);
+  background: var(--portfolio-accent-soft);
 }
 
 .copied-icon {
@@ -1921,8 +1921,8 @@
 }
 
 .social-pill-item:hover {
-  border-color: var(--portfolio-purple);
-  color: var(--portfolio-purple);
+  border-color: var(--portfolio-accent-hover);
+  color: var(--portfolio-accent-hover);
   transform: translateX(4px);
 }
 
@@ -1981,8 +1981,8 @@
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: var(--portfolio-purple);
-  box-shadow: 0 0 0 3px rgba(144, 41, 255, 0.12);
+  border-color: var(--portfolio-accent);
+  box-shadow: 0 0 0 3px var(--portfolio-accent-medium);
 }
 
 .form-textarea {
@@ -2058,14 +2058,14 @@
 }
 
 .dock-item-btn:hover {
-  color: var(--portfolio-purple);
-  background: rgba(144, 41, 255, 0.08);
+  color: var(--portfolio-accent-hover);
+  background: var(--portfolio-accent-soft);
   transform: translateY(-2px);
 }
 
 .dock-item-btn.active {
-  color: var(--portfolio-purple);
-  background: rgba(144, 41, 255, 0.12);
+  color: var(--portfolio-accent);
+  background: var(--portfolio-accent-medium);
 }
 
 .dock-active-dot {
@@ -2074,7 +2074,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--portfolio-purple);
+  background: var(--portfolio-accent);
 }
 
 /* Tooltip on hover */
@@ -2169,7 +2169,7 @@
 }
 
 .footer-links-col a:hover {
-  color: var(--portfolio-purple);
+  color: var(--portfolio-accent-hover);
 }
 
 .footer-divider {
@@ -2214,7 +2214,7 @@
 }
 
 .footer-back-to-top:hover {
-  border-color: var(--portfolio-purple);
-  color: var(--portfolio-purple);
+  border-color: var(--portfolio-accent-hover);
+  color: var(--portfolio-accent-hover);
   transform: translateY(-2px);
 }

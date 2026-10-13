@@ -31,7 +31,7 @@ export const Contact: React.FC = () => {
           <span className="section-pill">Kontakt</span>
           <h2 className="section-title">
             Lass uns gemeinsam <br />
-            <span className="text-gradient">etwas bewegen.</span>
+            <span className="text-accent">etwas bewegen.</span>
           </h2>
           <p className="section-subtitle">
             Interesse an einer Zusammenarbeit, einem Projekt oder einem fachlichen Austausch?

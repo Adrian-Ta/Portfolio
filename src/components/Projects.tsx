@@ -11,7 +11,7 @@ export const Projects: React.FC = () => {
           <span className="section-pill">Ausgewählte Arbeiten</span>
           <h2 className="section-title">
             Projekte mit Fokus auf <br />
-            <span className="text-gradient">Präzision & Funktion</span>
+            <span className="text-accent">Präzision & Funktion</span>
           </h2>
           <p className="section-subtitle">
             Reale Entwicklungen und Konzepte aus Webtechnologie, Systemintegration und Prozessautomatisierung.

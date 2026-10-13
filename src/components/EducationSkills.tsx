@@ -17,7 +17,7 @@ export const EducationSkills: React.FC = () => {
           <span className="section-pill">Qualifikation</span>
           <h2 className="section-title">
             Ausbildung & <br />
-            <span className="text-gradient">Fachkompetenzen</span>
+            <span className="text-accent">Fachkompetenzen</span>
           </h2>
           <p className="section-subtitle">
             Fundierte akademische Ausbildung kombiniert mit stetiger praktischer Spezialisierung.

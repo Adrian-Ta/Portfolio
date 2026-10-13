@@ -263,7 +263,7 @@ export const InteractiveBadge: React.FC = () => {
         {/* Subtle woven center stripe on strap */}
         <path
           d={`M ${ANCHOR_X} ${ANCHOR_Y + 4} Q ${midX} ${midY} ${clipX} ${clipY - 14}`}
-          stroke="rgba(144, 41, 255, 0.75)"
+          stroke="var(--portfolio-accent)"
           strokeWidth="2.5"
           strokeDasharray="4 2.5"
           fill="none"
