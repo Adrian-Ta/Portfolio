@@ -47,6 +47,8 @@ Regeln dafür:
 ## Was nicht verändert wird
 Der Grundstil bleibt: helle, großzügige Oberfläche, ein ruhiger Teal-Akzent (kein Violett-Blau-Verlauf), Punktraster im Hero, großes Profilfoto rechts im Hero (`ProfilePhoto`, Bild: `public/avatar.jpg`), Dark/Light-Theme. Der frühere hängende Profil-Ausweis wurde bewusst entfernt und darf nicht wieder eingebaut werden. Design-Verbesserungen nur auf ausdrücklichen Wunsch und in eigenen Commits.
 
+Navigation: Das Desktop-Menü (`.desktop-nav`) erscheint erst ab 1080 px Breite, darunter gilt das Hamburger-Menü. Menü-Links und Logo-Text dürfen nicht umbrechen (`white-space: nowrap`). Diese Breakpoints nicht ohne Rücksprache ändern.
+
 ## Später (nicht jetzt)
 Optional ein Git-basiertes CMS (z. B. Decap CMS oder TinaCMS) obendrauf, das in dieselben Dateien in `src/content/` schreibt. Dafür darf der Umbau jetzt keine Sonderlösungen einführen.
 
