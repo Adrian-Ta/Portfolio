@@ -45,7 +45,7 @@ Regeln dafür:
 5. Jede Änderung kurz auf Deutsch erklären, damit Adrian sie selbst nachvollziehen kann. Er lernt dabei.
 
 ## Was nicht verändert wird
-Der Grundstil bleibt: helle, großzügige Oberfläche, violett-blaue Akzente, Punktraster im Hero, hängender Profil-Ausweis (`InteractiveBadge`), Dark/Light-Theme. Design-Verbesserungen nur auf ausdrücklichen Wunsch und in eigenen Commits.
+Der Grundstil bleibt: helle, großzügige Oberfläche, ein ruhiger Teal-Akzent (kein Violett-Blau-Verlauf), Punktraster im Hero, großes Profilfoto rechts im Hero (`ProfilePhoto`, Bild: `public/avatar.jpg`), Dark/Light-Theme. Der frühere hängende Profil-Ausweis wurde bewusst entfernt und darf nicht wieder eingebaut werden. Design-Verbesserungen nur auf ausdrücklichen Wunsch und in eigenen Commits.
 
 ## Später (nicht jetzt)
 Optional ein Git-basiertes CMS (z. B. Decap CMS oder TinaCMS) obendrauf, das in dieselben Dateien in `src/content/` schreibt. Dafür darf der Umbau jetzt keine Sonderlösungen einführen.

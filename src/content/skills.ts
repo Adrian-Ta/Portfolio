@@ -30,6 +30,8 @@ export interface TechItem {
   category: string;
   /** Icon-Name, siehe `techIcons` in src/components/TechMarquee.tsx */
   icon: 'code' | 'layers' | 'boxes' | 'terminal' | 'server' | 'database' | 'git' | 'cpu' | 'workflow' | 'sparkles';
+  /** Schlüssel in src/content/techLogos.ts. Ohne Logo wird das Symbol aus `icon` gezeigt. */
+  logo?: string;
 }
 
 export const techSkills: TechSkill[] = [
@@ -79,16 +81,16 @@ export const learningFocus: { title: string; desc: string } | null = {
 
 /** Pills im Technologieband unter dem Hero */
 export const techStack: TechItem[] = [
-  { name: 'TypeScript', category: 'Language', icon: 'code' },
-  { name: 'React', category: 'Frontend', icon: 'layers' },
-  { name: 'Next.js', category: 'Framework', icon: 'boxes' },
-  { name: 'Python', category: 'Backend & Data', icon: 'terminal' },
-  { name: 'Node.js', category: 'Runtime', icon: 'server' },
-  { name: 'PostgreSQL', category: 'Database', icon: 'database' },
-  { name: 'Git & GitHub', category: 'Tooling', icon: 'git' },
-  { name: 'Docker', category: 'DevOps', icon: 'cpu' },
+  { name: 'TypeScript', category: 'Language', icon: 'code', logo: 'typescript' },
+  { name: 'React', category: 'Frontend', icon: 'layers', logo: 'react' },
+  { name: 'Next.js', category: 'Framework', icon: 'boxes', logo: 'nextjs' },
+  { name: 'Python', category: 'Backend & Data', icon: 'terminal', logo: 'python' },
+  { name: 'Node.js', category: 'Runtime', icon: 'server', logo: 'nodejs' },
+  { name: 'PostgreSQL', category: 'Database', icon: 'database', logo: 'postgresql' },
+  { name: 'Git & GitHub', category: 'Tooling', icon: 'git', logo: 'git' },
+  { name: 'Docker', category: 'DevOps', icon: 'cpu', logo: 'docker' },
   { name: 'Prozess-BPMN', category: 'Wirtschaftsinformatik', icon: 'workflow' },
-  { name: 'REST & GraphQL', category: 'APIs', icon: 'code' },
-  { name: 'Vite', category: 'Bundler', icon: 'sparkles' },
+  { name: 'REST & GraphQL', category: 'APIs', icon: 'code', logo: 'graphql' },
+  { name: 'Vite', category: 'Bundler', icon: 'sparkles', logo: 'vite' },
   { name: 'UI / UX Architecture', category: 'Design Systems', icon: 'layers' },
 ];

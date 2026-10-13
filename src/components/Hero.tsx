@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, FileText, Mail } from 'lucide-react';
-import { InteractiveBadge } from './InteractiveBadge';
+import { ProfilePhoto } from './ProfilePhoto';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
 
@@ -81,9 +81,9 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Profile ID Badge suspended from top */}
-        <div className="hero-badge-column">
-          <InteractiveBadge />
+        {/* Rechte Spalte: großes Profilfoto */}
+        <div className="hero-photo-column">
+          <ProfilePhoto />
         </div>
       </div>
     </section>

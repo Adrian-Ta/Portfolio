@@ -1,3 +1,5 @@
+> **Veraltet:** Dieses Dokument beschreibt den ursprünglichen Bauauftrag nach dem Referenzvideo. Der hängende Profil-Ausweis und der Violett-Blau-Verlauf wurden bewusst entfernt (jetzt: Teal-Akzent, großes Profilfoto). Nur als Hintergrund lesen, nicht nachbauen. Maßgeblich ist die CLAUDE.md.
+
 # Portfolio: Oberfläche nach der Video-Referenz
 
 ## Auftrag und Prioritäten

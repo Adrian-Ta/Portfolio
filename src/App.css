@@ -75,7 +75,7 @@
 }
 
 .brand-sub {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--portfolio-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -296,7 +296,7 @@
   max-width: 620px;
 }
 
-.hero-badge-column {
+.hero-photo-column {
   flex: 1 1 48%;
   display: flex;
   justify-content: center;
@@ -508,342 +508,45 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Interactive Profile Badge & Lanyard
+   3. Profilfoto (großer Bildplatz im Hero)
    -------------------------------------------------------------------------- */
-.badge-stage {
+.profile-photo {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  touch-action: none;
-  user-select: none;
+  width: min(100%, 460px);
+  aspect-ratio: 4 / 5;
   margin: 0 auto;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--portfolio-surface);
+  border: 1px solid var(--portfolio-border);
+  box-shadow: var(--portfolio-shadow);
+}
+
+.profile-photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.profile-photo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--portfolio-muted);
+  background: var(--portfolio-bg);
 }
 
 @media (max-width: 768px) {
-  .badge-stage {
-    transform: scale(0.85);
-    transform-origin: top center;
-    margin-bottom: -40px;
+  .profile-photo {
+    width: min(100%, 360px);
   }
-}
-
-.lanyard-svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.drag-hint-pill {
-  position: absolute;
-  top: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: var(--portfolio-pill-radius);
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
-  box-shadow: 0 4px 14px var(--portfolio-accent-medium);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--portfolio-accent);
-  z-index: 15;
-  pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  animation: floatHint 2.4s ease-in-out infinite;
-}
-
-.drag-hint-pill.interacted {
-  opacity: 0;
-  transform: translateY(-8px);
-}
-
-@keyframes floatHint {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.drag-hint-icon {
-  animation: pulseIcon 1.5s infinite;
-}
-
-@keyframes pulseIcon {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-/* The 3D Badge Card */
-.id-badge-card {
-  position: absolute;
-  top: 64px;
-  width: 270px;
-  height: 380px;
-  border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid rgba(220, 220, 235, 0.8);
-  box-shadow: var(--portfolio-badge-shadow);
-  overflow: hidden;
-  transform-style: preserve-3d;
-  will-change: transform;
-  z-index: 12;
-  transition: box-shadow 0.25s ease;
-}
-
-[data-theme="dark"] .id-badge-card {
-  background: #151a22;
-  border-color: rgba(75, 85, 99, 0.7);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
-}
-
-.id-badge-card.is-dragging {
-  box-shadow: 0 32px 70px var(--portfolio-accent-strong);
-}
-
-/* Slot punch hole */
-.badge-slot {
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 6px;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-  z-index: 25;
-}
-
-.badge-slot-hole {
-  width: 100%;
-  height: 100%;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-}
-
-/* Glossy reflection sheen */
-.badge-specular {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.1) 40%,
-    transparent 65%
-  );
-  pointer-events: none;
-  z-index: 20;
-}
-
-/* Card Header with signature gradient */
-.badge-header {
-  position: relative;
-  height: 95px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.badge-header-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--portfolio-accent);
-}
-
-.badge-header-content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 16px 0;
-  color: var(--portfolio-on-accent);
-}
-
-.badge-org-tag {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  color: var(--portfolio-on-accent);
-}
-
-.badge-chip-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--portfolio-on-accent) 22%, transparent);
-  backdrop-filter: blur(4px);
-}
-
-/* Card Body & Info */
-.badge-body {
-  position: relative;
-  padding: 0 16px 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: var(--portfolio-surface);
-}
-
-.badge-avatar-wrap {
-  position: relative;
-  margin-top: -38px;
-  margin-bottom: 8px;
-  z-index: 10;
-}
-
-.badge-avatar-img {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3.5px solid var(--portfolio-surface);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.badge-avatar-fallback {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--portfolio-accent);
-  color: var(--portfolio-on-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 24px;
-  border: 3.5px solid var(--portfolio-surface);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.badge-status-dot {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--portfolio-success);
-  border: 2.5px solid var(--portfolio-surface);
-  box-shadow: 0 0 8px rgba(34, 199, 129, 0.7);
-}
-
-.badge-identity {
-  margin-bottom: 8px;
-}
-
-.badge-name {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--portfolio-text);
-  line-height: 1.15;
-}
-
-.badge-role {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--portfolio-muted);
-  letter-spacing: -0.2px;
-}
-
-.badge-divider {
-  width: 100%;
-  height: 1px;
-  background: var(--portfolio-border);
-  margin-bottom: 10px;
-}
-
-/* 2x2 Info Grid */
-.badge-info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.badge-info-cell {
-  background: var(--portfolio-accent-faint);
-  border: 1px solid var(--portfolio-border);
-  border-radius: 8px;
-  padding: 5px 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-
-[data-theme="dark"] .badge-info-cell {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.badge-info-label {
-  font-size: 8px;
-  font-weight: 700;
-  color: var(--portfolio-muted);
-  letter-spacing: 0.4px;
-}
-
-.badge-info-value {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--portfolio-text);
-  margin-top: 1px;
-}
-
-.badge-info-value.highlight {
-  color: var(--portfolio-success-text);
-}
-
-/* Barcode */
-.badge-barcode-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.barcode-bars {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 22px;
-  width: 100%;
-}
-
-.barcode-line {
-  display: inline-block;
-  height: 100%;
-  background: var(--portfolio-text);
-  opacity: 0.85;
-  border-radius: 0.5px;
-}
-
-.barcode-serial {
-  font-size: 9px;
-  color: var(--portfolio-muted);
-  letter-spacing: 1px;
 }
 
 /* --------------------------------------------------------------------------
@@ -853,10 +556,10 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 18px 0;
+  padding: 26px 0;
   border-top: 1px solid var(--portfolio-border);
   border-bottom: 1px solid var(--portfolio-border);
-  background: var(--portfolio-surface);
+  background-color: var(--portfolio-bg);
   margin-top: 20px;
 }
 
@@ -872,19 +575,19 @@
 
 .marquee-fade-left {
   left: 0;
-  background: linear-gradient(to right, var(--portfolio-surface), transparent);
+  background: linear-gradient(to right, var(--portfolio-bg), transparent);
 }
 
 .marquee-fade-right {
   right: 0;
-  background: linear-gradient(to left, var(--portfolio-surface), transparent);
+  background: linear-gradient(to left, var(--portfolio-bg), transparent);
 }
 
 .marquee-track {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   width: max-content;
-  animation: scrollMarquee 36s linear infinite;
+  animation: scrollMarquee 40s linear infinite;
 }
 
 .marquee-track:hover {
@@ -903,38 +606,40 @@
 .marquee-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px 18px;
+  gap: 12px;
+  padding: 11px 22px;
   border-radius: var(--portfolio-pill-radius);
-  background: var(--portfolio-bg);
+  background: var(--portfolio-surface);
   border: 1px solid var(--portfolio-border);
+  box-shadow: 0 2px 12px rgba(20, 22, 26, 0.06);
   white-space: nowrap;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .marquee-pill:hover {
-  border-color: var(--portfolio-accent-hover);
+  border-color: var(--portfolio-border-hover);
+  box-shadow: 0 6px 18px rgba(20, 22, 26, 0.1);
   transform: translateY(-1px);
 }
 
 .marquee-pill-icon {
   display: flex;
   align-items: center;
+}
+
+/* Symbole ohne Firmenlogo (z. B. BPMN) in der Akzentfarbe */
+.marquee-pill-icon--plain {
   color: var(--portfolio-accent);
 }
 
 .marquee-pill-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--portfolio-text);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--portfolio-text-secondary);
 }
 
-.marquee-pill-cat {
-  font-size: 11px;
-  color: var(--portfolio-muted);
-  background: var(--portfolio-accent-soft);
-  padding: 2px 7px;
-  border-radius: 4px;
+.marquee-pill:hover .marquee-pill-name {
+  color: var(--portfolio-text);
 }
 
 /* --------------------------------------------------------------------------
@@ -957,7 +662,7 @@
   border-radius: var(--portfolio-pill-radius);
   background: var(--portfolio-accent-soft);
   color: var(--portfolio-accent);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
@@ -1176,7 +881,7 @@
 }
 
 .service-tag-pill {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 6px;
@@ -1251,7 +956,7 @@
 }
 
 .project-category-badge {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   padding: 4px 10px;
   border-radius: var(--portfolio-pill-radius);
@@ -1276,7 +981,7 @@
 }
 
 .project-tag-pill {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 6px;
@@ -1300,7 +1005,7 @@
 }
 
 .project-card-subtitle {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--portfolio-muted);
   font-weight: 500;
   margin-top: 2px;
@@ -1499,7 +1204,7 @@
   border-radius: var(--portfolio-pill-radius);
   background: var(--portfolio-accent-soft);
   color: var(--portfolio-accent);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -1592,7 +1297,7 @@
 }
 
 .education-status-pill {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   padding: 4px 10px;
   border-radius: var(--portfolio-pill-radius);
@@ -1629,7 +1334,7 @@
 }
 
 .edu-tag {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   padding: 3px 9px;
   border-radius: 6px;
@@ -1673,7 +1378,7 @@
 }
 
 .panel-sub {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--portfolio-muted);
 }
 
@@ -1697,7 +1402,7 @@
 }
 
 .skill-level-text {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--portfolio-accent);
 }
@@ -1854,7 +1559,7 @@
 }
 
 .contact-label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--portfolio-muted);
   text-transform: uppercase;
@@ -1883,7 +1588,7 @@
   background: var(--portfolio-bg);
   border: 1px solid var(--portfolio-border);
   color: var(--portfolio-accent);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   width: fit-content;
@@ -2085,7 +1790,7 @@
   transform: translateX(-50%);
   background: #111116;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   padding: 4px 8px;
   border-radius: 6px;
@@ -2153,7 +1858,7 @@
 }
 
 .footer-col-title {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
