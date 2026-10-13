@@ -1325,7 +1325,26 @@
   background: var(--portfolio-accent);
   color: #ffffff;
   border-color: transparent;
+}
+
+.project-action-btn.is-arrow:hover {
   transform: rotate(45deg);
+}
+
+.project-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.projects-empty {
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--portfolio-muted);
+  font-size: 16px;
+  background: var(--portfolio-surface);
+  border: 1px dashed var(--portfolio-border);
+  border-radius: var(--portfolio-card-radius);
 }
 
 .project-card-desc {
