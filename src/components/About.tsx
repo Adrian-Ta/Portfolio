@@ -25,7 +25,9 @@ export const About: React.FC = () => {
 
             <p className="about-lead">{profile.about.lead}</p>
 
-            <p className="about-body">{profile.about.body}</p>
+            {profile.about.body.map((paragraph) => (
+              <p key={paragraph} className="about-body">{paragraph}</p>
+            ))}
 
             <div className="about-principles">
               {profile.about.principles.map((text) => (

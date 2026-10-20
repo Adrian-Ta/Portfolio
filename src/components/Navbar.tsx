@@ -22,10 +22,10 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const navLinks = [
     { label: 'Start', href: '#hero' },
     { label: 'Über mich', href: '#about' },
-    { label: 'Leistungen', href: '#services' },
+    { label: 'Praxisfelder', href: '#services' },
     { label: 'Projekte', href: '#projects' },
     { label: 'Laufbahn', href: '#experience' },
-    { label: 'Kompetenzen', href: '#skills' },
+    { label: 'Ausbildung', href: '#skills' },
     { label: 'Kontakt', href: '#contact' },
   ];
 

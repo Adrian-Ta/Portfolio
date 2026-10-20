@@ -28,69 +28,76 @@ export interface Profile {
   /** Pfad zum Foto relativ zu `public/` – Datei dort ersetzen = Foto wechseln */
   photo: string;
   email: string;
+  /**
+   * Access Key von web3forms.com: Nachrichten aus dem Kontaktformular gehen an die dort
+   * hinterlegte E-Mail-Adresse. Der Key ist nicht geheim, er kann nur Mails an dich senden.
+   */
+  formAccessKey: string;
   location: string;
   /** Text zur Verfügbarkeit (Hero-Pill und Kontaktbereich) */
   availability: string;
   availabilityNote: string;
-  /**
-   * Social-Links. Eintrag mit leerer `url` wird nicht angezeigt.
-   * TODO (mit Adrian klären): echte Profil-Links eintragen – aktuell nur Platzhalter.
-   */
+  /** Social-Links. Eintrag mit leerer `url` wird nicht angezeigt. */
   github: SocialLink;
   linkedin: SocialLink;
   /** Inhalt des Bereichs „Über mich" */
   about: {
     lead: string;
-    body: string;
+    body: string[];
     principles: string[];
     focusAreas: FocusArea[];
   };
 }
 
 export const profile: Profile = {
-  name: 'Adri',
+  name: 'Adrian Tajik',
   fullName: 'Adrian Tajik',
   initials: 'AT',
-  role: 'Wirtschaftsinformatik & IT',
+  role: 'Student der Wirtschaftsinformatik',
   heroText:
-    'Wirtschaftsinformatiker mit Leidenschaft für moderne Frontend-Entwicklung, robuste Systemarchitekturen und intelligente Prozessautomatisierung. Ich verbinde analytisches Business-Denken mit sauberem, performantem Code.',
+    'Wirtschaftsinformatikstudent mit praktischer Erfahrung im IT-Support. Ich beschäftige mich mit Netzwerken, Prozessmodellierung und der Automatisierung digitaler Abläufe.',
   footerText:
-    'Wirtschaftsinformatik & moderne Softwareentwicklung. Kombination aus analytischer Struktur und detailgetreuem Design.',
+    'Wirtschaftsinformatikstudium, praktische IT-Erfahrung und kontinuierliches Lernen.',
   photo: '/avatar.jpg',
-  email: 'kontakt@adrian-tajik.de',
+  email: 'kontakt@adriantajik.dev',
+  formAccessKey: '701022ce-b31d-4738-8dfb-2b734ac20ff1',
   location: 'Deutschland',
-  availability: 'Verfügbar für Projekte & neue Herausforderungen',
-  availabilityNote: 'Offen für Praktika, Werkstudententätigkeiten & spannende Projekte.',
-  github: { label: 'GitHub', url: 'https://github.com' },
-  linkedin: { label: 'LinkedIn', url: 'https://linkedin.com' },
+  availability: 'Offen für Praktika und Werkstudententätigkeiten',
+  availabilityNote: 'Ich freue mich über passende Praktikums- und Werkstudentenangebote sowie fachlichen Austausch.',
+  github: { label: 'GitHub', url: 'https://github.com/Adrian-Ta' },
+  linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/adrian-tajik-5339b238a' },
   about: {
-    lead: 'Als Wirtschaftsinformatiker betrachte ich Software nicht isoliert, sondern als Werkzeug zur Lösung realer betrieblicher und menschlicher Herausforderungen.',
-    body: 'Mein Fokus liegt darauf, nutzerzentrierte Oberflächen mit stabilen, modularen Architekturen zu verbinden. Von agilen Kanban-Lösungen über KI-gestützte Dokumentenanalyse bis hin zu automatisierten Backend-Prozessen entwickle ich Lösungen, die performant, wartbar und ästhetisch überzeugend sind.',
+    lead: 'Mein beruflicher Weg begann bei KFC. Dort entwickelte ich mich vom Mitarbeiter über den Assistant Manager bis zum Restaurantleiter weiter und übernahm zunehmend Verantwortung. Mein langjähriges Interesse an IT und der Wunsch nach einem akademischen Weg führten mich dazu, das Fachabitur nachzuholen und ein Studium der Wirtschaftsinformatik aufzunehmen.',
+    body: [
+      'Schon vor der Fachoberschule beschäftigte ich mich eigenständig mit Netzwerktechnik und Lerninhalten rund um CompTIA Network+. Dabei sammelte ich praktische Erfahrung mit Windows Server, Active Directory, DNS, DHCP und Virtualisierung mit VMware Workstation.',
+      'Von August 2023 bis Juni 2025 arbeitete ich in der IT-Abteilung von BüchnerBarrella. Zu meinen Aufgaben gehörten First- und Second-Level-Support, Benutzer- und Rechteverwaltung in MS Active Directory, die Einrichtung von Endgeräten, Softwareupdates und Troubleshooting vor Ort und per Fernwartung.',
+      'Während des Fachabiturs entwickelte ich im Team eine Java-Desktopanwendung für eine Bibliothek. Im Studium vertiefe ich Java und Python, arbeite mit Datenbanken und beschäftige mich mit Prozessmodellierung in SAP Signavio und Camunda. Eigene Lernprojekte und Themen wie n8n, KI-Agenten, Git/GitHub, Docker-Grundlagen und Power BI ergänzen meinen Studienalltag.',
+    ],
     principles: [
-      'Analytisches Denken & saubere Prozessmodellierung',
-      'Hohe Detailtreue in Design, Barrierefreiheit & UX',
-      'Wirtschaftlicher Weitblick gepaart mit moderner Tech-Praxis',
+      'Schnelle Auffassungsgabe & systematische Fehlersuche',
+      'Sorgfältige, selbstständige und zuverlässige Arbeitsweise',
+      'Freundliche und lösungsorientierte Unterstützung von Anwenderinnen und Anwendern',
     ],
     focusAreas: [
       {
+        icon: 'network',
+        title: 'IT-Support & Windows',
+        desc: 'Berufliche Erfahrung mit First- und Second-Level-Support, Active Directory, Benutzerrechten, Endgeräten und Troubleshooting.',
+      },
+      {
         icon: 'workflow',
-        title: 'Wirtschaftsinformatik',
-        desc: 'Schnittstelle zwischen geschäftlichen Anforderungen und technologischer Realisierung. Prozessoptimierung und fundierte Systemanalyse.',
+        title: 'Netzwerke & Server',
+        desc: 'Eigenständige Lernpraxis mit Netzwerktechnik, Windows Server, DNS, DHCP und VMware Workstation.',
       },
       {
         icon: 'layers',
-        title: 'Modernes Frontend',
-        desc: 'Entwicklung responsiver, intuitiver und schneller Webanwendungen mit React, TypeScript und modernen Design-Systemen.',
+        title: 'Studium & Entwicklung',
+        desc: 'Grundlagen und Projektpraxis in Java und Python, Datenbanken sowie eine Java-Desktopanwendung im Fachabitur.',
       },
       {
         icon: 'terminal',
-        title: 'Automatisierung & Bots',
-        desc: 'Konzeption von Python-basierten Automatisierungs-Pipelines, Datenvalidierung mit Pydantic und interaktiven Tools.',
-      },
-      {
-        icon: 'network',
-        title: 'Systemarchitektur',
-        desc: 'Strukturierte API-Schnittstellen, saubere Datenmodelle und modulare Komponentenarchitekturen für langfristige Wartbarkeit.',
+        title: 'Prozesse & Automatisierung',
+        desc: 'Studieninhalte zu SAP Signavio und Camunda sowie eigene Lernpraxis mit n8n, KI-Agenten und Power BI.',
       },
     ],
   },

@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
 
             <a href="#contact" className="btn-secondary">
               <FileText size={18} className="btn-icon" />
-              <span>Kontakt / Lebenslauf</span>
+              <span>Kontakt aufnehmen</span>
             </a>
           </div>
 
@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
                 <a
                   href={profile.linkedin.url}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener"
                   className="social-icon-link"
                   aria-label="LinkedIn Profil"
                   title="LinkedIn"

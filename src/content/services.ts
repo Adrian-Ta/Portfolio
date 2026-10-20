@@ -1,36 +1,41 @@
-// Leistungen: ein Eintrag = eine Karte im Bereich „Leistungen".
+// Praxisfelder: Berufserfahrung, Studieninhalte und eigene Lernpraxis.
 
 export interface Service {
   /** Icon-Name, siehe `serviceIcons` in src/components/Services.tsx */
-  icon: 'layout' | 'process' | 'cpu' | 'database';
+  icon: 'support' | 'network' | 'code' | 'workflow';
   title: string;
   desc: string;
   tags: string[];
+  context: string;
 }
 
 export const services: Service[] = [
   {
-    icon: 'layout',
-    title: 'Web- & Frontend-Entwicklung',
-    desc: 'Entwicklung zeitgemäßer Single-Page und Server-Side Web-Apps mit React, TypeScript und moderner CSS-Architektur. Fokus auf Performance, Barrierefreiheit und flüssige Interaktionen.',
-    tags: ['React', 'TypeScript', 'Responsive', 'UX/UI'],
+    icon: 'support',
+    title: 'IT-Support & Windows',
+    desc: 'Berufliche Erfahrung im First- und Second-Level-Support, mit Benutzer- und Rechteverwaltung in MS Active Directory, Endgeräteeinrichtung, Updates und Troubleshooting.',
+    tags: ['IT-Support', 'Active Directory', 'Windows'],
+    context: 'Berufserfahrung',
   },
   {
-    icon: 'process',
-    title: 'Prozessanalyse & BPMN',
-    desc: 'Strukturierte Modellierung und Digitalisierung von Unternehmensprozessen nach BPMN 2.0. Identifikation von Engpässen und Übersetzung in klare IT-Anforderungsprofile.',
-    tags: ['BPMN 2.0', 'Prozessoptimierung', 'Anforderungsanalyse'],
+    icon: 'network',
+    title: 'Netzwerke & Server',
+    desc: 'Eigenständige Lernpraxis mit Netzwerktechnik, Windows Server, DNS, DHCP und Virtualisierung mit VMware Workstation.',
+    tags: ['Netzwerke', 'DNS / DHCP', 'VMware'],
+    context: 'Lernpraxis',
   },
   {
-    icon: 'cpu',
-    title: 'IT-Automatisierung & Scripting',
-    desc: 'Konzeption von Workflows und Automatisierungs-Pipelines mit Python. Automatisierte Dokumentenverarbeitung, Datenextraktion und API-basierte Tool-Verknüpfungen.',
-    tags: ['Python', 'Automation', 'Gradio', 'Pydantic'],
+    icon: 'code',
+    title: 'Programmierung & Projekte',
+    desc: 'Grundlagen und Studienpraxis in Java und Python. Im Fachabitur entwickelte ich im Team eine Java-Desktopanwendung für eine Bibliothek.',
+    tags: ['Java', 'Python', 'Datenbanken'],
+    context: 'Studium & Projekte',
   },
   {
-    icon: 'database',
-    title: 'API-Integration & Datenarchitektur',
-    desc: 'Saubere Schnittstellenanbindung über REST und GraphQL. Konzeption solider relationaler Datenmodelle in PostgreSQL und strukturierte Datenvalidierung.',
-    tags: ['REST APIs', 'PostgreSQL', 'Systemintegration'],
+    icon: 'workflow',
+    title: 'Prozesse & Automatisierung',
+    desc: 'Studieninhalte zur Prozessmodellierung mit SAP Signavio und Camunda sowie eigene Lernpraxis mit einem n8n-Assistenten und KI-Agenten.',
+    tags: ['SAP Signavio', 'Camunda', 'n8n'],
+    context: 'Studium & Lernpraxis',
   },
 ];

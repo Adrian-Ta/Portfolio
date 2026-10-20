@@ -17,10 +17,10 @@ export const EducationSkills: React.FC = () => {
           <span className="section-pill">Qualifikation</span>
           <h2 className="section-title">
             Ausbildung & <br />
-            <span className="text-accent">Fachkompetenzen</span>
+            <span className="text-accent">Kenntnisse</span>
           </h2>
           <p className="section-subtitle">
-            Fundierte akademische Ausbildung kombiniert mit stetiger praktischer Spezialisierung.
+            Mein aktuelles Studium, mein Fachabitur und die technischen Themen, mit denen ich arbeite.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export const EducationSkills: React.FC = () => {
           <div className="skills-tech-panel">
             <div className="panel-header">
               <h3 className="panel-title">Technische Kernkompetenzen</h3>
-              <span className="panel-sub">Einstufung nach Projekt- und Praxiserfahrung</span>
+            <span className="panel-sub">Nach Erfahrungskontext eingeordnet</span>
             </div>
 
             <div className="skills-list">
@@ -60,12 +60,7 @@ export const EducationSkills: React.FC = () => {
                     <span className="skill-name">{skill.name}</span>
                     <span className="skill-level-text">{skill.levelText}</span>
                   </div>
-                  <div className="skill-progress-track">
-                    <div
-                      className="skill-progress-fill"
-                      style={{ width: `${skill.percentage}%` }}
-                    />
-                  </div>
+                  <div className="skill-context-rule" aria-hidden="true" />
                 </div>
               ))}
             </div>
@@ -75,7 +70,7 @@ export const EducationSkills: React.FC = () => {
           <div className="skills-meta-panel">
             <div className="panel-header">
               <h3 className="panel-title">Methoden & Arbeitsweise</h3>
-              <span className="panel-sub">Strukturierte Vorgehensweisen im Projektalltag</span>
+              <span className="panel-sub">Stärken aus meiner Berufspraxis</span>
             </div>
 
             <div className="soft-skills-cluster">
