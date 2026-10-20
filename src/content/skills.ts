@@ -23,7 +23,8 @@ export interface Education {
 export interface TechItem {
   name: string;
   category: string;
-  icon: 'code' | 'layers' | 'boxes' | 'terminal' | 'server' | 'database' | 'git' | 'cpu' | 'workflow' | 'sparkles';
+  icon: 'code' | 'layers' | 'boxes' | 'terminal' | 'server' | 'database' | 'git' | 'cpu' | 'workflow' | 'sparkles' | 'users' | 'network' | 'globe';
+  /** Schlüssel aus techLogos.ts */
   logo?: string;
 }
 
@@ -35,7 +36,7 @@ export const techSkills: TechSkill[] = [
   { name: 'Java & Python', levelText: 'Studium & Projekte' },
   { name: 'Git & GitHub', levelText: 'Aktiv genutzt' },
   { name: 'Docker', levelText: 'Grundlagen' },
-  { name: 'Power BI & Power Query', levelText: 'Erste Lernpraxis' },
+  { name: 'Power BI', levelText: 'Erste Lernpraxis' },
 ];
 
 export const softSkills: SoftSkill[] = [
@@ -68,22 +69,24 @@ export const education: Education[] = [
 
 export const learningFocus: { title: string; desc: string } | null = {
   title: 'Aktueller Lernfokus',
-  desc: 'KI-Agenten und Automatisierung: Ich beschäftige mich mit n8n, MCP und agentischen Entwicklungsabläufen sowie mit Power BI und Power Query.',
+  desc: 'KI-Agenten und Automatisierung: Ich beschäftige mich mit n8n, MCP und agentischen Entwicklungsabläufen sowie mit Power BI.',
 };
 
 /** Technologieband mit Themen aus Berufserfahrung, Studium und Lernpraxis. */
 export const techStack: TechItem[] = [
-  { name: 'Windows Server', category: 'Lernpraxis', icon: 'server' },
-  { name: 'Active Directory', category: 'Berufserfahrung', icon: 'server' },
-  { name: 'Netzwerktechnik', category: 'Lernpraxis', icon: 'workflow' },
-  { name: 'DNS & DHCP', category: 'Lernpraxis', icon: 'server' },
-  { name: 'VMware Workstation', category: 'Lernpraxis', icon: 'cpu' },
-  { name: 'Java', category: 'Studium & Projekte', icon: 'code' },
+  { name: 'Windows Server', category: 'Lernpraxis', icon: 'server', logo: 'windows' },
+  { name: 'Active Directory', category: 'Berufserfahrung', icon: 'users' },
+  { name: 'Netzwerktechnik', category: 'Lernpraxis', icon: 'network' },
+  { name: 'DNS & DHCP', category: 'Lernpraxis', icon: 'globe' },
+  { name: 'VMware Workstation', category: 'Lernpraxis', icon: 'cpu', logo: 'vmware' },
+  { name: 'Java', category: 'Studium & Projekte', icon: 'code', logo: 'java' },
   { name: 'Python', category: 'Studium', icon: 'terminal', logo: 'python' },
-  { name: 'HTML & CSS', category: 'Grundlagen', icon: 'code' },
+  { name: 'HTML', category: 'Grundlagen', icon: 'code', logo: 'html5' },
+  { name: 'CSS', category: 'Grundlagen', icon: 'code', logo: 'css' },
   { name: 'Git & GitHub', category: 'Aktiv genutzt', icon: 'git', logo: 'git' },
-  { name: 'n8n', category: 'Lernprojekt', icon: 'workflow' },
-  { name: 'SAP Signavio & Camunda', category: 'Studium', icon: 'workflow' },
+  { name: 'n8n', category: 'Lernprojekt', icon: 'workflow', logo: 'n8n' },
+  { name: 'SAP Signavio', category: 'Studium', icon: 'workflow', logo: 'sap' },
+  { name: 'Camunda', category: 'Studium', icon: 'workflow', logo: 'camunda' },
   { name: 'Docker', category: 'Grundlagen', icon: 'cpu', logo: 'docker' },
-  { name: 'Power BI & Power Query', category: 'Lernpraxis', icon: 'database' },
+  { name: 'Power BI', category: 'Lernpraxis', icon: 'database', logo: 'powerbi' },
 ];

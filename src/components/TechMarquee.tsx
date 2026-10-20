@@ -10,6 +10,9 @@ import {
   Workflow,
   Sparkles,
   Server,
+  UsersRound,
+  Network,
+  Globe,
 } from 'lucide-react';
 import { techStack } from '../content/skills';
 import type { TechItem } from '../content/skills';
@@ -26,6 +29,9 @@ const techIcons: Record<TechItem['icon'], React.ReactNode> = {
   cpu: <Cpu size={20} />,
   workflow: <Workflow size={20} />,
   sparkles: <Sparkles size={20} />,
+  users: <UsersRound size={20} />,
+  network: <Network size={20} />,
+  globe: <Globe size={20} />,
 };
 
 /** Firmenlogo in Markenfarbe; ohne Logo ein einfaches Symbol in der Akzentfarbe. */
@@ -36,7 +42,7 @@ const TechIcon: React.FC<{ item: TechItem }> = ({ item }) => {
   return (
     <span className="marquee-pill-icon">
       <svg
-        viewBox="0 0 24 24"
+        viewBox={logo.viewBox ?? '0 0 24 24'}
         width={22}
         height={22}
         aria-hidden="true"
