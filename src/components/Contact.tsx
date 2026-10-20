@@ -3,9 +3,15 @@ import { Mail, Send, CheckCircle, MapPin, Copy, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
 
+// Formular-Dienst, der die Nachricht als E-Mail an Adrian weiterleitet (siehe `formAccessKey` in profile.ts)
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
+
+type FormStatus = 'idle' | 'sending' | 'success' | 'error';
+
 export const Contact: React.FC = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formStatus, setFormStatus] = useState<FormStatus>('idle');
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [botcheck, setBotcheck] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,9 +25,29 @@ export const Contact: React.FC = () => {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setFormStatus('sending');
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: profile.formAccessKey,
+          from_name: 'Portfolio-Kontaktformular',
+          subject: `Portfolio: ${formData.subject}`,
+          name: formData.name,
+          // Web3Forms setzt diese Adresse als Antwort-Adresse
+          email: formData.email,
+          message: formData.message,
+          botcheck,
+        }),
+      });
+      const result = await response.json();
+      setFormStatus(result.success ? 'success' : 'error');
+    } catch {
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -30,12 +56,11 @@ export const Contact: React.FC = () => {
         <div className="section-header-centered">
           <span className="section-pill">Kontakt</span>
           <h2 className="section-title">
-            Lass uns gemeinsam <br />
-            <span className="text-accent">etwas bewegen.</span>
+            Interesse an meinem <br />
+            <span className="text-accent">Profil?</span>
           </h2>
           <p className="section-subtitle">
-            Interesse an einer Zusammenarbeit, einem Projekt oder einem fachlichen Austausch?
-            Ich freue mich über jede Nachricht.
+            Für Praktikums- und Werkstudentenangebote oder fachlichen Austausch freue ich mich über deine Nachricht.
           </p>
         </div>
 
@@ -76,7 +101,7 @@ export const Contact: React.FC = () => {
               </div>
               <div className="contact-card-body">
                 <span className="contact-label">Standort & Verfügbarkeit</span>
-                <span className="contact-value">{profile.location} (Remote & Vor Ort)</span>
+                <span className="contact-value">{profile.location}</span>
                 <p className="contact-note">{profile.availabilityNote}</p>
               </div>
             </div>
@@ -97,7 +122,7 @@ export const Contact: React.FC = () => {
                 <a
                   href={profile.linkedin.url}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener"
                   className="social-pill-item"
                 >
                   <LinkedinIcon size={18} />
@@ -110,24 +135,22 @@ export const Contact: React.FC = () => {
           {/* Right Column: Interactive Contact Form */}
           <div className="contact-form-col">
             <div className="contact-form-card">
-              {formSubmitted ? (
+              {formStatus === 'success' ? (
                 <div className="form-success-state" role="status">
                   <div className="success-icon-wrap">
                     <CheckCircle size={36} />
                   </div>
-                  <h3>Vielen Dank für Ihre Nachricht!</h3>
-                  <p>
-                    Ihre Anfrage ist eingegangen. Ich werde mich so schnell wie möglich bei Ihnen melden.
-                  </p>
+                  <h3>Danke für deine Nachricht!</h3>
+                  <p>Sie ist bei mir angekommen. Ich melde mich so bald wie möglich bei dir.</p>
                   <button
                     type="button"
                     onClick={() => {
-                      setFormSubmitted(false);
+                      setFormStatus('idle');
                       setFormData({ name: '', email: '', subject: '', message: '' });
                     }}
                     className="btn-secondary small"
                   >
-                    Weitere Nachricht verfassen
+                      Zurück zum Formular
                   </button>
                 </div>
               ) : (
@@ -171,7 +194,7 @@ export const Contact: React.FC = () => {
                       id="subject"
                       type="text"
                       required
-                      placeholder="Projektanfrage / Austausch"
+                      placeholder="Praktikum / Werkstudentenstelle / Austausch"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="form-input"
@@ -193,8 +216,29 @@ export const Contact: React.FC = () => {
                     />
                   </div>
 
-                  <button type="submit" className="btn-primary full-width">
-                    <span>Nachricht senden</span>
+                  <input
+                    type="checkbox"
+                    className="form-honeypot"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    checked={botcheck}
+                    onChange={(e) => setBotcheck(e.target.checked)}
+                  />
+
+                  {formStatus === 'error' && (
+                    <p className="form-error" role="alert">
+                      Die Nachricht konnte nicht gesendet werden. Bitte versuch es später noch einmal oder schreib direkt an{' '}
+                      <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    className="btn-primary full-width"
+                    disabled={formStatus === 'sending'}
+                  >
+                    <span>{formStatus === 'sending' ? 'Wird gesendet …' : 'Nachricht senden'}</span>
                     <Send size={16} className="btn-icon" />
                   </button>
                 </form>

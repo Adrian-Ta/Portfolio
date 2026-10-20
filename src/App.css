@@ -730,6 +730,10 @@
   font-size: 15px;
   color: var(--portfolio-text-secondary);
   line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.about-body:last-of-type {
   margin-bottom: 28px;
 }
 
@@ -877,6 +881,17 @@
   flex-grow: 1;
 }
 
+.service-context {
+  width: fit-content;
+  margin: 0 0 12px;
+  padding: 4px 9px;
+  border-radius: var(--portfolio-pill-radius);
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 .service-tags {
   display: flex;
   flex-wrap: wrap;
@@ -967,6 +982,15 @@
   backdrop-filter: blur(8px);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.project-category-inline {
+  align-self: flex-start;
+  margin-bottom: 14px;
+  background: var(--portfolio-accent-soft);
+  color: var(--portfolio-accent);
+  border-color: var(--portfolio-border);
+  backdrop-filter: none;
 }
 
 .project-content {
@@ -1395,6 +1419,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 6px;
 }
 
@@ -1408,22 +1433,15 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--portfolio-accent);
+  flex-shrink: 0;
+  text-align: right;
 }
 
-.skill-progress-track {
+.skill-context-rule {
   width: 100%;
-  height: 8px;
-  border-radius: 4px;
-  background: var(--portfolio-bg);
-  border: 1px solid var(--portfolio-border);
-  overflow: hidden;
-}
-
-.skill-progress-fill {
-  height: 100%;
-  border-radius: 4px;
-  background: var(--portfolio-accent);
-  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 1px;
+  margin-top: 10px;
+  background: var(--portfolio-border);
 }
 
 /* Soft Skills Clusters */
@@ -1696,6 +1714,27 @@
 .form-textarea {
   resize: vertical;
   min-height: 110px;
+}
+
+/* Unsichtbares Feld gegen Spam-Bots (Honeypot) */
+.form-honeypot {
+  display: none;
+}
+
+.form-error {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--portfolio-error-text);
+}
+
+.form-error a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 .form-success-state {

@@ -14,7 +14,7 @@ export const Timeline: React.FC = () => {
             <span className="text-accent">Praxiserfahrung</span>
           </h2>
           <p className="section-subtitle">
-            Die kontinuierliche Verbindung von theoretischem Wissen und praktischer Softwareentwicklung.
+            Mein Weg vom Restaurantmanagement über die IT-Praxis bis zum Studium der Wirtschaftsinformatik.
           </p>
         </div>
 

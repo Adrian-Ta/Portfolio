@@ -1,13 +1,9 @@
-// Skills, Bildung und Technologieband.
-// TODO (mit Adrian klären): Die Prozentwerte und Einstufungen sind noch die
-// Platzhalter der alten Seite. `percentage` steuert nur die Länge des Balkens,
-// `levelText` ist der sichtbare Text.
+// Kenntnisse, Ausbildung und Technologieband.
+// Die Einordnung beschreibt, wo Adrian die jeweilige Kenntnis erworben hat.
 
 export interface TechSkill {
   name: string;
   levelText: string;
-  /** 0–100, Länge des Fortschrittsbalkens */
-  percentage: number;
 }
 
 export interface SoftSkill {
@@ -16,7 +12,6 @@ export interface SoftSkill {
 }
 
 export interface Education {
-  /** `cap` = Studium (Mütze), `award` = Weiterbildung (Auszeichnung) */
   icon: 'cap' | 'award';
   status: string;
   title: string;
@@ -28,69 +23,67 @@ export interface Education {
 export interface TechItem {
   name: string;
   category: string;
-  /** Icon-Name, siehe `techIcons` in src/components/TechMarquee.tsx */
   icon: 'code' | 'layers' | 'boxes' | 'terminal' | 'server' | 'database' | 'git' | 'cpu' | 'workflow' | 'sparkles';
-  /** Schlüssel in src/content/techLogos.ts. Ohne Logo wird das Symbol aus `icon` gezeigt. */
   logo?: string;
 }
 
 export const techSkills: TechSkill[] = [
-  { name: 'TypeScript & Modern JavaScript', levelText: 'Vertiefte Praxis', percentage: 90 },
-  { name: 'React & Komponenten-Design', levelText: 'Vertiefte Praxis', percentage: 88 },
-  { name: 'Python, Automation & APIs', levelText: 'Projektpraxis', percentage: 82 },
-  { name: 'CSS Architektur & Responsive Design', levelText: 'Vertiefte Praxis', percentage: 85 },
-  { name: 'SQL, Datenbanken & PostgreSQL', levelText: 'Projektpraxis', percentage: 78 },
-  { name: 'Git, DevOps & Docker Tools', levelText: 'Projektpraxis', percentage: 75 },
+  { name: 'First- und Second-Level-Support', levelText: 'Berufserfahrung' },
+  { name: 'MS Active Directory & Benutzerrechte', levelText: 'Berufserfahrung' },
+  { name: 'Netzwerke, DNS und DHCP', levelText: 'Grundlagen & Lernpraxis' },
+  { name: 'Windows Server & VMware Workstation', levelText: 'Lernpraxis' },
+  { name: 'Java & Python', levelText: 'Studium & Projekte' },
+  { name: 'Git & GitHub', levelText: 'Aktiv genutzt' },
+  { name: 'Docker', levelText: 'Grundlagen' },
+  { name: 'Power BI & Power Query', levelText: 'Erste Lernpraxis' },
 ];
 
 export const softSkills: SoftSkill[] = [
-  { label: 'BPMN 2.0 Prozessmodellierung', tint: 'purple' },
-  { label: 'Agiles Vorgehen & Scrum', tint: 'blue' },
-  { label: 'Anforderungsanalyse (Requirements)', tint: 'cyan' },
-  { label: 'Analytisches Denken', tint: 'emerald' },
-  { label: 'Clean Code & Wartbarkeit', tint: 'purple' },
-  { label: 'Barrierefreiheit (a11y) & UX', tint: 'blue' },
-  { label: 'Schnittstellenkonzeption', tint: 'cyan' },
-  { label: 'Teamorientiertes Arbeiten', tint: 'emerald' },
+  { label: 'Schnelle Auffassungsgabe', tint: 'emerald' },
+  { label: 'Analytische Fehlersuche', tint: 'emerald' },
+  { label: 'Sorgfältig & zuverlässig', tint: 'emerald' },
+  { label: 'Selbstständig und planvoll', tint: 'emerald' },
+  { label: 'Ruhig und lösungsorientiert', tint: 'emerald' },
+  { label: 'Hilfsbereit und freundlich', tint: 'emerald' },
 ];
 
 export const education: Education[] = [
   {
     icon: 'cap',
-    status: 'Laufendes Studium',
-    title: 'B.Sc. Wirtschaftsinformatik',
-    subtitle: 'Akademische Hochschulausbildung',
-    desc: 'Ganzheitliche Verbindung aus Wirtschaftswissenschaften und fundierter Informatik. Schwerpunkte in Systemanalyse, Softwarearchitektur, Geschäftsprozessen und Datenbanken.',
-    tags: ['Software Engineering', 'Datenbanken', 'BPMN & Prozesse', 'IT-Management'],
+    status: 'Laufend',
+    title: 'Wirtschaftsinformatik',
+    subtitle: 'Universitätsstudium · aktuell im dritten Semester',
+    desc: 'Verbindung von Informatik und Wirtschaft. Im Studium beschäftige ich mich unter anderem mit Java, Python, Datenbanken, Prozessmodellierung und betriebswirtschaftlichen Grundlagen.',
+    tags: ['Java', 'Python', 'Datenbanken', 'Prozessmodellierung'],
   },
   {
     icon: 'award',
-    status: 'Praxis & Spezialisierung',
-    title: 'Moderne Webtechnologien & Automation',
-    subtitle: 'Autodidaktische Vertiefung & Projektpraxis',
-    desc: 'Kontinuierliche Weiterbildung in modernen Frontend-Frameworks, TypeScript, Python-Pipelines und aktuellen Architekturmustern zur Erstellung praxistauglicher Softwareprodukte.',
-    tags: ['React Ecosystem', 'TypeScript Deep-Dive', 'Python & LLM Integration', 'UI/UX Standards'],
+    status: 'Abgeschlossen',
+    title: 'Fachabitur',
+    subtitle: 'Fachoberschule',
+    desc: 'Grundlagen in Java, Datenbanken, Netzwerken, HTML und CSS. Im Team entstand eine Java-Desktopanwendung für eine Bibliothek; im Projekt kam auch AWS S3 zum Einsatz.',
+    tags: ['Java', 'Netzwerke', 'HTML & CSS', 'AWS S3'],
   },
 ];
 
-/** Karte „Aktueller Lernfokus". `null` blendet die Karte aus. */
 export const learningFocus: { title: string; desc: string } | null = {
-  title: 'Aktueller Lern- & Erkundungsfokus',
-  desc: 'Vertiefung in KI-Agenten-Architekturen, Fullstack Serverless mit Next.js App Router und skalierbare Event-Architekturen.',
+  title: 'Aktueller Lernfokus',
+  desc: 'KI-Agenten und Automatisierung: Ich beschäftige mich mit n8n, MCP und agentischen Entwicklungsabläufen sowie mit Power BI und Power Query.',
 };
 
-/** Pills im Technologieband unter dem Hero */
+/** Technologieband mit Themen aus Berufserfahrung, Studium und Lernpraxis. */
 export const techStack: TechItem[] = [
-  { name: 'TypeScript', category: 'Language', icon: 'code', logo: 'typescript' },
-  { name: 'React', category: 'Frontend', icon: 'layers', logo: 'react' },
-  { name: 'Next.js', category: 'Framework', icon: 'boxes', logo: 'nextjs' },
-  { name: 'Python', category: 'Backend & Data', icon: 'terminal', logo: 'python' },
-  { name: 'Node.js', category: 'Runtime', icon: 'server', logo: 'nodejs' },
-  { name: 'PostgreSQL', category: 'Database', icon: 'database', logo: 'postgresql' },
-  { name: 'Git & GitHub', category: 'Tooling', icon: 'git', logo: 'git' },
-  { name: 'Docker', category: 'DevOps', icon: 'cpu', logo: 'docker' },
-  { name: 'Prozess-BPMN', category: 'Wirtschaftsinformatik', icon: 'workflow' },
-  { name: 'REST & GraphQL', category: 'APIs', icon: 'code', logo: 'graphql' },
-  { name: 'Vite', category: 'Bundler', icon: 'sparkles', logo: 'vite' },
-  { name: 'UI / UX Architecture', category: 'Design Systems', icon: 'layers' },
+  { name: 'Windows Server', category: 'Lernpraxis', icon: 'server' },
+  { name: 'Active Directory', category: 'Berufserfahrung', icon: 'server' },
+  { name: 'Netzwerktechnik', category: 'Lernpraxis', icon: 'workflow' },
+  { name: 'DNS & DHCP', category: 'Lernpraxis', icon: 'server' },
+  { name: 'VMware Workstation', category: 'Lernpraxis', icon: 'cpu' },
+  { name: 'Java', category: 'Studium & Projekte', icon: 'code' },
+  { name: 'Python', category: 'Studium', icon: 'terminal', logo: 'python' },
+  { name: 'HTML & CSS', category: 'Grundlagen', icon: 'code' },
+  { name: 'Git & GitHub', category: 'Aktiv genutzt', icon: 'git', logo: 'git' },
+  { name: 'n8n', category: 'Lernprojekt', icon: 'workflow' },
+  { name: 'SAP Signavio & Camunda', category: 'Studium', icon: 'workflow' },
+  { name: 'Docker', category: 'Grundlagen', icon: 'cpu', logo: 'docker' },
+  { name: 'Power BI & Power Query', category: 'Lernpraxis', icon: 'database' },
 ];

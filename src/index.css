@@ -16,6 +16,8 @@
   --portfolio-success: #22c781;
   /* Textvariante für Grün: Flächenfarbe oben ist für Punkte/Rahmen, diese für Schrift */
   --portfolio-success-text: #0e7a4a;
+  /* Schriftfarbe für Fehlermeldungen (z. B. Kontaktformular) */
+  --portfolio-error-text: #b42318;
 
   /* Akzent: eine einfache Farbe, kein Verlauf. Alle Akzentflächen, -texte und -tönungen
      leiten sich von diesen drei Variablen ab. */
@@ -53,6 +55,7 @@
   --portfolio-dot: #232a33;
   --portfolio-success: #26d88f;
   --portfolio-success-text: #26d88f;
+  --portfolio-error-text: #f97066;
   --portfolio-accent: #5eead4;
   --portfolio-accent-hover: #2dd4bf;
   --portfolio-on-accent: #0e1116;

@@ -1,7 +1,5 @@
-// Laufbahn / Lebenslauf: ein Eintrag = eine Karte in der Zeitleiste.
-// Neueste Station zuerst. Reihenfolge im Array = Reihenfolge auf der Seite.
-// TODO (mit Adrian klären): Die Stationen sind noch die Texte der alten Seite
-// und müssen mit echten Stationen abgeglichen werden.
+// Berufliche und akademische Stationen. Zeiträume ohne bestätigte Jahreszahlen
+// werden bewusst als Phase statt als erfundenes Datum dargestellt.
 
 export type TimelineType = 'work' | 'education' | 'project';
 
@@ -9,54 +7,52 @@ export interface TimelineItem {
   year: string;
   role: string;
   organization: string;
-  /** `education` zeigt ein Hochschul-Icon, alle anderen ein Aktentaschen-Icon */
   type: TimelineType;
   points: string[];
 }
 
 export const timeline: TimelineItem[] = [
   {
-    year: '2024 – Heute',
-    role: 'Wirtschaftsinformatik & Frontend-Entwicklung',
-    organization: 'Fokus: Moderne Web-Architekturen & Automation',
-    type: 'project',
-    points: [
-      'Entwicklung intuitiver Web-Applikationen mit React, Next.js und TypeScript',
-      'Integration modularer Komponenten-Bibliotheken und flüssiger Interaktionsdesigns',
-      'Kontinuierliche Optimierung von Performance, Lighthouse-Scores und Core Web Vitals',
-    ],
-  },
-  {
-    year: '2023 – 2024',
-    role: 'IT-Automatisierung & KI-Assistenzsysteme',
-    organization: 'Prozessautomatisierung & Python-Entwicklung',
-    type: 'work',
-    points: [
-      'Entwicklung strukturierter Dokumenten-Assistenten zur automatisierten PDF-Auswertung',
-      'Implementierung robuster Datenvalidierungs-Pipelines mit Pydantic und APIs',
-      'Konzeption von interaktiven Test- und Feedback-Oberflächen mit Gradio',
-    ],
-  },
-  {
-    year: '2022 – 2023',
-    role: 'Agiles Workflow- & Kanban-Management',
-    organization: 'Web- & Prozessentwicklung',
-    type: 'project',
-    points: [
-      'Konzeption und Umsetzung eines vollwertigen Kanban-Boards mit Drag-and-Drop',
-      'Geschäftsprozessmodellierung nach BPMN 2.0 Standards',
-      'Entwurf relationaler Schemata in PostgreSQL und Anbindung RESTful APIs',
-    ],
-  },
-  {
-    year: '2021 – 2022',
-    role: 'Studienstart Wirtschaftsinformatik',
-    organization: 'Akademische Fundierung',
+    year: 'Aktuell',
+    role: 'Student der Wirtschaftsinformatik',
+    organization: 'Universitätsstudium',
     type: 'education',
     points: [
-      'Grundlagen der Softwareentwicklung, Datenstrukturen und Algorithmen',
-      'Betriebswirtschaftliche Grundlagen, Rechnungswesen und Projektmanagement',
-      'Erste Full-Stack Projekte mit HTML5, modernem JavaScript und Python',
+      'Studieninhalte in Java, Python, Datenbanken und Wirtschaft',
+      'Prozessmodellierung mit SAP Signavio und Camunda',
+      'Ergänzende Lernpraxis mit n8n, KI-Agenten, Docker und Power BI',
+    ],
+  },
+  {
+    year: 'August 2023 – Juni 2025',
+    role: 'IT-Mitarbeiter',
+    organization: 'BüchnerBarrella · IT-Abteilung',
+    type: 'work',
+    points: [
+      'First- und Second-Level-Support sowie Troubleshooting vor Ort, telefonisch und per Fernwartung',
+      'Benutzer-, Rechte- und Rollenverwaltung in einer MS-Active-Directory-Umgebung',
+      'Einrichtung von Endgeräten sowie Patchen und Aktualisieren von Software',
+    ],
+  },
+  {
+    year: 'Fachoberschule',
+    role: 'Fachabitur',
+    organization: 'Schulische IT-Grundlagen und Teamprojekt',
+    type: 'education',
+    points: [
+      'Grundlagen in Java, Datenbanken, Netzwerken, HTML und CSS',
+      'Entwicklung einer Java-Desktopanwendung für eine Bibliothek',
+      'AWS S3 kam im Projekt zum Einsatz',
+    ],
+  },
+  {
+    year: 'Beruflicher Weg',
+    role: 'Vom Mitarbeiter zum Restaurantleiter',
+    organization: 'KFC',
+    type: 'work',
+    points: [
+      'Entwicklung vom Mitarbeiter über den Assistant Manager bis zum Restaurantleiter',
+      'Mit jedem Schritt wuchsen meine Aufgaben und meine Verantwortung',
     ],
   },
 ];

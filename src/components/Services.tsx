@@ -1,13 +1,13 @@
 import React from 'react';
-import { Layout, GitPullRequest, Cpu, Database } from 'lucide-react';
+import { Headset, Network, Code2, Workflow } from 'lucide-react';
 import { services } from '../content/services';
 import type { Service } from '../content/services';
 
 const serviceIcons: Record<Service['icon'], React.ReactNode> = {
-  layout: <Layout size={24} />,
-  process: <GitPullRequest size={24} />,
-  cpu: <Cpu size={24} />,
-  database: <Database size={24} />,
+  support: <Headset size={24} />,
+  network: <Network size={24} />,
+  code: <Code2 size={24} />,
+  workflow: <Workflow size={24} />,
 };
 
 export const Services: React.FC = () => {
@@ -16,13 +16,13 @@ export const Services: React.FC = () => {
       <div className="container">
         {/* Centered Heading */}
         <div className="section-header-centered">
-          <span className="section-pill">Leistungen</span>
+          <span className="section-pill">Praxisfelder</span>
           <h2 className="section-title">
-            Kompetenzen an der Schnittstelle von <br />
-            <span className="text-accent">Business & Code</span>
+            Was ich<br />
+            <span className="text-accent">mitbringe</span>
           </h2>
           <p className="section-subtitle">
-            Gezielte Lösungen für effiziente digitale Abläufe und hochwertige Oberflächen.
+            Berufserfahrung, Studieninhalte und Themen aus meiner eigenen Lernpraxis.
           </p>
         </div>
 
@@ -33,6 +33,8 @@ export const Services: React.FC = () => {
               <div className="service-icon-box">{serviceIcons[srv.icon]}</div>
               <h3 className="service-title">{srv.title}</h3>
               <p className="service-desc">{srv.desc}</p>
+
+              <span className="service-context">{srv.context}</span>
 
               <div className="service-tags">
                 {srv.tags.map((t) => (

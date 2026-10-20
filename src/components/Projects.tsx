@@ -6,21 +6,20 @@ export const Projects: React.FC = () => {
   return (
     <section id="projects" className="section-wrapper">
       <div className="container">
-        {/* Header aligned left as requested in AGENTS.md */}
         <div className="section-header-left">
-          <span className="section-pill">Ausgewählte Arbeiten</span>
+          <span className="section-pill">Studium & Lernpraxis</span>
           <h2 className="section-title">
-            Projekte mit Fokus auf <br />
-            <span className="text-accent">Präzision & Funktion</span>
+            Von der Bibliotheks-App bis <br />
+            <span className="text-accent">zum n8n-Assistenten</span>
           </h2>
           <p className="section-subtitle">
-            Reale Entwicklungen und Konzepte aus Webtechnologie, Systemintegration und Prozessautomatisierung.
+            Ausgewählte Arbeiten aus dem Fachabitur und meiner Beschäftigung mit Automatisierung.
           </p>
         </div>
 
         {projects.length === 0 ? (
           <p className="projects-empty" role="status">
-            Projekte folgen bald.
+            Weitere Projekte ergänze ich, sobald ich sie mit Details und Einblicken vorstellen kann.
           </p>
         ) : (
           /* 2-Column Grid on Desktop, 1-Column on Mobile */
@@ -28,21 +27,26 @@ export const Projects: React.FC = () => {
             {projects.map((project) => (
               <article key={project.id} className="project-card">
                 {/* Image Frame */}
-                <div className="project-image-box">
-                  <img
-                    src={project.image}
-                    alt={`Vorschau für ${project.title}`}
-                    className="project-image"
-                    loading="lazy"
-                  />
-                  <div className="project-image-overlay" />
-                  <div className="project-badge-top">
-                    <span className="project-category-badge">{project.category}</span>
+                {project.image && (
+                  <div className="project-image-box">
+                    <img
+                      src={project.image}
+                      alt={`Vorschau für ${project.title}`}
+                      className="project-image"
+                      loading="lazy"
+                    />
+                    <div className="project-image-overlay" />
+                    <div className="project-badge-top">
+                      <span className="project-category-badge">{project.category}</span>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Content Box */}
                 <div className="project-content">
+                  {!project.image && (
+                    <span className="project-category-badge project-category-inline">{project.category}</span>
+                  )}
                   <div className="project-tags">
                     {project.tags.map((tag) => (
                       <span key={tag} className="project-tag-pill">

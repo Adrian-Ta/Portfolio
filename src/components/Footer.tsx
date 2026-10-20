@@ -3,6 +3,8 @@ import { ArrowUp, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
 
+const copyrightYear = new Date().getFullYear();
+
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -25,9 +27,10 @@ export const Footer: React.FC = () => {
               <span className="footer-col-title">Navigation</span>
               <a href="#hero">Start</a>
               <a href="#about">Über mich</a>
+              <a href="#services">Praxisfelder</a>
               <a href="#projects">Projekte</a>
               <a href="#experience">Laufbahn</a>
-              <a href="#skills">Kompetenzen</a>
+              <a href="#skills">Ausbildung</a>
             </div>
 
             <div className="footer-links-col">
@@ -39,7 +42,7 @@ export const Footer: React.FC = () => {
                 </a>
               )}
               {profile.linkedin.url && (
-                <a href={profile.linkedin.url} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <a href={profile.linkedin.url} target="_blank" rel="noopener" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                   <LinkedinIcon size={15} />
                   <span>LinkedIn</span>
                 </a>
@@ -56,7 +59,7 @@ export const Footer: React.FC = () => {
 
         <div className="footer-bottom-row">
           <p className="footer-copyright">
-            © {new Date().getFullYear()} {profile.name} ({profile.fullName}) — Alle Rechte vorbehalten.
+            © {copyrightYear} {profile.fullName} — Alle Rechte vorbehalten.
           </p>
 
           <button
