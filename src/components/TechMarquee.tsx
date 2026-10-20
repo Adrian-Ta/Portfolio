@@ -34,27 +34,23 @@ const techIcons: Record<TechItem['icon'], React.ReactNode> = {
   globe: <Globe size={20} />,
 };
 
-/** Firmenlogo(s) in Markenfarbe; ohne Logo ein einfaches Symbol in der Akzentfarbe. */
+/** Firmenlogo in Markenfarbe; ohne Logo ein einfaches Symbol in der Akzentfarbe. */
 const TechIcon: React.FC<{ item: TechItem }> = ({ item }) => {
-  const keys = item.logo === undefined ? [] : [item.logo].flat();
-  const logos = keys.map((key) => techLogos[key]).filter((logo) => logo !== undefined);
-  if (logos.length === 0) return <span className="marquee-pill-icon marquee-pill-icon--plain">{techIcons[item.icon]}</span>;
+  const logo = item.logo ? techLogos[item.logo] : undefined;
+  if (!logo) return <span className="marquee-pill-icon marquee-pill-icon--plain">{techIcons[item.icon]}</span>;
 
   return (
     <span className="marquee-pill-icon">
-      {logos.map((logo) => (
-        <svg
-          key={logo.path}
-          viewBox={logo.viewBox ?? '0 0 24 24'}
-          width={22}
-          height={22}
-          aria-hidden="true"
-          focusable="false"
-          style={{ fill: logo.color === 'text' ? 'var(--portfolio-text)' : logo.color }}
-        >
-          <path d={logo.path} />
-        </svg>
-      ))}
+      <svg
+        viewBox={logo.viewBox ?? '0 0 24 24'}
+        width={22}
+        height={22}
+        aria-hidden="true"
+        focusable="false"
+        style={{ fill: logo.color === 'text' ? 'var(--portfolio-text)' : logo.color }}
+      >
+        <path d={logo.path} />
+      </svg>
     </span>
   );
 };

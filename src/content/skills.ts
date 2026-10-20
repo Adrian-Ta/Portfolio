@@ -24,8 +24,8 @@ export interface TechItem {
   name: string;
   category: string;
   icon: 'code' | 'layers' | 'boxes' | 'terminal' | 'server' | 'database' | 'git' | 'cpu' | 'workflow' | 'sparkles' | 'users' | 'network' | 'globe';
-  /** Schlüssel aus techLogos.ts; bei zwei Technologien (z. B. HTML & CSS) eine Liste. */
-  logo?: string | string[];
+  /** Schlüssel aus techLogos.ts */
+  logo?: string;
 }
 
 export const techSkills: TechSkill[] = [
@@ -81,10 +81,12 @@ export const techStack: TechItem[] = [
   { name: 'VMware Workstation', category: 'Lernpraxis', icon: 'cpu', logo: 'vmware' },
   { name: 'Java', category: 'Studium & Projekte', icon: 'code', logo: 'java' },
   { name: 'Python', category: 'Studium', icon: 'terminal', logo: 'python' },
-  { name: 'HTML & CSS', category: 'Grundlagen', icon: 'code', logo: ['html5', 'css'] },
+  { name: 'HTML', category: 'Grundlagen', icon: 'code', logo: 'html5' },
+  { name: 'CSS', category: 'Grundlagen', icon: 'code', logo: 'css' },
   { name: 'Git & GitHub', category: 'Aktiv genutzt', icon: 'git', logo: 'git' },
   { name: 'n8n', category: 'Lernprojekt', icon: 'workflow', logo: 'n8n' },
-  { name: 'SAP Signavio & Camunda', category: 'Studium', icon: 'workflow', logo: ['sap', 'camunda'] },
+  { name: 'SAP Signavio', category: 'Studium', icon: 'workflow', logo: 'sap' },
+  { name: 'Camunda', category: 'Studium', icon: 'workflow', logo: 'camunda' },
   { name: 'Docker', category: 'Grundlagen', icon: 'cpu', logo: 'docker' },
-  { name: 'Power BI & Power Query', category: 'Lernpraxis', icon: 'database', logo: 'powerbi' },
+  { name: 'Power BI', category: 'Lernpraxis', icon: 'database', logo: 'powerbi' },
 ];
