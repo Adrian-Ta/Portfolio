@@ -628,6 +628,7 @@
 .marquee-pill-icon {
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
 /* Symbole ohne Firmenlogo (z. B. BPMN) in der Akzentfarbe */
