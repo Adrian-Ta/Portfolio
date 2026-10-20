@@ -30,7 +30,9 @@ export const Projects: React.FC = () => {
                 {project.image && (
                   <div className="project-image-box">
                     <img
-                      src={project.image}
+                      src={project.image.startsWith('http')
+                        ? project.image
+                        : `${import.meta.env.BASE_URL}${project.image.replace(/^\/+/, '')}`}
                       alt={`Vorschau für ${project.title}`}
                       className="project-image"
                       loading="lazy"

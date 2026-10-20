@@ -13,7 +13,7 @@ export const ProfilePhoto: React.FC = () => {
       ) : (
         <img
           className="profile-photo-img"
-          src={profile.photo}
+          src={`${import.meta.env.BASE_URL}${profile.photo.replace(/^\/+/, '')}`}
           alt={`${profile.name} Profilfoto`}
           onError={() => setFailed(true)}
         />
