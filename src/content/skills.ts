@@ -36,7 +36,7 @@ export const techSkills: TechSkill[] = [
   { name: 'Java & Python', levelText: 'Studium & Projekte' },
   { name: 'Git & GitHub', levelText: 'Aktiv genutzt' },
   { name: 'Docker', levelText: 'Grundlagen' },
-  { name: 'Power BI & Power Query', levelText: 'Erste Lernpraxis' },
+  { name: 'Power BI', levelText: 'Erste Lernpraxis' },
 ];
 
 export const softSkills: SoftSkill[] = [
@@ -69,7 +69,7 @@ export const education: Education[] = [
 
 export const learningFocus: { title: string; desc: string } | null = {
   title: 'Aktueller Lernfokus',
-  desc: 'KI-Agenten und Automatisierung: Ich beschäftige mich mit n8n, MCP und agentischen Entwicklungsabläufen sowie mit Power BI und Power Query.',
+  desc: 'KI-Agenten und Automatisierung: Ich beschäftige mich mit n8n, MCP und agentischen Entwicklungsabläufen sowie mit Power BI.',
 };
 
 /** Technologieband mit Themen aus Berufserfahrung, Studium und Lernpraxis. */
