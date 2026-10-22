@@ -58,7 +58,7 @@ export const profile: Profile = {
     'Wirtschaftsinformatikstudent mit praktischer Erfahrung im IT-Support. Ich beschäftige mich mit Netzwerken, Prozessmodellierung und der Automatisierung digitaler Abläufe.',
   footerText:
     'Wirtschaftsinformatikstudium, praktische IT-Erfahrung und kontinuierliches Lernen.',
-  photo: '/avatar.jpg',
+  photo: '/adrian-portfolio-portrait-cutout.png',
   email: 'kontakt@adriantajik.dev',
   formAccessKey: '701022ce-b31d-4738-8dfb-2b734ac20ff1',
   location: 'Deutschland',
