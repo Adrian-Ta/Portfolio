@@ -301,6 +301,8 @@
 
 .hero-photo-column {
   flex: 1 1 48%;
+  /* Volle Breite in der einspaltigen Ansicht, sonst schrumpft das Foto auf 0 px */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -513,37 +515,68 @@
 /* --------------------------------------------------------------------------
    3. Profilfoto (großer Bildplatz im Hero)
    -------------------------------------------------------------------------- */
+/* Freigestelltes Foto (PNG ohne Hintergrund) vor einem freien Lichteffekt, ohne Rahmen. */
 .profile-photo {
   position: relative;
   width: min(100%, 460px);
   aspect-ratio: 4 / 5;
   margin: 0 auto;
-  border-radius: 28px;
-  overflow: hidden;
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
-  box-shadow: var(--portfolio-shadow);
+  isolation: isolate;
+}
+
+/* Weicher Teal-Lichtschein hinter Kopf und Schultern */
+.profile-photo::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 95%;
+  aspect-ratio: 1;
+  z-index: -2;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--portfolio-accent-strong) 0%, var(--portfolio-accent-soft) 45%, transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+/* Feine Ringe, die nach außen auslaufen */
+.profile-photo::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 115%;
+  aspect-ratio: 1;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 38px, var(--portfolio-accent-strong) 38px 39px);
+  mask-image: radial-gradient(circle, #000 25%, transparent 65%);
+  pointer-events: none;
 }
 
 .profile-photo-img {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
+  object-fit: contain;
+  object-position: center bottom;
+  /* Unten sanft ausblenden statt harter Bildkante */
+  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
 }
 
 .profile-photo-fallback {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   font-size: 96px;
   font-weight: 700;
   letter-spacing: 4px;
   color: var(--portfolio-muted);
-  background: var(--portfolio-bg);
 }
 
 @media (max-width: 768px) {
