@@ -1092,52 +1092,39 @@
   }
 }
 
-.contact-info-col {
+/* Kontaktwege als Liste: Beschriftung klein darüber, Inhalt darunter, feine Trennlinien */
+.contact-details {
   display: flex;
   flex-direction: column;
-  gap: 18px;
 }
 
-.contact-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 24px;
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
-  border-radius: var(--portfolio-card-radius);
-  box-shadow: var(--portfolio-shadow);
+.contact-detail {
+  padding: 18px 0;
+  border-top: 1px solid var(--portfolio-border);
 }
 
-.contact-card.highlight {
-  border-color: var(--portfolio-accent-strong);
-  background: color-mix(in srgb, var(--portfolio-accent) 4%, var(--portfolio-surface));
+.contact-detail:first-child {
+  padding-top: 0;
+  border-top: 0;
 }
 
-.contact-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: var(--portfolio-accent-soft);
-  color: var(--portfolio-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.contact-label {
+.contact-detail dt {
+  margin-bottom: 6px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--portfolio-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
+}
+
+.contact-detail dd {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--portfolio-text-secondary);
+}
+
+.contact-profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
 }
 
 .contact-value {
@@ -1167,14 +1154,8 @@
   color: var(--portfolio-text-secondary);
 }
 
-.contact-note {
-  font-size: 13px;
-  color: var(--portfolio-text-secondary);
-  margin-top: 4px;
-}
-
 .copy-email-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 8px;
@@ -1197,33 +1178,6 @@
 
 .copied-icon {
   color: var(--portfolio-success-text);
-}
-
-.contact-social-pills {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.social-pill-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
-  border-radius: 14px;
-  color: var(--portfolio-text);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.social-pill-item:hover {
-  border-color: var(--portfolio-accent-hover);
-  color: var(--portfolio-accent-hover);
-  transform: translateX(4px);
 }
 
 /* Contact Form */

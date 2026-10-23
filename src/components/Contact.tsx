@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mail, Send, CheckCircle, MapPin, Copy, Check } from 'lucide-react';
+import { ArrowUpRight, Send, CheckCircle, Copy, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
 
@@ -71,14 +71,11 @@ export const Contact: React.FC = () => {
         </div>
 
         <div className="contact-grid">
-          {/* Left Column: Direct Info Cards */}
-          <div className="contact-info-col">
-            <div className="contact-card highlight">
-              <div className="contact-card-icon">
-                <Mail size={22} />
-              </div>
-              <div className="contact-card-body">
-                <span className="contact-label">Direkte E-Mail</span>
+          {/* Linke Spalte: direkte Kontaktwege als ruhige Liste, ohne Karten */}
+          <dl className="contact-details">
+            <div className="contact-detail">
+              <dt>E-Mail</dt>
+              <dd>
                 <a href={`mailto:${profile.email}`} className="contact-value contact-email-link">
                   {profile.email}
                 </a>
@@ -95,45 +92,37 @@ export const Contact: React.FC = () => {
                   {copyStatus === 'copied' && 'In die Zwischenablage kopiert.'}
                   {copyStatus === 'failed' && 'Kopieren nicht möglich. Bitte die Adresse markieren und kopieren.'}
                 </span>
-              </div>
+              </dd>
             </div>
 
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <MapPin size={22} />
+            {(profile.linkedin.url || profile.github.url) && (
+              <div className="contact-detail">
+                <dt>Profile</dt>
+                <dd className="contact-profile-links">
+                  {profile.linkedin.url && (
+                    <a href={profile.linkedin.url} target="_blank" rel="noopener" className="project-link">
+                      <LinkedinIcon size={16} /> LinkedIn <ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  )}
+                  {profile.github.url && (
+                    <a href={profile.github.url} target="_blank" rel="noreferrer" className="project-link">
+                      <GithubIcon size={16} /> GitHub <ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  )}
+                </dd>
               </div>
-              <div className="contact-card-body">
-                <span className="contact-label">Standort & Verfügbarkeit</span>
-                <span className="contact-value">{profile.location}</span>
-                <p className="contact-note">{profile.availabilityNote}</p>
-              </div>
+            )}
+
+            <div className="contact-detail">
+              <dt>Verfügbarkeit</dt>
+              <dd>{profile.availabilityNote}</dd>
             </div>
 
-            <div className="contact-social-pills">
-              {profile.github.url && (
-                <a
-                  href={profile.github.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-pill-item"
-                >
-                  <GithubIcon size={18} />
-                  <span>GitHub Profil</span>
-                </a>
-              )}
-              {profile.linkedin.url && (
-                <a
-                  href={profile.linkedin.url}
-                  target="_blank"
-                  rel="noopener"
-                  className="social-pill-item"
-                >
-                  <LinkedinIcon size={18} />
-                  <span>LinkedIn Netzwerk</span>
-                </a>
-              )}
+            <div className="contact-detail">
+              <dt>Standort</dt>
+              <dd>{profile.location}</dd>
             </div>
-          </div>
+          </dl>
 
           {/* Right Column: Interactive Contact Form */}
           <div className="contact-form-col">
