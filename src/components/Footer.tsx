@@ -28,9 +28,8 @@ export const Footer: React.FC = () => {
               <a href="#hero">Start</a>
               <a href="#projects">Projekte</a>
               <a href="#about">Über mich</a>
-              <a href="#services">Praxisfelder</a>
               <a href="#experience">Laufbahn</a>
-              <a href="#skills">Ausbildung</a>
+              <a href="#contact">Kontakt</a>
             </div>
 
             <div className="footer-links-col">

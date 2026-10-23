@@ -53,14 +53,10 @@ export const Contact: React.FC = () => {
   return (
     <section id="contact" className="section-wrapper contact-section dot-grid-bg">
       <div className="container">
-        <div className="section-header-centered">
-          <span className="section-pill">Kontakt</span>
-          <h2 className="section-title">
-            Interesse an meinem <br />
-            <span className="text-accent">Profil?</span>
-          </h2>
+        <div className="section-header-left">
+          <h2 className="section-title">Kontakt</h2>
           <p className="section-subtitle">
-            Für Praktikums- und Werkstudentenangebote oder fachlichen Austausch freue ich mich über deine Nachricht.
+            Für eine Werkstudentenstelle in ERP, Prozessmanagement oder KI-Automatisierung oder für fachlichen Austausch freue ich mich über deine Nachricht.
           </p>
         </div>
 

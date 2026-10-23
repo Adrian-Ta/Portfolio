@@ -31,7 +31,12 @@ export const Projects: React.FC = () => {
               const steps = flowSteps(project);
 
               return (
-                <article key={project.id} className="project-case" aria-labelledby={`${project.id}-title`}>
+                <article
+                  key={project.id}
+                  id={project.id}
+                  className="project-case"
+                  aria-labelledby={`${project.id}-title`}
+                >
                   <div className={`project-case-head${project.image ? '' : ' is-text-only'}`}>
                     <div className="project-case-intro">
                       <h3 id={`${project.id}-title`} className="project-case-title">

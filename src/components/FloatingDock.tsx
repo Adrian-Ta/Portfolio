@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, User, Sparkles, FolderGit2, Calendar, GraduationCap, Mail } from 'lucide-react';
+import { Home, User, FolderGit2, Calendar, Mail } from 'lucide-react';
 
 interface DockItem {
   id: string;
@@ -12,9 +12,7 @@ const dockItems: DockItem[] = [
   { id: 'hero', label: 'Start', href: '#hero', icon: <Home size={18} /> },
   { id: 'projects', label: 'Projekte', href: '#projects', icon: <FolderGit2 size={18} /> },
   { id: 'about', label: 'Über mich', href: '#about', icon: <User size={18} /> },
-  { id: 'services', label: 'Praxisfelder', href: '#services', icon: <Sparkles size={18} /> },
   { id: 'experience', label: 'Laufbahn', href: '#experience', icon: <Calendar size={18} /> },
-  { id: 'skills', label: 'Ausbildung', href: '#skills', icon: <GraduationCap size={18} /> },
   { id: 'contact', label: 'Kontakt', href: '#contact', icon: <Mail size={18} /> },
 ];
 

@@ -1,23 +1,17 @@
-// Kenntnisse, Ausbildung und Technologieband.
-// Die Einordnung beschreibt, wo Adrian die jeweilige Kenntnis erworben hat.
+// Kenntnisse nach Bereich (Abschnitt „Über mich“) und Technologieband.
+// Die Einordnung (`context`) sagt, wo Adrian die Kenntnis erworben hat.
 
-export interface TechSkill {
+export interface Skill {
   name: string;
-  levelText: string;
+  /** z. B. Berufserfahrung, Studium, Lernpraxis */
+  context: string;
 }
 
-export interface SoftSkill {
-  label: string;
-  tint: 'purple' | 'blue' | 'cyan' | 'emerald';
-}
-
-export interface Education {
-  icon: 'cap' | 'award';
-  status: string;
+export interface SkillArea {
   title: string;
-  subtitle: string;
-  desc: string;
-  tags: string[];
+  skills: Skill[];
+  /** `id` eines Projekts aus projects.ts, auf das der Bereich verweist (optional) */
+  projectId?: string;
 }
 
 export interface TechItem {
@@ -28,51 +22,50 @@ export interface TechItem {
   logo?: string;
 }
 
-export const techSkills: TechSkill[] = [
-  { name: 'ERP-Grundlagen mit Odoo', levelText: 'Lernpraxis' },
-  { name: 'Prozessmodellierung (SAP Signavio, Camunda)', levelText: 'Studium' },
-  { name: 'n8n & KI-Agenten', levelText: 'Lernprojekt' },
-  { name: 'First- und Second-Level-Support', levelText: 'Berufserfahrung' },
-  { name: 'MS Active Directory & Benutzerrechte', levelText: 'Berufserfahrung' },
-  { name: 'Netzwerke, DNS und DHCP', levelText: 'Grundlagen & Lernpraxis' },
-  { name: 'Windows Server & VMware Workstation', levelText: 'Lernpraxis' },
-  { name: 'Java & Python', levelText: 'Studium & Projekte' },
-  { name: 'Git & GitHub', levelText: 'Aktiv genutzt' },
-  { name: 'Docker', levelText: 'Grundlagen' },
-  { name: 'Power BI', levelText: 'Erste Lernpraxis' },
-];
+export const skillsHeading = 'Kenntnisse nach Bereich';
 
-export const softSkills: SoftSkill[] = [
-  { label: 'Schnelle Auffassungsgabe', tint: 'emerald' },
-  { label: 'Analytische Fehlersuche', tint: 'emerald' },
-  { label: 'Sorgfältig & zuverlässig', tint: 'emerald' },
-  { label: 'Selbstständig und planvoll', tint: 'emerald' },
-  { label: 'Ruhig und lösungsorientiert', tint: 'emerald' },
-  { label: 'Hilfsbereit und freundlich', tint: 'emerald' },
-];
-
-export const education: Education[] = [
+export const skillAreas: SkillArea[] = [
   {
-    icon: 'cap',
-    status: 'Laufend',
-    title: 'Wirtschaftsinformatik',
-    subtitle: 'Universitätsstudium · aktuell im dritten Semester',
-    desc: 'Verbindung von Informatik und Wirtschaft. Im Studium beschäftige ich mich unter anderem mit Java, Python, Datenbanken, Prozessmodellierung und betriebswirtschaftlichen Grundlagen.',
-    tags: ['Java', 'Python', 'Datenbanken', 'Prozessmodellierung'],
+    title: 'Prozesse & ERP',
+    projectId: 'odoo-erp-prozesse',
+    skills: [
+      { name: 'ERP-Grundlagen mit Odoo: Einkauf, Lager, Verkauf, Rechnungswesen', context: 'Lernpraxis' },
+      { name: 'Prozessmodellierung mit SAP Signavio und Camunda', context: 'Studium' },
+    ],
   },
   {
-    icon: 'award',
-    status: 'Abgeschlossen',
-    title: 'Fachabitur',
-    subtitle: 'Fachoberschule',
-    desc: 'Grundlagen in Java, Datenbanken, Netzwerken, HTML und CSS. Im Team entstand eine Java-Desktopanwendung für eine Bibliothek; im Projekt kam auch AWS S3 zum Einsatz.',
-    tags: ['Java', 'Netzwerke', 'HTML & CSS', 'AWS S3'],
+    title: 'Automatisierung & KI',
+    projectId: 'ki-assistent-jackie',
+    skills: [
+      { name: 'Workflows mit n8n', context: 'Lernprojekt' },
+      { name: 'KI-Agenten und RAG', context: 'Lernpraxis' },
+      { name: 'Power BI', context: 'Erste Lernpraxis' },
+    ],
+  },
+  {
+    title: 'Entwicklung',
+    projectId: 'bibliotheks-desktop-app',
+    skills: [
+      { name: 'Java und Python', context: 'Studium & Projekte' },
+      { name: 'Datenbanken', context: 'Studium' },
+      { name: 'Git und GitHub', context: 'Aktiv genutzt' },
+      { name: 'Docker, HTML und CSS', context: 'Grundlagen' },
+    ],
+  },
+  {
+    title: 'IT-Support & Infrastruktur',
+    skills: [
+      { name: 'First- und Second-Level-Support', context: 'Berufserfahrung' },
+      { name: 'MS Active Directory und Benutzerrechte', context: 'Berufserfahrung' },
+      { name: 'Windows Server und VMware Workstation', context: 'Lernpraxis' },
+      { name: 'Netzwerke, DNS und DHCP', context: 'Grundlagen & Lernpraxis' },
+    ],
   },
 ];
 
 export const learningFocus: { title: string; desc: string } | null = {
   title: 'Aktueller Lernfokus',
-  desc: 'ERP und KI: Ich vertiefe die Abläufe in Odoo, um sie später auf SAP oder Microsoft Dynamics zu übertragen, und beschäftige mich mit KI-Agenten, RAG und n8n sowie mit Power BI.',
+  desc: 'Ich vertiefe die Abläufe in Odoo, um sie später auf SAP oder Microsoft Dynamics zu übertragen, und beschäftige mich mit KI-Agenten und RAG.',
 };
 
 /** Technologieband mit Themen aus Berufserfahrung, Studium und Lernpraxis. */

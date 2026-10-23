@@ -4,10 +4,8 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TechMarquee } from './components/TechMarquee';
 import { About } from './components/About';
-import { Services } from './components/Services';
 import { Projects } from './components/Projects';
 import { Timeline } from './components/Timeline';
-import { EducationSkills } from './components/EducationSkills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { FloatingDock } from './components/FloatingDock';
@@ -43,9 +41,7 @@ export function App() {
         <Projects />
         <TechMarquee />
         <About />
-        <Services />
         <Timeline />
-        <EducationSkills />
         <Contact />
       </main>
 

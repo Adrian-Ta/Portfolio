@@ -1,26 +1,19 @@
 import React from 'react';
 import { Calendar, Briefcase, GraduationCap, CheckCircle2 } from 'lucide-react';
-import { timeline } from '../content/timeline';
+import { timeline, timelineSection } from '../content/timeline';
 
 export const Timeline: React.FC = () => {
   return (
     <section id="experience" className="section-wrapper timeline-section dot-grid-bg">
       <div className="container">
-        {/* Centered Heading */}
-        <div className="section-header-centered">
-          <span className="section-pill">Laufbahn</span>
-          <h2 className="section-title">
-            Stationen & <br />
-            <span className="text-accent">Praxiserfahrung</span>
-          </h2>
-          <p className="section-subtitle">
-            Mein Weg vom Restaurantmanagement über die IT-Praxis bis zum Studium der Wirtschaftsinformatik.
-          </p>
+        <div className="section-header-left">
+          <h2 className="section-title">{timelineSection.title}</h2>
+          <p className="section-subtitle">{timelineSection.intro}</p>
         </div>
 
         {timeline.length > 0 && (
           <div className="timeline-container">
-            {/* Central Glowing Purple Line */}
+            {/* Mittellinie, an der die Stationen abwechselnd links und rechts hängen */}
             <div className="timeline-spine" aria-hidden="true" />
 
             {/* Timeline Cards alternating left & right */}
