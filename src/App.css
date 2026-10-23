@@ -1144,6 +1144,27 @@
   font-size: 16px;
   font-weight: 800;
   color: var(--portfolio-text);
+  /* Lange E-Mail-Adressen brechen auf schmalen Bildschirmen um */
+  overflow-wrap: anywhere;
+}
+
+.contact-email-link {
+  text-decoration: underline;
+  text-decoration-color: var(--portfolio-border-hover);
+  text-underline-offset: 4px;
+}
+
+.contact-email-link:hover {
+  color: var(--portfolio-accent);
+  text-decoration-color: currentColor;
+}
+
+.copy-status {
+  display: block;
+  min-height: 1.4em;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--portfolio-text-secondary);
 }
 
 .contact-note {
@@ -1244,6 +1265,11 @@
   color: var(--portfolio-text);
 }
 
+.form-optional {
+  font-weight: 500;
+  color: var(--portfolio-muted);
+}
+
 .form-input,
 .form-textarea {
   width: 100%;
@@ -1253,8 +1279,15 @@
   background: var(--portfolio-bg);
   color: var(--portfolio-text);
   font-family: inherit;
-  font-size: 14px;
+  /* 16 px: darunter zoomt iOS Safari beim Antippen in das Feld */
+  font-size: 16px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--portfolio-muted);
+  opacity: 1;
 }
 
 .form-input:focus,
