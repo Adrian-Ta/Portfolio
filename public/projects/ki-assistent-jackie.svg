@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t">
+  <title id="t">KI-Assistent Jackie: Telegram-Nachricht, n8n-Workflow, KI-Modell, Google-Dienste, Antwort zurück an Telegram</title>
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#dde3e3"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#0f766e"/>
+    </marker>
+    <style>
+      text { font-family: "Plus Jakarta Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .box { fill: #ffffff; stroke: #0f766e; stroke-width: 1.5; }
+      .core { fill: #e6f2f1; stroke: #0f766e; stroke-width: 1.5; }
+      .group { fill: none; stroke: #0f766e; stroke-width: 1; stroke-dasharray: 5 5; }
+      .title { font-size: 20px; font-weight: 700; fill: #14161a; }
+      .sub { font-size: 16px; fill: #4b5563; }
+      .label { font-size: 16px; font-weight: 600; fill: #0f766e; }
+      .flow { stroke: #0f766e; stroke-width: 1.8; fill: none; }
+      .caption { font-size: 15px; fill: #6b7280; }
+    </style>
+  </defs>
+
+  <rect width="960" height="540" fill="#f6f8f8"/>
+  <rect width="960" height="540" fill="url(#dots)"/>
+
+  <!-- n8n-Workflow als Gruppe -->
+  <rect class="group" x="262" y="120" width="436" height="220" rx="14"/>
+  <text class="label" x="280" y="146">n8n-Workflow</text>
+
+  <!-- Telegram -->
+  <rect class="box" x="40" y="186" width="180" height="88" rx="10"/>
+  <text class="title" x="130" y="224" text-anchor="middle">Telegram</text>
+  <text class="sub" x="130" y="248" text-anchor="middle">Nachricht</text>
+  <path class="flow" d="M220 230 H284" marker-end="url(#arrow)"/>
+
+  <!-- Trigger -->
+  <rect class="box" x="286" y="186" width="160" height="88" rx="10"/>
+  <text class="title" x="366" y="224" text-anchor="middle">Auslöser</text>
+  <text class="sub" x="366" y="248" text-anchor="middle">neue Nachricht</text>
+  <path class="flow" d="M446 230 H508" marker-end="url(#arrow)"/>
+
+  <!-- KI-Modell -->
+  <rect class="core" x="510" y="186" width="166" height="88" rx="10"/>
+  <text class="title" x="593" y="224" text-anchor="middle">KI-Modell</text>
+  <text class="sub" x="593" y="248" text-anchor="middle">Absicht erkennen</text>
+  <path class="flow" d="M676 230 H738" marker-end="url(#arrow)"/>
+
+  <!-- Google -->
+  <rect class="box" x="740" y="186" width="180" height="88" rx="10"/>
+  <text class="title" x="830" y="224" text-anchor="middle">Google-Dienste</text>
+  <text class="sub" x="830" y="248" text-anchor="middle">Aktion ausführen</text>
+
+  <!-- Antwort zurück -->
+  <path class="flow" d="M830 274 V410 H130 V276" marker-end="url(#arrow)"/>
+  <text class="label" x="480" y="400" text-anchor="middle">Antwort zurück in den Chat</text>
+
+  <text class="caption" x="40" y="490">Steuerung per Telegram, Verarbeitung in n8n, Anbindung von Google-Diensten</text>
+</svg>

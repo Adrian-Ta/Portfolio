@@ -40,10 +40,10 @@ export function App() {
 
       <main>
         <Hero />
+        <Projects />
         <TechMarquee />
         <About />
         <Services />
-        <Projects />
         <Timeline />
         <EducationSkills />
         <Contact />

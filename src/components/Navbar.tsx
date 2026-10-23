@@ -21,9 +21,9 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
   const navLinks = [
     { label: 'Start', href: '#hero' },
+    { label: 'Projekte', href: '#projects' },
     { label: 'Über mich', href: '#about' },
     { label: 'Praxisfelder', href: '#services' },
-    { label: 'Projekte', href: '#projects' },
     { label: 'Laufbahn', href: '#experience' },
     { label: 'Ausbildung', href: '#skills' },
     { label: 'Kontakt', href: '#contact' },

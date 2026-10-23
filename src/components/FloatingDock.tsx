@@ -10,9 +10,9 @@ interface DockItem {
 
 const dockItems: DockItem[] = [
   { id: 'hero', label: 'Start', href: '#hero', icon: <Home size={18} /> },
+  { id: 'projects', label: 'Projekte', href: '#projects', icon: <FolderGit2 size={18} /> },
   { id: 'about', label: 'Über mich', href: '#about', icon: <User size={18} /> },
   { id: 'services', label: 'Praxisfelder', href: '#services', icon: <Sparkles size={18} /> },
-  { id: 'projects', label: 'Projekte', href: '#projects', icon: <FolderGit2 size={18} /> },
   { id: 'experience', label: 'Laufbahn', href: '#experience', icon: <Calendar size={18} /> },
   { id: 'skills', label: 'Ausbildung', href: '#skills', icon: <GraduationCap size={18} /> },
   { id: 'contact', label: 'Kontakt', href: '#contact', icon: <Mail size={18} /> },
