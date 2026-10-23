@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { profile } from '../content/profile';
 
+const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 export const ProfilePhoto: React.FC = () => {
   const [failed, setFailed] = useState(false);
 
@@ -11,12 +13,20 @@ export const ProfilePhoto: React.FC = () => {
           {profile.initials}
         </div>
       ) : (
-        <img
-          className="profile-photo-img"
-          src={`${import.meta.env.BASE_URL}${profile.photo.replace(/^\/+/, '')}`}
-          alt={`${profile.name} Profilfoto`}
-          onError={() => setFailed(true)}
-        />
+        <picture>
+          {profile.photoAvif && <source srcSet={assetUrl(profile.photoAvif)} type="image/avif" />}
+          {/* Größtes Bild der ersten Ansicht: früh laden, Maße gegen Layout-Sprünge */}
+          <img
+            className="profile-photo-img"
+            src={assetUrl(profile.photo)}
+            alt={`${profile.name} Profilfoto`}
+            width={920}
+            height={1150}
+            fetchPriority="high"
+            decoding="async"
+            onError={() => setFailed(true)}
+          />
+        </picture>
       )}
     </figure>
   );

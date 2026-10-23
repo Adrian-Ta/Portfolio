@@ -20,6 +20,11 @@ export interface Profile {
   footerText: string;
   /** Pfad zum Foto relativ zu `public/` – Datei dort ersetzen = Foto wechseln */
   photo: string;
+  /**
+   * Optional: dasselbe Foto als AVIF (viel kleiner, lädt schneller). Moderne Browser nehmen
+   * diese Datei, ältere `photo`. Beim Fotowechsel entweder neu erzeugen oder Zeile entfernen.
+   */
+  photoAvif?: string;
   email: string;
   /**
    * Access Key von web3forms.com: Nachrichten aus dem Kontaktformular gehen an die dort
@@ -50,6 +55,7 @@ export const profile: Profile = {
   footerText:
     'Wirtschaftsinformatikstudium, praktische IT-Erfahrung und kontinuierliches Lernen.',
   photo: '/adrian-portfolio-portrait-cutout.png',
+  photoAvif: '/adrian-portfolio-portrait-cutout.avif',
   email: 'kontakt@adriantajik.dev',
   formAccessKey: '701022ce-b31d-4738-8dfb-2b734ac20ff1',
   location: 'Deutschland',

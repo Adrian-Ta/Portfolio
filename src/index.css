@@ -99,10 +99,6 @@ body {
   color: var(--portfolio-accent);
 }
 
-.mono-font {
-  font-family: 'JetBrains Mono', monospace;
-}
-
 /* Selection */
 ::selection {
   background: var(--portfolio-accent-strong);

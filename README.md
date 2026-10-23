@@ -20,7 +20,7 @@ npm run lint     # Linter
 | Laufbahn mit Ausbildung | `src/content/timeline.ts` |
 | Kenntnisse nach Bereich, Lernfokus, Technologieband | `src/content/skills.ts` |
 | Logos im Technologieband | `src/content/techLogos.ts` |
-| Profilfoto | Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen |
+| Profilfoto | Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen. Die kleinere AVIF-Version (`photoAvif`) neu erzeugen oder die Zeile entfernen. |
 
 ### Neues Projekt hinzufügen
 
