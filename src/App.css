@@ -1380,3 +1380,80 @@
   color: var(--portfolio-accent-hover);
   transform: translateY(-2px);
 }
+
+/* --------------------------------------------------------------------------
+   10. Rechtliches (Impressum und Datenschutz, Seite /rechtliches/)
+   -------------------------------------------------------------------------- */
+.legal-page {
+  padding: 56px 0 96px;
+}
+
+.legal-container {
+  max-width: 760px;
+}
+
+.legal-back {
+  margin-bottom: 40px;
+}
+
+.legal-missing {
+  margin-bottom: 32px;
+  padding: 14px 16px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 10px;
+  color: var(--portfolio-text-secondary);
+}
+
+.legal-page h1 {
+  margin-bottom: 8px;
+}
+
+.legal-heading {
+  margin: 28px 0 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--portfolio-text);
+}
+
+.legal-page p,
+.legal-address {
+  max-width: 68ch;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 1.7;
+  color: var(--portfolio-text-secondary);
+}
+
+.legal-page p + p {
+  margin-top: 12px;
+}
+
+.legal-address span {
+  display: block;
+}
+
+.legal-page p a {
+  color: var(--portfolio-accent);
+  text-underline-offset: 3px;
+}
+
+.legal-privacy {
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid var(--portfolio-border);
+}
+
+.legal-updated {
+  margin-top: 32px;
+  font-size: 14px;
+  color: var(--portfolio-muted);
+}
+
+.footer-copyright a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.footer-copyright a:hover {
+  color: var(--portfolio-accent-hover);
+}

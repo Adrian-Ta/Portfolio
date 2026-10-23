@@ -7,4 +7,13 @@ export default defineConfig({
   // also direkt im Wurzelverzeichnis – lokal wie auf GitHub Pages.
   base: '/',
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      // Zwei Seiten: Startseite und /rechtliches/ (Impressum und Datenschutz)
+      input: {
+        main: 'index.html',
+        rechtliches: 'rechtliches/index.html',
+      },
+    },
+  },
 })

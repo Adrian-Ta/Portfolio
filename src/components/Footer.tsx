@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowUp, Mail } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
+import { legalComplete } from '../content/legal';
 
 const copyrightYear = new Date().getFullYear();
 
@@ -58,7 +59,16 @@ export const Footer: React.FC = () => {
 
         <div className="footer-bottom-row">
           <p className="footer-copyright">
-            © {copyrightYear} {profile.fullName} — Alle Rechte vorbehalten.
+            © {copyrightYear} {profile.fullName}
+            {/* Erst sichtbar, wenn die Pflichtangaben in src/content/legal.ts ausgefüllt sind */}
+            {legalComplete && (
+              <>
+                {' · '}
+                <a href={`${import.meta.env.BASE_URL}rechtliches/#impressum`}>Impressum</a>
+                {' · '}
+                <a href={`${import.meta.env.BASE_URL}rechtliches/#datenschutz`}>Datenschutz</a>
+              </>
+            )}
           </p>
 
           <button
