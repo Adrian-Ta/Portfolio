@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, Mail } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import { ProfilePhoto } from './ProfilePhoto';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
@@ -21,8 +21,8 @@ export const Hero: React.FC = () => {
 
           {/* Heading */}
           <div className="hero-heading-block">
-            <span className="hero-greeting">Hi, ich bin</span>
             <h1 className="hero-title text-accent">{profile.name}</h1>
+            <p className="hero-role">{profile.role}</p>
           </div>
 
           {/* Tagline / Subtitle */}
@@ -36,14 +36,14 @@ export const Hero: React.FC = () => {
             </a>
 
             <a href="#contact" className="btn-secondary">
-              <FileText size={18} className="btn-icon" />
+              <Mail size={18} className="btn-icon" />
               <span>Kontakt aufnehmen</span>
             </a>
           </div>
 
           {/* Social Links */}
           <div className="hero-socials">
-            <span className="social-label">Connect:</span>
+            <span className="social-label">Profile:</span>
             <div className="social-icons-group">
               {profile.github.url && (
                 <a
@@ -69,14 +69,6 @@ export const Hero: React.FC = () => {
                   <LinkedinIcon size={19} />
                 </a>
               )}
-              <a
-                href={`mailto:${profile.email}`}
-                className="social-icon-link"
-                aria-label="E-Mail senden"
-                title="E-Mail"
-              >
-                <Mail size={19} />
-              </a>
             </div>
           </div>
         </div>

@@ -29,6 +29,9 @@ export interface TechItem {
 }
 
 export const techSkills: TechSkill[] = [
+  { name: 'ERP-Grundlagen mit Odoo', levelText: 'Lernpraxis' },
+  { name: 'Prozessmodellierung (SAP Signavio, Camunda)', levelText: 'Studium' },
+  { name: 'n8n & KI-Agenten', levelText: 'Lernprojekt' },
   { name: 'First- und Second-Level-Support', levelText: 'Berufserfahrung' },
   { name: 'MS Active Directory & Benutzerrechte', levelText: 'Berufserfahrung' },
   { name: 'Netzwerke, DNS und DHCP', levelText: 'Grundlagen & Lernpraxis' },
@@ -69,24 +72,27 @@ export const education: Education[] = [
 
 export const learningFocus: { title: string; desc: string } | null = {
   title: 'Aktueller Lernfokus',
-  desc: 'KI-Agenten und Automatisierung: Ich beschäftige mich mit n8n, MCP und agentischen Entwicklungsabläufen sowie mit Power BI.',
+  desc: 'ERP und KI: Ich vertiefe die Abläufe in Odoo, um sie später auf SAP oder Microsoft Dynamics zu übertragen, und beschäftige mich mit KI-Agenten, RAG und n8n sowie mit Power BI.',
 };
 
 /** Technologieband mit Themen aus Berufserfahrung, Studium und Lernpraxis. */
 export const techStack: TechItem[] = [
-  { name: 'Windows Server', category: 'Lernpraxis', icon: 'server', logo: 'windows' },
+  // Reihenfolge: ERP und Prozesse, Automatisierung und KI, Entwicklung, IT-Infrastruktur
+  { name: 'Odoo', category: 'Lernpraxis', icon: 'layers', logo: 'odoo' },
+  { name: 'SAP Signavio', category: 'Studium', icon: 'workflow', logo: 'sap' },
+  { name: 'Camunda', category: 'Studium', icon: 'workflow', logo: 'camunda' },
+  { name: 'n8n', category: 'Lernprojekt', icon: 'workflow', logo: 'n8n' },
+  { name: 'KI-Agenten & RAG', category: 'Lernpraxis', icon: 'sparkles' },
+  { name: 'Power BI', category: 'Lernpraxis', icon: 'database', logo: 'powerbi' },
+  { name: 'Python', category: 'Studium', icon: 'terminal', logo: 'python' },
+  { name: 'Java', category: 'Studium & Projekte', icon: 'code', logo: 'java' },
+  { name: 'Git & GitHub', category: 'Aktiv genutzt', icon: 'git', logo: 'git' },
+  { name: 'Docker', category: 'Grundlagen', icon: 'cpu', logo: 'docker' },
+  { name: 'HTML', category: 'Grundlagen', icon: 'code', logo: 'html5' },
+  { name: 'CSS', category: 'Grundlagen', icon: 'code', logo: 'css' },
   { name: 'Active Directory', category: 'Berufserfahrung', icon: 'users' },
+  { name: 'Windows Server', category: 'Lernpraxis', icon: 'server', logo: 'windows' },
   { name: 'Netzwerktechnik', category: 'Lernpraxis', icon: 'network' },
   { name: 'DNS & DHCP', category: 'Lernpraxis', icon: 'globe' },
   { name: 'VMware Workstation', category: 'Lernpraxis', icon: 'cpu', logo: 'vmware' },
-  { name: 'Java', category: 'Studium & Projekte', icon: 'code', logo: 'java' },
-  { name: 'Python', category: 'Studium', icon: 'terminal', logo: 'python' },
-  { name: 'HTML', category: 'Grundlagen', icon: 'code', logo: 'html5' },
-  { name: 'CSS', category: 'Grundlagen', icon: 'code', logo: 'css' },
-  { name: 'Git & GitHub', category: 'Aktiv genutzt', icon: 'git', logo: 'git' },
-  { name: 'n8n', category: 'Lernprojekt', icon: 'workflow', logo: 'n8n' },
-  { name: 'SAP Signavio', category: 'Studium', icon: 'workflow', logo: 'sap' },
-  { name: 'Camunda', category: 'Studium', icon: 'workflow', logo: 'camunda' },
-  { name: 'Docker', category: 'Grundlagen', icon: 'cpu', logo: 'docker' },
-  { name: 'Power BI', category: 'Lernpraxis', icon: 'database', logo: 'powerbi' },
 ];

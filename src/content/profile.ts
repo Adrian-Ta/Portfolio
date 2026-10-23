@@ -53,17 +53,17 @@ export const profile: Profile = {
   name: 'Adrian Tajik',
   fullName: 'Adrian Tajik',
   initials: 'AT',
-  role: 'Student der Wirtschaftsinformatik',
+  role: 'Wirtschaftsinformatik-Student mit Fokus auf ERP, Prozesse und KI-Automatisierung',
   heroText:
-    'Wirtschaftsinformatikstudent mit praktischer Erfahrung im IT-Support. Ich beschäftige mich mit Netzwerken, Prozessmodellierung und der Automatisierung digitaler Abläufe.',
+    'Ich lerne ERP-Prozesse an Odoo, von Einkauf bis Rechnungswesen, baue Workflows mit n8n und beschäftige mich mit KI-Agenten und RAG. Das Fundament dafür: knapp zwei Jahre praktische Erfahrung im IT-Support.',
   footerText:
     'Wirtschaftsinformatikstudium, praktische IT-Erfahrung und kontinuierliches Lernen.',
   photo: '/adrian-portfolio-portrait-cutout.png',
   email: 'kontakt@adriantajik.dev',
   formAccessKey: '701022ce-b31d-4738-8dfb-2b734ac20ff1',
   location: 'Deutschland',
-  availability: 'Offen für Praktika und Werkstudententätigkeiten',
-  availabilityNote: 'Ich freue mich über passende Praktikums- und Werkstudentenangebote sowie fachlichen Austausch.',
+  availability: 'Offen für Werkstudentenstellen in ERP und Prozessmanagement',
+  availabilityNote: 'Ich suche eine Werkstudentenstelle im Umfeld ERP, Prozessmanagement oder KI-Automatisierung und freue mich auch über fachlichen Austausch.',
   github: { label: 'GitHub', url: 'https://github.com/Adrian-Ta' },
   linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/adrian-tajik-5339b238a' },
   about: {

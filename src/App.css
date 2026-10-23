@@ -370,13 +370,16 @@
   margin-bottom: 20px;
 }
 
-.hero-greeting {
-  display: block;
-  font-size: clamp(28px, 3.5vw, 44px);
+/* Rolle unter dem Namen: sagt in einem Satz, wofür Adrian steht */
+.hero-role {
+  margin-top: 14px;
+  max-width: 24ch;
+  font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   color: var(--portfolio-text);
-  line-height: 1.1;
-  letter-spacing: -0.5px;
+  text-wrap: balance;
 }
 
 .hero-title {
