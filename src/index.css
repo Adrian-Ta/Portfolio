@@ -94,6 +94,13 @@ body {
   background-size: 20px 20px;
 }
 
+/* Fließtext: keine einzelnen Wörter allein in der letzten Zeile */
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
 /* Typography Helpers */
 .text-accent {
   color: var(--portfolio-accent);

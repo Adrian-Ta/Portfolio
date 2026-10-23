@@ -61,7 +61,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="section-wrapper contact-section dot-grid-bg">
+    <section id="contact" className="section-wrapper">
       <div className="container">
         <div className="section-header-left">
           <h2 className="section-title">Kontakt</h2>

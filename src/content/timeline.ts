@@ -46,7 +46,7 @@ export const timeline: TimelineItem[] = [
     type: 'education',
     points: [
       'Grundlagen in Java, Datenbanken, Netzwerken, HTML und CSS',
-      'Im Team eine Java-Desktopanwendung für eine Bibliothek entwickelt, im Projekt kam AWS S3 zum Einsatz',
+      'Im Team eine Java-Desktopanwendung für eine Bibliothek entwickelt, im Projekt kam AWS\u00a0S3 zum Einsatz',
     ],
   },
   {
