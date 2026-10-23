@@ -1307,7 +1307,7 @@
 .footer-links-col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
 }
 
 .footer-col-title {
@@ -1320,7 +1320,11 @@
 }
 
 .footer-links-col a {
-  font-size: 13.5px;
+  /* mind. 24 px hohe Klickfläche (WCAG 2.5.8) */
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  font-size: 14px;
   color: var(--portfolio-muted);
   text-decoration: none;
   transition: color 0.2s ease;

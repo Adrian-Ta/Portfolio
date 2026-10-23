@@ -32,9 +32,12 @@ export function App() {
 
   return (
     <div className="portfolio-app">
+      <a href="#main" className="skip-link">
+        Zum Inhalt springen
+      </a>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <Projects />
         <About />
