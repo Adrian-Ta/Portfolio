@@ -9,9 +9,9 @@ Persönliche Portfolio-Website (Wirtschaftsinformatik, Ziel: ERP/Odoo, Automatis
 - `npm run lint` – Linter
 
 ## Aktuelle Struktur (Ist-Zustand)
-- `src/App.tsx` setzt die Seite aus Komponenten zusammen, in dieser Reihenfolge: Navbar, Hero, Projects, TechMarquee, About, Timeline, Contact, Footer, FloatingDock. Dark/Light-Theme per `data-theme`.
+- `src/App.tsx` setzt die Seite aus Komponenten zusammen, in dieser Reihenfolge: Navbar, Hero, Projects, About, Timeline, Contact, Footer. Dark/Light-Theme per `data-theme`.
 - Alle sichtbaren Inhalte stehen in `src/content/` (siehe unten), nicht im Komponentencode.
-- Styles: Design-Variablen in `src/index.css`, Komponenten-Styles in `src/App.css` (ca. 1650 Zeilen).
+- Styles: Design-Variablen in `src/index.css`, Komponenten-Styles in `src/App.css` (ca. 1400 Zeilen).
 - Bilder: `public/` (Profilfoto `adrian-portfolio-portrait-cutout.png` plus kleinere `.avif`-Version, Projektbilder/-diagramme in `public/projects/`).
 - Ausführliche Design-Beschreibung (Referenzvideo): `docs/design-referenz.md`, nur bei Bedarf lesen.
 
@@ -23,8 +23,8 @@ src/content/
   profile.ts     Name, Rolle, Hero-Text, Foto-Pfade, Social-Links, E-Mail, Über-mich-Geschichte
   projects.ts    Projekte (Ausgangslage → Umsetzung → Ergebnis), Überschrift, Text bei leerer Liste
   timeline.ts    Laufbahn inkl. Studium und Fachabitur
-  skills.ts      Kenntnisse nach Bereich, Lernfokus, Technologieband
-  techLogos.ts   Logos im Technologieband (Simple Icons CC0, Devicon MIT)
+  skills.ts      Kenntnisse nach Bereich mit Werkzeugen (Logos), Lernfokus
+  techLogos.ts   Logos der Werkzeuge (Simple Icons CC0, Devicon MIT)
 ```
 Regeln dafür:
 1. Komponenten lesen ihre Inhalte nur aus `src/content/`. Typen (z. B. `Project`) liegen neben den Daten.

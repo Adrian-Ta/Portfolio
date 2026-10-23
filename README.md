@@ -18,8 +18,8 @@ npm run lint     # Linter
 | Name, Rolle, Kurztexte, E-Mail, Standort, GitHub-/LinkedIn-Link, Über-mich-Geschichte | `src/content/profile.ts` |
 | Projekte (inkl. Überschrift und Text bei leerer Liste) | `src/content/projects.ts` |
 | Laufbahn mit Ausbildung | `src/content/timeline.ts` |
-| Kenntnisse nach Bereich, Lernfokus, Technologieband | `src/content/skills.ts` |
-| Logos im Technologieband | `src/content/techLogos.ts` |
+| Kenntnisse nach Bereich mit Werkzeugen, Lernfokus | `src/content/skills.ts` |
+| Logos der Werkzeuge | `src/content/techLogos.ts` |
 | Profilfoto | Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen. Die kleinere AVIF-Version (`photoAvif`) neu erzeugen oder die Zeile entfernen. |
 
 ### Neues Projekt hinzufügen
