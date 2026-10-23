@@ -1417,7 +1417,7 @@
 
 .legal-page p,
 .legal-address {
-  max-width: 68ch;
+  max-width: 36rem; /* ca. 65 Zeichen pro Zeile */
   font-size: 16px;
   font-style: normal;
   line-height: 1.7;
