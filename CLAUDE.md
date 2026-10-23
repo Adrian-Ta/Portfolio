@@ -9,10 +9,11 @@ Persönliche Portfolio-Website (Wirtschaftsinformatik, Ziel: ERP/Odoo, Automatis
 - `npm run lint` – Linter
 
 ## Aktuelle Struktur (Ist-Zustand)
-- `src/App.tsx` setzt die Seite aus Komponenten zusammen, in dieser Reihenfolge: Navbar, Hero, Projects, About, Timeline, Contact, Footer. Dark/Light-Theme per `data-theme`.
+- `src/App.tsx` setzt die Seite aus Komponenten zusammen, in dieser Reihenfolge: Navbar, Hero, Projects, About, Timeline, Contact, Footer. Zweite Seite: `rechtliches/index.html` (Impressum und Datenschutz, Einstieg `src/legal-main.tsx`). Dark/Light-Theme per `data-theme`.
 - Alle sichtbaren Inhalte stehen in `src/content/` (siehe unten), nicht im Komponentencode.
 - Styles: Design-Variablen in `src/index.css`, Komponenten-Styles in `src/App.css` (ca. 1400 Zeilen).
-- Bilder: `public/` (Profilfoto `adrian-portfolio-portrait-cutout.png` plus kleinere `.avif`-Version, Projektbilder/-diagramme in `public/projects/`).
+- Schrift: Plus Jakarta Sans liegt selbst gehostet in `public/fonts/` (kein Google Fonts, aus Datenschutzgründen). Das Theme setzt ein kleines Skript in `index.html` vor dem ersten Zeichnen.
+- Bilder: `public/` (Profilfoto `adrian-portfolio-portrait-cutout.png` plus kleinere `.avif`-Version, Projektbilder/-diagramme in `public/projects/`, Dunkelvarianten `*-dark.svg`, Vorschaubild `og-image.jpg`).
 - Ausführliche Design-Beschreibung (Referenzvideo): `docs/design-referenz.md`, nur bei Bedarf lesen.
 
 ## Inhalte ohne Codeänderung pflegen
@@ -25,6 +26,7 @@ src/content/
   timeline.ts    Laufbahn inkl. Studium und Fachabitur
   skills.ts      Kenntnisse nach Bereich mit Werkzeugen (Logos), Lernfokus
   techLogos.ts   Logos der Werkzeuge (Simple Icons CC0, Devicon MIT)
+  legal.ts       Impressum-Angaben und Datenschutzerklärung (Entwurf; Name/Anschrift noch leer)
 ```
 Regeln dafür:
 1. Komponenten lesen ihre Inhalte nur aus `src/content/`. Typen (z. B. `Project`) liegen neben den Daten.

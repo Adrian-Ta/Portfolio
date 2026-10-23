@@ -20,6 +20,7 @@ npm run lint     # Linter
 | Laufbahn mit Ausbildung | `src/content/timeline.ts` |
 | Kenntnisse nach Bereich mit Werkzeugen, Lernfokus | `src/content/skills.ts` |
 | Logos der Werkzeuge | `src/content/techLogos.ts` |
+| Impressum und Datenschutz (Seite `/rechtliches/`) | `src/content/legal.ts`: Name und Anschrift eintragen, erst dann erscheinen die Links in der Fußzeile. Der Text ist ein Entwurf, bitte prüfen. |
 | Seitentitel, Beschreibung für Google, Vorschau für LinkedIn | `index.html` (Vorschaubild: `public/og-image.jpg`, 1200 × 630 px) |
 | Profilfoto | Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen. Die kleinere AVIF-Version (`photoAvif`) neu erzeugen oder die Zeile entfernen. |
 
