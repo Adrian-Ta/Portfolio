@@ -25,9 +25,8 @@ export const Timeline: React.FC = () => {
                     key={index}
                     className={`timeline-row ${isEven ? 'row-left' : 'row-right'}`}
                   >
-                    {/* Glowing Node on Spine */}
+                    {/* Punkt auf der Mittellinie */}
                     <div className="timeline-node" aria-hidden="true">
-                      <div className="node-glow" />
                       <div className="node-dot" />
                     </div>
 

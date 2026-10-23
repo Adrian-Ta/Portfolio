@@ -3,6 +3,7 @@ import { ArrowUp } from 'lucide-react';
 import { profile } from '../content/profile';
 import { learningFocus, skillAreas, skillsHeading } from '../content/skills';
 import { projects } from '../content/projects';
+import { ToolIcon } from './ToolIcon';
 
 export const About: React.FC = () => {
   return (
@@ -28,6 +29,16 @@ export const About: React.FC = () => {
               return (
                 <div key={area.title} className="skill-area">
                   <h4 className="skill-area-title">{area.title}</h4>
+                  {area.tools && area.tools.length > 0 && (
+                    <ul className="tool-list" aria-label={`Werkzeuge: ${area.title}`}>
+                      {area.tools.map((tool) => (
+                        <li key={tool.name} className="tool-item">
+                          <ToolIcon tool={tool} />
+                          {tool.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <ul className="skill-rows">
                     {area.skills.map((skill) => (
                       <li key={skill.name} className="skill-row">

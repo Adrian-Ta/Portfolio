@@ -11,11 +11,8 @@ export const Hero: React.FC = () => {
         {/* Left Column: Introduction & Call-to-actions */}
         <div className="hero-content">
           {/* Status Pill */}
-          <div className="status-pill" role="status">
-            <span className="status-dot-pulse" aria-hidden="true">
-              <span className="status-dot-core" />
-              <span className="status-dot-ring" />
-            </span>
+          <div className="status-pill">
+            <span className="status-dot" aria-hidden="true" />
             <span className="status-pill-text">{profile.availability}</span>
           </div>
 

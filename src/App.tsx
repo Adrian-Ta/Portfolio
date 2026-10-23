@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { TechMarquee } from './components/TechMarquee';
 import { About } from './components/About';
 import { Projects } from './components/Projects';
 import { Timeline } from './components/Timeline';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { FloatingDock } from './components/FloatingDock';
 
 export function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -39,14 +37,12 @@ export function App() {
       <main>
         <Hero />
         <Projects />
-        <TechMarquee />
         <About />
         <Timeline />
         <Contact />
       </main>
 
       <Footer />
-      <FloatingDock />
     </div>
   );
 }

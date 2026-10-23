@@ -54,7 +54,6 @@
   font-weight: 800;
   font-size: 15px;
   letter-spacing: -0.5px;
-  box-shadow: 0 4px 12px var(--portfolio-accent-strong);
 }
 
 .logo-badge.small {
@@ -322,41 +321,12 @@
   margin-bottom: 24px;
 }
 
-.status-dot-pulse {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 10px;
-  height: 10px;
-}
-
-.status-dot-core {
+.status-dot {
+  flex-shrink: 0;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background-color: var(--portfolio-success);
-}
-
-.status-dot-ring {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid var(--portfolio-success);
-  opacity: 0.7;
-  animation: pulseRadar 2s infinite cubic-bezier(0, 0, 0.2, 1);
-}
-
-@keyframes pulseRadar {
-  0% {
-    transform: scale(0.6);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
 }
 
 .status-pill-text {
@@ -376,7 +346,7 @@
   max-width: 24ch;
   font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: -0.01em;
   color: var(--portfolio-text);
   text-wrap: balance;
@@ -543,22 +513,6 @@
   pointer-events: none;
 }
 
-/* Feine Ringe, die nach außen auslaufen */
-.profile-photo::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  width: 115%;
-  aspect-ratio: 1;
-  z-index: -1;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: repeating-radial-gradient(circle, transparent 0 38px, var(--portfolio-accent-strong) 38px 39px);
-  mask-image: radial-gradient(circle, #000 25%, transparent 65%);
-  pointer-events: none;
-}
-
 .profile-photo-img {
   position: absolute;
   inset: 0;
@@ -589,100 +543,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. Marquee / Technologieband
-   -------------------------------------------------------------------------- */
-.marquee-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 26px 0;
-  border-top: 1px solid var(--portfolio-border);
-  border-bottom: 1px solid var(--portfolio-border);
-  background-color: var(--portfolio-bg);
-  margin-top: 20px;
-}
-
-.marquee-fade-left,
-.marquee-fade-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.marquee-fade-left {
-  left: 0;
-  background: linear-gradient(to right, var(--portfolio-bg), transparent);
-}
-
-.marquee-fade-right {
-  right: 0;
-  background: linear-gradient(to left, var(--portfolio-bg), transparent);
-}
-
-.marquee-track {
-  display: flex;
-  gap: 18px;
-  width: max-content;
-  animation: scrollMarquee 40s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scrollMarquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 22px;
-  border-radius: var(--portfolio-pill-radius);
-  background: var(--portfolio-surface);
-  border: 1px solid var(--portfolio-border);
-  box-shadow: 0 2px 12px rgba(20, 22, 26, 0.06);
-  white-space: nowrap;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.marquee-pill:hover {
-  border-color: var(--portfolio-border-hover);
-  box-shadow: 0 6px 18px rgba(20, 22, 26, 0.1);
-  transform: translateY(-1px);
-}
-
-.marquee-pill-icon {
-  display: flex;
-  align-items: center;
-}
-
-/* Symbole ohne Firmenlogo (z. B. BPMN) in der Akzentfarbe */
-.marquee-pill-icon--plain {
-  color: var(--portfolio-accent);
-}
-
-.marquee-pill-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--portfolio-text-secondary);
-}
-
-.marquee-pill:hover .marquee-pill-name {
-  color: var(--portfolio-text);
-}
-
-/* --------------------------------------------------------------------------
-   5. General Section Layout & Headers
+   4. General Section Layout & Headers
    -------------------------------------------------------------------------- */
 .section-wrapper {
   padding: 96px 0;
@@ -717,7 +578,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. About Section (Geschichte und Kenntnisse nach Bereich)
+   5. About Section (Geschichte und Kenntnisse nach Bereich)
    -------------------------------------------------------------------------- */
 .about-layout {
   display: grid;
@@ -776,6 +637,32 @@
   color: var(--portfolio-text);
 }
 
+/* Werkzeuge eines Bereichs: Logo und Name, ohne Pille und ohne Bewegung */
+.tool-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-bottom: 14px;
+  list-style: none;
+}
+
+.tool-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--portfolio-text);
+}
+
+.tool-icon {
+  display: inline-flex;
+}
+
+.tool-icon--plain {
+  color: var(--portfolio-accent);
+}
+
 .skill-rows {
   list-style: none;
 }
@@ -816,7 +703,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   7. Projects Section
+   6. Projects Section
    -------------------------------------------------------------------------- */
 /* Jedes Projekt ist eine Zeile über die volle Breite, getrennt durch eine Linie.
    Keine Karte: Rahmen gibt es nur um das Bild. */
@@ -1033,7 +920,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   8. Timeline Section (Laufbahn)
+   7. Timeline Section (Laufbahn)
    -------------------------------------------------------------------------- */
 .timeline-section {
   position: relative;
@@ -1096,33 +983,8 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--portfolio-bg);
   border: 3.5px solid var(--portfolio-accent);
-  box-shadow: 0 0 12px var(--portfolio-accent);
-}
-
-[data-theme="dark"] .node-dot {
-  background: #111116;
-}
-
-.node-glow {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--portfolio-accent-strong);
-  animation: pulseNode 2.5s infinite;
-}
-
-@keyframes pulseNode {
-  0%, 100% {
-    transform: scale(0.9);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.3);
-    opacity: 0.2;
-  }
 }
 
 .timeline-card {
@@ -1133,13 +995,6 @@
   border-radius: var(--portfolio-card-radius);
   padding: 24px;
   box-shadow: var(--portfolio-shadow);
-  transition: all 0.25s ease;
-}
-
-.timeline-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--portfolio-border-hover);
-  box-shadow: 0 16px 36px rgba(20, 20, 40, 0.1);
 }
 
 @media (min-width: 768px) {
@@ -1222,7 +1077,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   9. Contact Section
+   8. Contact Section
    -------------------------------------------------------------------------- */
 .contact-grid {
   display: grid;
@@ -1449,115 +1304,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   10. Floating Dock Navigation
-   -------------------------------------------------------------------------- */
-.floating-dock-wrapper {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 95;
-  animation: fadeInDock 0.3s ease-out;
-}
-
-@keyframes fadeInDock {
-  from {
-    opacity: 0;
-    transform: translate(-50%, 14px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-.floating-dock-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: var(--portfolio-pill-radius);
-  background: var(--portfolio-surface-translucent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--portfolio-border);
-  box-shadow: 0 12px 32px rgba(20, 20, 40, 0.16);
-}
-
-[data-theme="dark"] .floating-dock-pill {
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-}
-
-.dock-item-btn {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  color: var(--portfolio-muted);
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dock-item-btn:hover {
-  color: var(--portfolio-accent-hover);
-  background: var(--portfolio-accent-soft);
-  transform: translateY(-2px);
-}
-
-.dock-item-btn.active {
-  color: var(--portfolio-accent);
-  background: var(--portfolio-accent-medium);
-}
-
-.dock-active-dot {
-  position: absolute;
-  bottom: 3px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--portfolio-accent);
-}
-
-/* Tooltip on hover */
-.dock-tooltip {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111116;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 6px;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-[data-theme="dark"] .dock-tooltip {
-  background: #f5f5f8;
-  color: #111116;
-}
-
-.dock-item-btn:hover .dock-tooltip {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-2px);
-}
-
-/* --------------------------------------------------------------------------
-   11. Footer
+   9. Footer
    -------------------------------------------------------------------------- */
 .footer-wrapper {
   background: var(--portfolio-surface);
   border-top: 1px solid var(--portfolio-border);
-  padding: 64px 0 96px; /* space for dock */
+  padding: 64px 0 48px;
 }
 
 .footer-top-row {
