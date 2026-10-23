@@ -16,6 +16,7 @@
 //   umsetzung: 'Wie bin ich vorgegangen, womit?',                // optional
 //   ergebnis: 'Was ist herausgekommen, was habe ich gelernt?',   // optional
 //   image: '/projects/mein-projekt.png',       // optional, Datei liegt in public/projects/
+//   imageDark: '/projects/mein-projekt-dark.png', // optional, Version für den Dunkelmodus
 //   imageAlt: 'Was ist auf dem Bild zu sehen?',
 //   tags: ['n8n', 'Automatisierung'],
 //   githubUrl: 'https://github.com/…',         // optional
@@ -33,6 +34,8 @@ export interface Project {
   ergebnis?: string;
   /** Pfad relativ zu `public/`, z. B. `/projects/mein-projekt.png` */
   image?: string;
+  /** Optional: Variante für den Dunkelmodus (z. B. ein Diagramm mit dunkler Fläche) */
+  imageDark?: string;
   /** Beschreibt den Bildinhalt für Screenreader */
   imageAlt?: string;
   tags: string[];
@@ -61,6 +64,7 @@ export const projects: Project[] = [
     ergebnis:
       'Ich kenne die Grundabläufe vom Einkauf bis zur Rechnung und weiß, an welchen Stellen die Module Daten aneinander übergeben.',
     image: '/projects/odoo-erp-prozesse.svg',
+    imageDark: '/projects/odoo-erp-prozesse-dark.svg',
     imageAlt:
       'Ablaufdiagramm: Einkauf mit Bestellung, Lager mit Wareneingang und Lieferung, Verkauf mit Kundenauftrag, Rechnungswesen mit Rechnung und Buchung.',
     tags: ['Odoo', 'Einkauf', 'Lager', 'Verkauf', 'Rechnungswesen'],
@@ -79,6 +83,7 @@ export const projects: Project[] = [
     ergebnis:
       'Ein funktionierender Prototyp, an dem ich KI-Agenten, Schnittstellen und Workflow-Automatisierung praktisch kennengelernt habe.',
     image: '/projects/ki-assistent-jackie.svg',
+    imageDark: '/projects/ki-assistent-jackie-dark.svg',
     imageAlt:
       'Ablaufdiagramm: Telegram-Nachricht, n8n-Workflow mit KI-Modell, Google-Dienste, Antwort zurück an Telegram.',
     tags: ['n8n', 'KI-Agent', 'Telegram', 'Google-Dienste'],
@@ -97,6 +102,7 @@ export const projects: Project[] = [
     ergebnis:
       'Eine lauffähige Desktopanwendung und erste Erfahrung mit Teamarbeit in einem Softwareprojekt und mit Cloud-Speicher.',
     image: '/projects/bibliotheks-desktop-app.svg',
+    imageDark: '/projects/bibliotheks-desktop-app-dark.svg',
     imageAlt: 'Schema: Java-Desktopanwendung mit Bestand und Ausleihe, Dateien in AWS S3.',
     tags: ['Java', 'Desktop-App', 'AWS S3'],
   },

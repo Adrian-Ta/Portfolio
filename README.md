@@ -39,6 +39,7 @@ npm run lint     # Linter
   umsetzung: 'Wie bin ich vorgegangen?',        // optional
   ergebnis: 'Was ist herausgekommen?',          // optional
   image: '/projects/mein-projekt.png',          // optional
+  imageDark: '/projects/mein-projekt-dark.png', // optional, Version für den Dunkelmodus
   imageAlt: 'Was ist auf dem Bild zu sehen?',
   tags: ['n8n', 'Automatisierung'],
   githubUrl: 'https://github.com/…',            // optional

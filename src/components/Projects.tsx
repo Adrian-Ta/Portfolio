@@ -14,7 +14,12 @@ const flowSteps = (project: Project) =>
     { label: 'Ergebnis', text: project.ergebnis },
   ].filter((step): step is { label: string; text: string } => Boolean(step.text));
 
-export const Projects: React.FC = () => {
+interface ProjectsProps {
+  /** Aktuelles Design; im Dunkelmodus wird `imageDark` gezeigt, falls vorhanden */
+  theme: 'light' | 'dark';
+}
+
+export const Projects: React.FC<ProjectsProps> = ({ theme }) => {
   return (
     <section id="projects" className="section-wrapper">
       <div className="container">
@@ -73,17 +78,22 @@ export const Projects: React.FC = () => {
 
                     {project.image && (
                       <figure className="project-case-figure">
-                        {/* Öffnet das Bild in voller Größe, wichtig für Diagramme auf dem Handy */}
-                        <a href={assetUrl(project.image)} target="_blank" rel="noreferrer">
-                          <img
-                            src={assetUrl(project.image)}
-                            alt={project.imageAlt ?? `Abbildung zu ${project.title}`}
-                            width={960}
-                            height={540}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        </a>
+                        {/* Ein Klick öffnet das Bild in voller Größe, wichtig für Diagramme auf dem Handy */}
+                        {(() => {
+                          const src = theme === 'dark' && project.imageDark ? project.imageDark : project.image;
+                          return (
+                            <a href={assetUrl(src)} target="_blank" rel="noreferrer">
+                              <img
+                                src={assetUrl(src)}
+                                alt={project.imageAlt ?? `Abbildung zu ${project.title}`}
+                                width={960}
+                                height={540}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </a>
+                          );
+                        })()}
                       </figure>
                     )}
                   </div>

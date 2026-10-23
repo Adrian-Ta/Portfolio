@@ -9,17 +9,10 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
 export function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    // Check saved theme preference or system preference
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('portfolio-theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-    }
-    return 'light';
-  });
+  // Startwert setzt schon das kleine Skript in index.html (vor dem ersten Zeichnen)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
+    document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light',
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -39,7 +32,7 @@ export function App() {
 
       <main id="main" tabIndex={-1}>
         <Hero />
-        <Projects />
+        <Projects theme={theme} />
         <About />
         <Timeline />
         <Contact />
