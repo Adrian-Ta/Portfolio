@@ -21,11 +21,11 @@ export interface LegalInfo {
 }
 
 export const legal: LegalInfo = {
-  name: '',
-  street: '',
-  postalCodeCity: '',
+  name: 'Adrian Tajik',
+  street: 'Musterstraße 90',
+  postalCodeCity: '47051 Duisburg',
   email: profile.email,
-  phone: '',
+  phone: '+49 176 363 93906',
   lastUpdated: 'Oktober 2026',
 };
 

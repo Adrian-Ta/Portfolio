@@ -58,7 +58,7 @@ export const profile: Profile = {
   photoAvif: '/adrian-portfolio-portrait-cutout.avif',
   email: 'kontakt@adriantajik.dev',
   formAccessKey: '701022ce-b31d-4738-8dfb-2b734ac20ff1',
-  location: 'Deutschland',
+  location: 'Duisburg',
   availability: 'Offen für Werkstudentenstellen in ERP und Prozessmanagement',
   availabilityNote: 'Ich suche eine Werkstudentenstelle im Umfeld ERP, Prozessmanagement oder KI-Automatisierung und freue mich auch über fachlichen Austausch.',
   github: { label: 'GitHub', url: 'https://github.com/Adrian-Ta' },
