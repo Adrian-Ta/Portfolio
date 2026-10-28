@@ -695,61 +695,104 @@
 /* --------------------------------------------------------------------------
    6. Projects Section
    -------------------------------------------------------------------------- */
-/* Jedes Projekt ist eine Zeile über die volle Breite, getrennt durch eine Linie.
-   Keine Karte: Rahmen gibt es nur um das Bild. */
-.project-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.project-case {
-  scroll-margin-top: 96px;
-  padding: 56px 0;
+/* Raster aus Projektkarten: mobil eine Spalte, ab 720 px zwei.
+   Die Karte selbst ist nicht anklickbar, daher kein Kartenrahmen und kein Schatten;
+   gerahmt ist nur das Bild, das sich per Klick in voller Größe öffnet. */
+.project-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 56px;
+  padding-top: 40px;
   border-top: 1px solid var(--portfolio-border);
 }
 
-.project-case:last-child {
-  padding-bottom: 0;
-}
-
-.project-case-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 32px;
-}
-
-@media (min-width: 960px) {
-  .project-case-head {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    gap: 56px;
-    align-items: start;
-  }
-
-  .project-case-head.is-text-only {
-    grid-template-columns: minmax(0, 1fr);
+@media (min-width: 720px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 64px 40px;
   }
 }
 
-.project-case-title {
-  font-size: clamp(24px, 2.6vw, 30px);
+.project-card {
+  display: flex;
+  flex-direction: column;
+  scroll-margin-top: 96px;
+}
+
+/* Bild optisch zuerst, im Quelltext steht der Titel davor */
+.project-card-figure {
+  order: -1;
+  margin-bottom: 24px;
+  border: 1px solid var(--portfolio-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--portfolio-surface);
+}
+
+.project-card-figure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.project-card-figure a:focus-visible {
+  outline: 2px solid var(--portfolio-accent);
+  outline-offset: -4px;
+  border-radius: 12px;
+}
+
+.project-card-figure img,
+.project-card-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.project-card-figure img {
+  transition: transform 0.4s ease;
+}
+
+.project-card-figure a:hover img {
+  transform: scale(1.03);
+}
+
+.project-card-placeholder {
+  background: var(--portfolio-neutral-soft);
+}
+
+.project-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+}
+
+/* Kennzeichnung für Konzepte und laufende Projekte, neben dem Titel.
+   Nicht auf dem Bild, damit sie keine Beschriftung im Diagramm verdeckt. */
+.project-status {
+  padding: 2px 9px;
+  border: 1px solid var(--portfolio-accent);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--portfolio-accent);
+}
+
+.project-card-title {
+  font-size: clamp(21px, 2vw, 24px);
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
   color: var(--portfolio-text);
   text-wrap: balance;
 }
 
-.project-case-meta {
-  margin-top: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--portfolio-muted);
-}
-
-.project-case-desc {
-  margin-top: 18px;
+.project-card-desc {
+  margin-top: 10px;
   max-width: 52ch;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--portfolio-text-secondary);
 }
@@ -758,7 +801,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 20px;
+  margin-top: 18px;
   list-style: none;
 }
 
@@ -775,7 +818,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px 24px;
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .project-link {
@@ -793,113 +836,6 @@
 .project-link:hover {
   color: var(--portfolio-accent-hover);
   text-decoration-thickness: 2px;
-}
-
-/* Rahmen ums Bild: Diagramme und Screenshots haben eigene, helle Flächen */
-.project-case-figure {
-  border: 1px solid var(--portfolio-border);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--portfolio-surface);
-}
-
-.project-case-figure a {
-  display: block;
-  cursor: zoom-in;
-}
-
-.project-case-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Ablauf Ausgangslage → Umsetzung → Ergebnis, gezeichnet wie ein Sequenzfluss:
-   Startpunkt hohl, Endpunkt gefüllt. Mobil senkrecht, ab 860 px waagerecht. */
-.project-flow {
-  --flow-line: color-mix(in srgb, var(--portfolio-accent) 45%, transparent);
-  display: grid;
-  margin-top: 40px;
-  list-style: none;
-}
-
-.project-flow-step {
-  position: relative;
-  padding: 0 0 28px 32px;
-}
-
-.project-flow-step:last-child {
-  padding-bottom: 0;
-}
-
-.project-flow-step::before {
-  content: '';
-  position: absolute;
-  top: 16px;
-  bottom: -2px;
-  left: 6px;
-  width: 1px;
-  background: var(--flow-line);
-}
-
-.project-flow-step::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 0;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  border: 2px solid var(--portfolio-accent);
-  background: var(--portfolio-bg);
-}
-
-.project-flow-step:last-child::before {
-  display: none;
-}
-
-.project-flow-step:last-child::after {
-  background: var(--portfolio-accent);
-}
-
-@media (min-width: 860px) {
-  .project-flow {
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
-  }
-
-  .project-flow-step,
-  .project-flow-step:last-child {
-    padding: 30px 40px 0 0;
-  }
-
-  .project-flow-step::before {
-    top: 6px;
-    bottom: auto;
-    left: 16px;
-    right: 0;
-    width: auto;
-    height: 1px;
-  }
-
-  .project-flow-step::after {
-    top: 0;
-  }
-}
-
-.project-flow-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--portfolio-accent);
-}
-
-.project-flow-text {
-  max-width: 42ch;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--portfolio-text-secondary);
 }
 
 .projects-empty {
