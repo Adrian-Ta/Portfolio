@@ -1,24 +1,20 @@
-// Projekte: ein Eintrag in `projects` = ein Projekt auf der Seite, in dieser Reihenfolge.
+// Projekte: ein Eintrag in `projects` = eine Projektkarte auf der Seite, in dieser Reihenfolge.
 // Ist die Liste leer, zeigt die Seite den Text `projectsSection.emptyText`.
 //
-// Jedes Projekt wird als Ablauf erzählt: Ausgangslage → Umsetzung → Ergebnis.
-// Fehlen diese drei Felder, erscheint stattdessen nur die Beschreibung.
+// Noch nicht umgesetzte Projekte bekommen `status: 'Konzept'` (oder 'In Arbeit').
+// Die Karte zeigt den Status dann sichtbar an. Fertige Projekte haben kein `status`.
 //
 // Beispiel für einen neuen Eintrag (Kommentarzeichen entfernen und ausfüllen):
 //
 // {
 //   id: 'mein-projekt',                        // eindeutig, ohne Leerzeichen
 //   title: 'Mein Projekt',
-//   subtitle: 'Kurzer Untertitel',
-//   category: 'Lernprojekt',                   // z. B. Lernprojekt, Studienprojekt
-//   description: 'Ein Satz: Was ist das Projekt?',
-//   ausgangslage: 'Welches Problem oder welche Frage gab es?',   // optional
-//   umsetzung: 'Wie bin ich vorgegangen, womit?',                // optional
-//   ergebnis: 'Was ist herausgekommen, was habe ich gelernt?',   // optional
-//   image: '/projects/mein-projekt.png',       // optional, Datei liegt in public/projects/
+//   description: 'Ein bis zwei Sätze: Was ist das Projekt?',
+//   status: 'Konzept',                         // optional: 'Konzept' oder 'In Arbeit'
+//   image: '/projects/mein-projekt.png',       // optional, Datei liegt in public/projects/, Format 16:9
 //   imageDark: '/projects/mein-projekt-dark.png', // optional, Version für den Dunkelmodus
 //   imageAlt: 'Was ist auf dem Bild zu sehen?',
-//   tags: ['n8n', 'Automatisierung'],
+//   tags: ['n8n', 'Automatisierung'],          // höchstens drei bis vier
 //   githubUrl: 'https://github.com/…',         // optional
 //   liveUrl: 'https://…',                      // optional
 // },
@@ -26,13 +22,15 @@
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
-  category: string;
+  /** Ein bis zwei Sätze */
   description: string;
+  /** Fehlt bei fertigen Projekten */
+  status?: 'Konzept' | 'In Arbeit';
+  /** Für die spätere Detailseite, aktuell nicht auf der Karte angezeigt */
   ausgangslage?: string;
   umsetzung?: string;
   ergebnis?: string;
-  /** Pfad relativ zu `public/`, z. B. `/projects/mein-projekt.png` */
+  /** Pfad relativ zu `public/`, z. B. `/projects/mein-projekt.png`, Format 16:9 */
   image?: string;
   /** Optional: Variante für den Dunkelmodus (z. B. ein Diagramm mit dunkler Fläche) */
   imageDark?: string;
@@ -45,18 +43,16 @@ export interface Project {
 
 export const projectsSection = {
   title: 'Projekte',
-  intro: 'Woran ich lerne und was ich gebaut habe, jeweils mit Ausgangslage, Umsetzung und Ergebnis.',
+  intro: 'Woran ich arbeite und was ich als Nächstes umsetzen will. Konzepte sind als solche gekennzeichnet.',
   emptyText: 'Projekte folgen bald.',
 };
 
 export const projects: Project[] = [
   {
+    id: 'odoo-erp',
+    title: 'ERP-System mit Odoo',
+    description: 'Einrichtung und Anpassung eines ERP-Systems zur Unterstützung typischer Geschäftsprozesse.',
     // Bitte prüfen: Texte aus Adrians Angaben formuliert.
-    id: 'odoo-erp-prozesse',
-    title: 'ERP-Prozesse mit Odoo',
-    subtitle: 'ERP-Grundlagen im Selbststudium',
-    category: 'Lernprojekt',
-    description: 'Ich lerne an Odoo, wie ein ERP-System Geschäftsprozesse über Abteilungen hinweg abbildet.',
     ausgangslage:
       'Ich möchte verstehen, wie Einkauf, Lager, Verkauf und Buchhaltung in einem ERP-System zusammenspielen, als Grundlage für die spätere Arbeit mit SAP oder Microsoft Dynamics.',
     umsetzung:
@@ -67,43 +63,40 @@ export const projects: Project[] = [
     imageDark: '/projects/odoo-erp-prozesse-dark.svg',
     imageAlt:
       'Ablaufdiagramm: Einkauf mit Bestellung, Lager mit Wareneingang und Lieferung, Verkauf mit Kundenauftrag, Rechnungswesen mit Rechnung und Buchung.',
-    tags: ['Odoo', 'Einkauf', 'Lager', 'Verkauf', 'Rechnungswesen'],
+    tags: ['Odoo', 'ERP', 'Geschäftsprozesse'],
   },
   {
-    // DEMO-TEXT: Ausgangslage, Umsetzung und Ergebnis bitte an das echte Projekt anpassen.
-    id: 'ki-assistent-jackie',
-    title: 'KI-Assistent „Jackie“',
-    subtitle: 'Workflow mit n8n',
-    category: 'Lernprojekt',
-    description: 'Ein persönlicher Assistent, der über Telegram gesteuert wird und Google-Dienste anbindet.',
-    ausgangslage:
-      'Alltägliche Aufgaben sollten sich per Chatnachricht erledigen lassen, ohne dafür mehrere Apps zu öffnen.',
-    umsetzung:
-      'Ein n8n-Workflow nimmt Nachrichten aus Telegram entgegen, ein KI-Modell erkennt die Absicht und ruft die passenden Google-Dienste auf. Die Antwort geht zurück in den Chat.',
-    ergebnis:
-      'Ein funktionierender Prototyp, an dem ich KI-Agenten, Schnittstellen und Workflow-Automatisierung praktisch kennengelernt habe.',
-    image: '/projects/ki-assistent-jackie.svg',
-    imageDark: '/projects/ki-assistent-jackie-dark.svg',
+    id: 'business-dashboard',
+    title: 'Smart Business Dashboard',
+    description: 'Interaktives Dashboard zur Analyse von Umsatz, Gewinn, Lagerbestand und Produktleistung.',
+    status: 'Konzept',
+    image: '/projects/business-dashboard.svg',
+    imageDark: '/projects/business-dashboard-dark.svg',
     imageAlt:
-      'Ablaufdiagramm: Telegram-Nachricht, n8n-Workflow mit KI-Modell, Google-Dienste, Antwort zurück an Telegram.',
-    tags: ['n8n', 'KI-Agent', 'Telegram', 'Google-Dienste'],
+      'Konzept-Skizze eines Dashboards: Kennzahl-Karten für Umsatz, Gewinn und Lagerbestand, ein Umsatzdiagramm und eine Produktübersicht, ohne echte Zahlen.',
+    tags: ['Power BI', 'Datenanalyse', 'KPIs'],
   },
   {
-    // DEMO-TEXT: Ausgangslage, Umsetzung und Ergebnis bitte an das echte Projekt anpassen.
-    id: 'bibliotheks-desktop-app',
-    title: 'Bibliotheks-Desktop-App',
-    subtitle: 'Teamprojekt im Fachabitur',
-    category: 'Schulprojekt',
-    description: 'Im Team entwickelte Java-Desktopanwendung für eine Bibliothek.',
-    ausgangslage:
-      'Im Fachabitur sollte im Team eine Anwendung entstehen, mit der eine Bibliothek ihren Bestand und ihre Ausleihen verwaltet.',
-    umsetzung:
-      'Wir haben die Anwendung in Java als Desktopprogramm umgesetzt und Dateien in AWS S3 abgelegt.',
-    ergebnis:
-      'Eine lauffähige Desktopanwendung und erste Erfahrung mit Teamarbeit in einem Softwareprojekt und mit Cloud-Speicher.',
-    image: '/projects/bibliotheks-desktop-app.svg',
-    imageDark: '/projects/bibliotheks-desktop-app-dark.svg',
-    imageAlt: 'Schema: Java-Desktopanwendung mit Bestand und Ausleihe, Dateien in AWS S3.',
-    tags: ['Java', 'Desktop-App', 'AWS S3'],
+    id: 'camunda-automation',
+    title: 'Prozessautomatisierung mit Camunda',
+    description:
+      'Modellierung und Automatisierung eines Geschäftsprozesses mit BPMN und optionalen DMN-Entscheidungsregeln.',
+    status: 'Konzept',
+    image: '/projects/camunda-automation.svg',
+    imageDark: '/projects/camunda-automation-dark.svg',
+    imageAlt:
+      'Konzept-Skizze eines BPMN-Prozesses: Startereignis, Anfrage prüfen, Entscheidung per DMN-Regel, Verzweigung zu Freigeben oder Rückfrage, Endereignis.',
+    tags: ['Camunda', 'BPMN', 'DMN'],
+  },
+  {
+    id: 'ai-rag-chatbot',
+    title: 'AI Agent & RAG-Chatbot',
+    description: 'KI-Assistent, der Fragen anhand bereitgestellter Wissensquellen beantwortet.',
+    status: 'Konzept',
+    image: '/projects/ai-rag-chatbot.svg',
+    imageDark: '/projects/ai-rag-chatbot-dark.svg',
+    imageAlt:
+      'Konzept-Skizze: Chatfenster mit Frage und Antwort, daneben der Ablauf Dokumente, Wissenssuche, Sprachmodell, Antwort.',
+    tags: ['LLM', 'RAG', 'KI-Automatisierung'],
   },
 ];

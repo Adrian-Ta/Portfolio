@@ -29,7 +29,7 @@ export const skillsHeading = 'Kenntnisse nach Bereich';
 export const skillAreas: SkillArea[] = [
   {
     title: 'Prozesse & ERP',
-    projectId: 'odoo-erp-prozesse',
+    projectId: 'odoo-erp',
     skills: [
       { name: 'ERP-Grundlagen mit Odoo: Einkauf, Lager, Verkauf, Rechnungswesen', context: 'Lernpraxis' },
       { name: 'Prozessmodellierung mit SAP Signavio und Camunda', context: 'Studium' },
@@ -42,7 +42,6 @@ export const skillAreas: SkillArea[] = [
   },
   {
     title: 'Automatisierung & KI',
-    projectId: 'ki-assistent-jackie',
     skills: [
       { name: 'Workflows mit n8n', context: 'Lernprojekt' },
       { name: 'KI-Agenten und RAG', context: 'Lernpraxis' },
@@ -56,7 +55,6 @@ export const skillAreas: SkillArea[] = [
   },
   {
     title: 'Entwicklung',
-    projectId: 'bibliotheks-desktop-app',
     skills: [
       { name: 'Java und Python', context: 'Studium & Projekte' },
       { name: 'Datenbanken', context: 'Studium' },

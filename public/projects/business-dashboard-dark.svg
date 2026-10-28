@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="t">
+  <title id="t">Konzept-Skizze Business Dashboard: Kennzahlen Umsatz, Gewinn und Lagerbestand, Umsatzverlauf und Produktübersicht, ohne echte Daten</title>
+  <defs>
+    <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#262c35"/>
+    </pattern>
+    <style>
+      text { font-family: "Plus Jakarta Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .panel { fill: #0e1116; stroke: #353d49; stroke-width: 1; }
+      .title { font-size: 18px; font-weight: 700; fill: #eceef1; }
+      .label { font-size: 15px; font-weight: 600; fill: #b4bac4; }
+      .ph { fill: #262c35; }
+      .bar { fill: #5eead4; }
+      .bar-soft { fill: #12302d; }
+      .axis { stroke: #353d49; stroke-width: 1; }
+      .caption { font-size: 15px; fill: #8b93a0; }
+    </style>
+  </defs>
+
+  <rect width="960" height="540" fill="#151a21"/>
+  <rect width="960" height="540" fill="url(#dots)"/>
+
+  <!-- Kennzahl-Karten: Werte nur als Platzhalter -->
+  <rect class="panel" x="40" y="40" width="280" height="104" rx="10"/>
+  <text class="label" x="64" y="76">Umsatz</text>
+  <rect class="ph" x="64" y="96" width="140" height="22" rx="5"/>
+  <rect class="bar-soft" x="224" y="100" width="72" height="14" rx="7"/>
+
+  <rect class="panel" x="340" y="40" width="280" height="104" rx="10"/>
+  <text class="label" x="364" y="76">Gewinn</text>
+  <rect class="ph" x="364" y="96" width="120" height="22" rx="5"/>
+  <rect class="bar-soft" x="524" y="100" width="72" height="14" rx="7"/>
+
+  <rect class="panel" x="640" y="40" width="280" height="104" rx="10"/>
+  <text class="label" x="664" y="76">Lagerbestand</text>
+  <rect class="ph" x="664" y="96" width="130" height="22" rx="5"/>
+  <rect class="bar-soft" x="824" y="100" width="72" height="14" rx="7"/>
+
+  <!-- Umsatzdiagramm -->
+  <rect class="panel" x="40" y="164" width="580" height="292" rx="10"/>
+  <text class="title" x="64" y="200">Umsatz je Monat</text>
+  <line class="axis" x1="64" y1="424" x2="596" y2="424"/>
+  <rect class="bar" x="84"  y="330" width="28" height="94" rx="4"/>
+  <rect class="bar" x="126" y="300" width="28" height="124" rx="4"/>
+  <rect class="bar" x="168" y="316" width="28" height="108" rx="4"/>
+  <rect class="bar" x="210" y="280" width="28" height="144" rx="4"/>
+  <rect class="bar" x="252" y="290" width="28" height="134" rx="4"/>
+  <rect class="bar" x="294" y="260" width="28" height="164" rx="4"/>
+  <rect class="bar" x="336" y="272" width="28" height="152" rx="4"/>
+  <rect class="bar" x="378" y="244" width="28" height="180" rx="4"/>
+  <rect class="bar" x="420" y="256" width="28" height="168" rx="4"/>
+  <rect class="bar" x="462" y="232" width="28" height="192" rx="4"/>
+  <rect class="bar" x="504" y="240" width="28" height="184" rx="4"/>
+  <rect class="bar" x="546" y="222" width="28" height="202" rx="4"/>
+
+  <!-- Produktübersicht -->
+  <rect class="panel" x="640" y="164" width="280" height="292" rx="10"/>
+  <text class="title" x="664" y="200">Produkte</text>
+  <rect class="ph" x="664" y="232" width="86" height="12" rx="4"/>
+  <rect class="bar-soft" x="770" y="230" width="126" height="16" rx="8"/>
+  <rect class="bar" x="770" y="230" width="110" height="16" rx="8"/>
+  <rect class="ph" x="664" y="276" width="70" height="12" rx="4"/>
+  <rect class="bar-soft" x="770" y="274" width="126" height="16" rx="8"/>
+  <rect class="bar" x="770" y="274" width="88" height="16" rx="8"/>
+  <rect class="ph" x="664" y="320" width="92" height="12" rx="4"/>
+  <rect class="bar-soft" x="770" y="318" width="126" height="16" rx="8"/>
+  <rect class="bar" x="770" y="318" width="70" height="16" rx="8"/>
+  <rect class="ph" x="664" y="364" width="64" height="12" rx="4"/>
+  <rect class="bar-soft" x="770" y="362" width="126" height="16" rx="8"/>
+  <rect class="bar" x="770" y="362" width="52" height="16" rx="8"/>
+  <rect class="ph" x="664" y="408" width="80" height="12" rx="4"/>
+  <rect class="bar-soft" x="770" y="406" width="126" height="16" rx="8"/>
+  <rect class="bar" x="770" y="406" width="34" height="16" rx="8"/>
+
+  <text class="caption" x="40" y="500">Konzept-Skizze: Kennzahlen, Umsatzverlauf und Produktübersicht, ohne echte Daten</text>
+</svg>

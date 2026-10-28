@@ -47,9 +47,7 @@ export const Projects: React.FC<ProjectsProps> = ({ theme }) => {
                       <h3 id={`${project.id}-title`} className="project-case-title">
                         {project.title}
                       </h3>
-                      <p className="project-case-meta">
-                        {project.category} · {project.subtitle}
-                      </p>
+                      {project.status && <p className="project-case-meta">{project.status}</p>}
                       <p className="project-case-desc">{project.description}</p>
 
                       <ul className="project-tags" aria-label="Werkzeuge und Themen">
