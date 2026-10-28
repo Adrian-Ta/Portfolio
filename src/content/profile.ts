@@ -5,21 +5,14 @@ export interface SocialLink {
   url: string;
 }
 
-export interface FocusArea {
-  // Name des Icons, siehe `focusIcons` in src/components/About.tsx
-  icon: 'workflow' | 'layers' | 'terminal' | 'network';
-  title: string;
-  desc: string;
-}
-
 export interface Profile {
-  /** Anzeigename in Navbar, Hero, Footer und Ausweis */
+  /** Anzeigename in Navbar, Hero und Footer */
   name: string;
   /** Vollständiger Name (Copyright im Footer) */
   fullName: string;
-  /** Initialen für Logo und Ausweis-Ersatz, falls das Foto fehlt */
+  /** Initialen für das Logo und als Ersatz, falls das Foto fehlt */
   initials: string;
-  /** Rolle / Ausrichtung (unter dem Namen im Ausweis) */
+  /** Rolle / Ausrichtung (unter dem Namen im Hero) */
   role: string;
   /** Kurztext im Hero */
   heroText: string;
@@ -27,6 +20,11 @@ export interface Profile {
   footerText: string;
   /** Pfad zum Foto relativ zu `public/` – Datei dort ersetzen = Foto wechseln */
   photo: string;
+  /**
+   * Optional: dasselbe Foto als AVIF (viel kleiner, lädt schneller). Moderne Browser nehmen
+   * diese Datei, ältere `photo`. Beim Fotowechsel entweder neu erzeugen oder Zeile entfernen.
+   */
+  photoAvif?: string;
   email: string;
   /**
    * Access Key von web3forms.com: Nachrichten aus dem Kontaktformular gehen an die dort
@@ -40,12 +38,10 @@ export interface Profile {
   /** Social-Links. Eintrag mit leerer `url` wird nicht angezeigt. */
   github: SocialLink;
   linkedin: SocialLink;
-  /** Inhalt des Bereichs „Über mich" */
+  /** Inhalt des Bereichs „Über mich“: Überschrift und kurze Geschichte in Absätzen */
   about: {
-    lead: string;
-    body: string[];
-    principles: string[];
-    focusAreas: FocusArea[];
+    title: string;
+    story: string[];
   };
 }
 
@@ -53,52 +49,27 @@ export const profile: Profile = {
   name: 'Adrian Tajik',
   fullName: 'Adrian Tajik',
   initials: 'AT',
-  role: 'Student der Wirtschaftsinformatik',
+  role: 'Wirtschaftsinformatik-Student mit Fokus auf ERP, Prozesse und KI-Automatisierung',
   heroText:
-    'Wirtschaftsinformatikstudent mit praktischer Erfahrung im IT-Support. Ich beschäftige mich mit Netzwerken, Prozessmodellierung und der Automatisierung digitaler Abläufe.',
+    'Ich lerne ERP-Prozesse an Odoo, von Einkauf bis Rechnungswesen, baue Workflows mit n8n und beschäftige mich mit KI-Agenten und RAG. Das Fundament dafür: knapp zwei Jahre praktische Erfahrung im IT-Support.',
   footerText:
     'Wirtschaftsinformatikstudium, praktische IT-Erfahrung und kontinuierliches Lernen.',
   photo: '/adrian-portfolio-portrait-cutout.png',
+  photoAvif: '/adrian-portfolio-portrait-cutout.avif',
   email: 'kontakt@adriantajik.dev',
   formAccessKey: '701022ce-b31d-4738-8dfb-2b734ac20ff1',
-  location: 'Deutschland',
-  availability: 'Offen für Praktika und Werkstudententätigkeiten',
-  availabilityNote: 'Ich freue mich über passende Praktikums- und Werkstudentenangebote sowie fachlichen Austausch.',
+  location: 'Duisburg',
+  availability: 'Offen für Werkstudentenstellen in ERP und Prozessmanagement',
+  availabilityNote: 'Ich suche eine Werkstudentenstelle im Umfeld ERP, Prozessmanagement oder KI-Automatisierung und freue mich auch über fachlichen Austausch.',
   github: { label: 'GitHub', url: 'https://github.com/Adrian-Ta' },
   linkedin: { label: 'LinkedIn', url: 'https://www.linkedin.com/in/adrian-tajik-5339b238a' },
   about: {
-    lead: 'Mein beruflicher Weg begann bei KFC. Dort entwickelte ich mich vom Mitarbeiter über den Assistant Manager bis zum Restaurantleiter weiter und übernahm zunehmend Verantwortung. Mein langjähriges Interesse an IT und der Wunsch nach einem akademischen Weg führten mich dazu, das Fachabitur nachzuholen und ein Studium der Wirtschaftsinformatik aufzunehmen.',
-    body: [
-      'Schon vor der Fachoberschule beschäftigte ich mich eigenständig mit Netzwerktechnik und Lerninhalten rund um CompTIA Network+. Dabei sammelte ich praktische Erfahrung mit Windows Server, Active Directory, DNS, DHCP und Virtualisierung mit VMware Workstation.',
-      'Von August 2023 bis Juni 2025 arbeitete ich in der IT-Abteilung von BüchnerBarrella. Zu meinen Aufgaben gehörten First- und Second-Level-Support, Benutzer- und Rechteverwaltung in MS Active Directory, die Einrichtung von Endgeräten, Softwareupdates und Troubleshooting vor Ort und per Fernwartung.',
-      'Während des Fachabiturs entwickelte ich im Team eine Java-Desktopanwendung für eine Bibliothek. Im Studium vertiefe ich Java und Python, arbeite mit Datenbanken und beschäftige mich mit Prozessmodellierung in SAP Signavio und Camunda. Eigene Lernprojekte und Themen wie n8n, KI-Agenten, Git/GitHub, Docker-Grundlagen und Power BI ergänzen meinen Studienalltag.',
-    ],
-    principles: [
-      'Schnelle Auffassungsgabe & systematische Fehlersuche',
-      'Sorgfältige, selbstständige und zuverlässige Arbeitsweise',
-      'Freundliche und lösungsorientierte Unterstützung von Anwenderinnen und Anwendern',
-    ],
-    focusAreas: [
-      {
-        icon: 'network',
-        title: 'IT-Support & Windows',
-        desc: 'Berufliche Erfahrung mit First- und Second-Level-Support, Active Directory, Benutzerrechten, Endgeräten und Troubleshooting.',
-      },
-      {
-        icon: 'workflow',
-        title: 'Netzwerke & Server',
-        desc: 'Eigenständige Lernpraxis mit Netzwerktechnik, Windows Server, DNS, DHCP und VMware Workstation.',
-      },
-      {
-        icon: 'layers',
-        title: 'Studium & Entwicklung',
-        desc: 'Grundlagen und Projektpraxis in Java und Python, Datenbanken sowie eine Java-Desktopanwendung im Fachabitur.',
-      },
-      {
-        icon: 'terminal',
-        title: 'Prozesse & Automatisierung',
-        desc: 'Studieninhalte zu SAP Signavio und Camunda sowie eigene Lernpraxis mit n8n, KI-Agenten und Power BI.',
-      },
+    title: 'Über mich',
+    story: [
+      'Mein beruflicher Weg begann bei KFC. Dort habe ich mich vom Mitarbeiter über den Assistant Manager bis zum Restaurantleiter entwickelt und mit jedem Schritt mehr Verantwortung für Team und Abläufe übernommen.',
+      'Mein Interesse an IT hat mich zum Fachabitur und in die IT-Abteilung von BüchnerBarrella geführt. Dort habe ich von August 2023 bis Juni 2025 im First- und Second-Level-Support gearbeitet, Benutzer und Rechte in MS Active Directory verwaltet, Endgeräte eingerichtet und Probleme vor Ort und per Fernwartung gelöst.',
+      'Heute studiere ich Wirtschaftsinformatik und verbinde beide Seiten: Ich will verstehen, wie Unternehmen ihre Prozesse in ERP-Systemen abbilden und wo sich Abläufe mit KI sinnvoll automatisieren lassen.',
+      'Was ich mitbringe: schnelle Auffassungsgabe, systematische Fehlersuche und eine ruhige, lösungsorientierte Art im Umgang mit Anwenderinnen und Anwendern. Ich arbeite sorgfältig, selbstständig und zuverlässig.',
     ],
   },
 };

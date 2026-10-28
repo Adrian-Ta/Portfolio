@@ -11,16 +11,21 @@ export interface TimelineItem {
   points: string[];
 }
 
+export const timelineSection = {
+  title: 'Laufbahn',
+  intro: 'Vom Restaurantmanagement über die IT-Praxis zum Studium der Wirtschaftsinformatik.',
+};
+
 export const timeline: TimelineItem[] = [
   {
     year: 'Aktuell',
     role: 'Student der Wirtschaftsinformatik',
-    organization: 'Universitätsstudium',
+    organization: 'Universitätsstudium · aktuell im dritten Semester',
     type: 'education',
     points: [
-      'Studieninhalte in Java, Python, Datenbanken und Wirtschaft',
+      'Java, Python, Datenbanken und betriebswirtschaftliche Grundlagen',
       'Prozessmodellierung mit SAP Signavio und Camunda',
-      'Ergänzende Lernpraxis mit n8n, KI-Agenten, Docker und Power BI',
+      'Daneben eigene Lernpraxis: ERP mit Odoo, n8n, KI-Agenten und RAG',
     ],
   },
   {
@@ -35,18 +40,17 @@ export const timeline: TimelineItem[] = [
     ],
   },
   {
-    year: 'Fachoberschule',
+    year: 'Abgeschlossen',
     role: 'Fachabitur',
-    organization: 'Schulische IT-Grundlagen und Teamprojekt',
+    organization: 'Fachoberschule',
     type: 'education',
     points: [
       'Grundlagen in Java, Datenbanken, Netzwerken, HTML und CSS',
-      'Entwicklung einer Java-Desktopanwendung für eine Bibliothek',
-      'AWS S3 kam im Projekt zum Einsatz',
+      'Im Team eine Java-Desktopanwendung für eine Bibliothek entwickelt, im Projekt kam AWS\u00a0S3 zum Einsatz',
     ],
   },
   {
-    year: 'Beruflicher Weg',
+    year: 'Davor',
     role: 'Vom Mitarbeiter zum Restaurantleiter',
     organization: 'KFC',
     type: 'work',

@@ -9,48 +9,55 @@ Persönliche Portfolio-Website (Wirtschaftsinformatik, Ziel: ERP/Odoo, Automatis
 - `npm run lint` – Linter
 
 ## Aktuelle Struktur (Ist-Zustand)
-- `src/App.tsx` setzt die Seite aus Komponenten zusammen: Navbar, Hero, TechMarquee, About, Services, Projects, Timeline, EducationSkills, Contact, Footer, FloatingDock. Dark/Light-Theme per `data-theme`.
-- Alle Texte, Projekte und Links stehen fest im Komponentencode (z. B. `projectData` in `src/components/Projects.tsx`).
-- Styles: Design-Variablen in `src/index.css`, Komponenten-Styles in `src/App.css` (ca. 2200 Zeilen).
-- Bilder: `public/` (`avatar.jpg`, `public/projects/`).
+- `src/App.tsx` setzt die Seite aus Komponenten zusammen, in dieser Reihenfolge: Navbar, Hero, Projects, About, Timeline, Contact, Footer. Zweite Seite: `rechtliches/index.html` (Impressum und Datenschutz, Einstieg `src/legal-main.tsx`). Dark/Light-Theme per `data-theme`.
+- Alle sichtbaren Inhalte stehen in `src/content/` (siehe unten), nicht im Komponentencode.
+- Styles: Design-Variablen in `src/index.css`, Komponenten-Styles in `src/App.css` (ca. 1400 Zeilen).
+- Schrift: Plus Jakarta Sans liegt selbst gehostet in `public/fonts/` (kein Google Fonts, aus Datenschutzgründen). Das Theme setzt ein kleines Skript in `index.html` vor dem ersten Zeichnen.
+- Bilder: `public/` (Profilfoto `adrian-portfolio-portrait-cutout.png` plus kleinere `.avif`-Version, Projektbilder/-diagramme in `public/projects/`, Dunkelvarianten `*-dark.svg`, Vorschaubild `og-image.jpg`).
 - Ausführliche Design-Beschreibung (Referenzvideo): `docs/design-referenz.md`, nur bei Bedarf lesen.
 
-## Hauptaufgabe: Struktur verbessern
-Adrian will Inhalte später ohne Codeänderung pflegen (kein WordPress, kein CMS-Server). Umgesetzt wird **Option A: Inhalte in eigene Dateien auslagern**.
+## Inhalte ohne Codeänderung pflegen
+Adrian pflegt Inhalte in eigenen Dateien (kein WordPress, kein CMS-Server). Die Anleitung für ihn steht in `README.md`.
 
-Zielstruktur:
 ```
 src/content/
-  profile.ts     Name, Kurzbeschreibung, Foto-Pfad, Social-Links, E-Mail
-  projects.ts    Liste der Projekte
-  timeline.ts    Laufbahn / Lebenslauf
-  skills.ts      Skills und Bildung
-  services.ts    Leistungen
+  profile.ts     Name, Rolle, Hero-Text, Foto-Pfade, Social-Links, E-Mail, Über-mich-Geschichte
+  projects.ts    Projektkarten (Bild, Titel, Kurzbeschreibung, Tags, Status), Überschrift, Text bei leerer Liste
+  timeline.ts    Laufbahn inkl. Studium und Fachabitur
+  skills.ts      Kenntnisse nach Bereich mit Werkzeugen (Logos), Lernfokus
+  techLogos.ts   Logos der Werkzeuge (Simple Icons CC0, Devicon MIT)
+  legal.ts       Impressum-Angaben und Datenschutzerklärung (Entwurf; Name/Anschrift noch leer)
 ```
 Regeln dafür:
-1. Komponenten lesen ihre Inhalte nur noch aus `src/content/`. Typen (z. B. `Project`) liegen neben den Daten.
-2. `projects.ts` startet **leer**. Die Platzhalter-Projekte (Kanban, AI Document Assistant, Automations-Pipeline, Process Hub) werden entfernt, weil es sie nicht gibt. Bei leerer Liste zeigt der Bereich einen Hinweis wie „Projekte folgen bald", keine leeren Karten.
-3. Ein neues Projekt = ein neuer Eintrag in `projects.ts` (Titel, Beschreibung, Bild, Tags, optional GitHub-/Live-Link). Es erscheint automatisch.
-4. Foto wechseln = Datei `public/avatar.jpg` ersetzen. Der Pfad kommt aus `profile.ts`.
-5. Platzhalter-Links (`https://github.com`, `https://linkedin.com`) und Texte wie „Adri" werden in `profile.ts` zentral gepflegt und mit Adrian geklärt, nicht erfunden.
-6. Layout passt sich dem Inhalt an: Keine festen Höhen (`height`) bei Karten und Timeline-Einträgen, stattdessen `min-height`/Auto-Höhe. Weniger Text = kleineres Feld. Bei 0, 1 und vielen Einträgen muss die Seite gut aussehen.
-7. `package.json`-Name `temp-app` in einen sinnvollen Namen ändern, README durch eine kurze Anleitung „Inhalte ändern" ersetzen.
-8. `AGENTS.md` nach `docs/design-referenz.md` verschieben (`git mv`), nicht löschen.
+1. Komponenten lesen ihre Inhalte nur aus `src/content/`. Typen (z. B. `Project`) liegen neben den Daten.
+2. Ein neues Projekt = ein neuer Eintrag in `projects.ts`. Es erscheint automatisch. Bei leerer Liste zeigt der Bereich „Projekte folgen bald“, keine leeren Felder.
+3. Foto wechseln = Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen, die AVIF-Version (`photoAvif`) neu erzeugen oder die Zeile entfernen.
+4. Nichts erfinden: Links, Daten, Projektergebnisse und Erfahrungen nur nach Angaben von Adrian. Demo-Texte im Code mit `// DEMO-TEXT` markieren. Noch nicht umgesetzte Projekte tragen `status: 'Konzept'` (oder `'In Arbeit'`), ihre Bilder sind als „Konzept-Skizze“ beschriftet und enthalten keine erfundenen Zahlen (aktuell nur noch das Business Dashboard, das aber schon einen echten Power-BI-Screenshot mit synthetischen Beispieldaten zeigt).
+5. Layout passt sich dem Inhalt an: keine festen Höhen, bei 0, 1 und vielen Einträgen muss die Seite gut aussehen.
 
 ## Arbeitsweise (verbindlich)
-1. **Zuerst Branch anlegen**, bevor etwas geändert wird: `git checkout -b inhalte-auslagern`. Nie direkt auf `main` arbeiten.
-2. Kleine Schritte, je Schritt ein Commit (z. B. erst `profile.ts`, dann `projects.ts`, dann Timeline).
+1. **Zuerst Branch anlegen**, bevor etwas geändert wird (`git checkout -b <thema>`). Nie direkt auf `main` arbeiten.
+2. Kleine Schritte, je Schritt ein Commit.
 3. Nach jedem Schritt `npm run build` und `npm run lint` ausführen und das Ergebnis im Browser prüfen.
 4. Nichts mit `git reset --hard`, `git clean` oder Force-Push verwerfen, ohne vorher zu fragen.
 5. Jede Änderung kurz auf Deutsch erklären, damit Adrian sie selbst nachvollziehen kann. Er lernt dabei.
 
 ## Was nicht verändert wird
-Der Grundstil bleibt: helle, großzügige Oberfläche, ein ruhiger Teal-Akzent (kein Violett-Blau-Verlauf), Punktraster im Hero, großes Profilfoto rechts im Hero (`ProfilePhoto`, Bild: `public/avatar.jpg`), Dark/Light-Theme. Der frühere hängende Profil-Ausweis wurde bewusst entfernt und darf nicht wieder eingebaut werden. Design-Verbesserungen nur auf ausdrücklichen Wunsch und in eigenen Commits.
+Der Grundstil bleibt: helle, großzügige Oberfläche, ein ruhiger Teal-Akzent (kein Violett-Blau-Verlauf), Punktraster im Hero, großes, freigestelltes Profilfoto rechts im Hero (`ProfilePhoto`, Pfade aus `profile.ts`), Dark/Light-Theme. Der frühere hängende Profil-Ausweis wurde bewusst entfernt und darf nicht wieder eingebaut werden. Design-Verbesserungen nur auf ausdrücklichen Wunsch und in eigenen Commits.
+
+Designrichtung „Prozess statt Kacheln“ (Redesign Oktober 2026), Projektbereich danach nach `portfolio_entwurf_3_bildorientiert.md` umgebaut:
+- Projekte stehen direkt nach dem Hero als Kartenraster: mobil 1 Spalte, ab 720 px 2 Spalten. Karte = Bild (16:9), Titel mit Status-Label, Kurzbeschreibung, höchstens 3–4 Tags. Die Felder `ausgangslage`/`umsetzung`/`ergebnis` sind für spätere Detailseiten gedacht und werden auf der Karte nicht gezeigt.
+- Detailseiten gibt es noch nicht. Solange die Karte nicht anklickbar ist, hat sie keinen Rahmen, keinen Schatten und hebt sich nicht an; nur das Bild ist gerahmt (Klick öffnet es groß). Kommen Detailseiten, wird die ganze Karte zum Link und darf dann Schatten/Hover bekommen.
+- Abschnittsköpfe einheitlich links: nur Überschrift und ein Satz, keine Pille/Kicker darüber, keine zweifarbige Überschrift.
+- Gliederung durch Typografie, Abstand und feine Linien. Karten mit Rahmen und Schatten nur, wo etwas anklickbar ist; nicht klickbare Elemente heben sich beim Hover nicht an.
+- Keine Monospace-Schrift als „Technik-Look“, keine dekorativen Glow- oder Endlos-Animationen.
 
 Navigation: Das Desktop-Menü (`.desktop-nav`) erscheint erst ab 1080 px Breite, darunter gilt das Hamburger-Menü. Menü-Links und Logo-Text dürfen nicht umbrechen (`white-space: nowrap`). Diese Breakpoints nicht ohne Rücksprache ändern.
 
 ## Später (nicht jetzt)
-Optional ein Git-basiertes CMS (z. B. Decap CMS oder TinaCMS) obendrauf, das in dieselben Dateien in `src/content/` schreibt. Dafür darf der Umbau jetzt keine Sonderlösungen einführen.
+Optional ein Git-basiertes CMS (z. B. Decap CMS oder TinaCMS) obendrauf, das in dieselben Dateien in `src/content/` schreibt. Dafür keine Sonderlösungen einführen.
 
-## Design-Agents
+## Design-Agents und Skills
 Die Agents in `.claude/agents/` (UI Designer, UX Architect, UX Researcher u. a.) werden nur auf Anfrage genutzt. Reihenfolge: erst analysieren, dann umsetzen.
+
+Der Impeccable-Skill (`.claude/skills/impeccable/`, Aufruf `/impeccable <befehl>`) wird ebenfalls nur auf Anfrage genutzt. Analyseberichte legt er in `.impeccable/` ab. `.claude/` ist vom Linter ausgenommen.

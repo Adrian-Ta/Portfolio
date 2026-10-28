@@ -1,48 +1,103 @@
-// Projekte: ein Eintrag in `projects` = eine Karte auf der Seite.
-// Ist die Liste leer, zeigt die Seite „Projekte folgen bald".
+// Projekte: ein Eintrag in `projects` = eine Projektkarte auf der Seite, in dieser Reihenfolge.
+// Ist die Liste leer, zeigt die Seite den Text `projectsSection.emptyText`.
+//
+// Noch nicht umgesetzte Projekte bekommen `status: 'Konzept'` (oder 'In Arbeit').
+// Die Karte zeigt den Status dann sichtbar an. Fertige Projekte haben kein `status`.
 //
 // Beispiel für einen neuen Eintrag (Kommentarzeichen entfernen und ausfüllen):
 //
 // {
-//   id: 'mein-projekt',                       // eindeutig, ohne Leerzeichen
+//   id: 'mein-projekt',                        // eindeutig, ohne Leerzeichen
 //   title: 'Mein Projekt',
-//   subtitle: 'Kurzer Untertitel',
-//   category: 'Frontend',                     // kleines Label oben im Bild
-//   description: 'Was macht das Projekt?',
-//   image: '/projects/mein-projekt.jpg',      // Datei liegt in public/projects/
-//   tags: ['React', 'TypeScript'],
-//   githubUrl: 'https://github.com/…',        // optional
-//   liveUrl: 'https://…',                     // optional
+//   description: 'Ein bis zwei Sätze: Was ist das Projekt?',
+//   status: 'Konzept',                         // optional: 'Konzept' oder 'In Arbeit'
+//   image: '/projects/mein-projekt.png',       // optional, Datei liegt in public/projects/, Format 16:9
+//   imageDark: '/projects/mein-projekt-dark.png', // optional, Version für den Dunkelmodus
+//   imageAlt: 'Was ist auf dem Bild zu sehen?',
+//   tags: ['n8n', 'Automatisierung'],          // höchstens drei bis vier
+//   githubUrl: 'https://github.com/…',         // optional
+//   liveUrl: 'https://…',                      // optional
 // },
 
 export interface Project {
   id: string;
   title: string;
-  subtitle: string;
-  category: string;
+  /** Ein bis zwei Sätze */
   description: string;
-  /** Pfad relativ zu `public/`, z. B. `/projects/mein-projekt.jpg` */
+  /** Fehlt bei fertigen Projekten */
+  status?: 'Konzept' | 'In Arbeit';
+  /** Für die spätere Detailseite, aktuell nicht auf der Karte angezeigt */
+  ausgangslage?: string;
+  umsetzung?: string;
+  ergebnis?: string;
+  /** Pfad relativ zu `public/`, z. B. `/projects/mein-projekt.png`, Format 16:9 */
   image?: string;
+  /** Optional: Variante für den Dunkelmodus (z. B. ein Diagramm mit dunkler Fläche) */
+  imageDark?: string;
+  /** Beschreibt den Bildinhalt für Screenreader */
+  imageAlt?: string;
   tags: string[];
   githubUrl?: string;
   liveUrl?: string;
 }
 
+export const projectsSection = {
+  title: 'Projekte',
+  intro: 'Woran ich arbeite und was ich als Nächstes umsetzen will. Konzepte sind als solche gekennzeichnet.',
+  emptyText: 'Projekte folgen bald.',
+};
+
 export const projects: Project[] = [
   {
-    id: 'bibliotheks-desktop-app',
-    title: 'Bibliotheks-Desktop-App',
-    subtitle: 'Teamprojekt im Fachabitur',
-    category: 'Studienprojekt',
-    description: 'Im Team entwickelte Java-Desktopanwendung für eine Bibliothek. Im Projekt kam außerdem AWS S3 zum Einsatz.',
-    tags: ['Java', 'Desktop-App', 'AWS S3'],
+    id: 'odoo-erp',
+    title: 'ERP-System mit Odoo',
+    description: 'Einrichtung und Anpassung eines ERP-Systems zur Unterstützung typischer Geschäftsprozesse.',
+    // Bitte prüfen: Texte aus Adrians Angaben formuliert.
+    ausgangslage:
+      'Ich möchte verstehen, wie Einkauf, Lager, Verkauf und Buchhaltung in einem ERP-System zusammenspielen, als Grundlage für die spätere Arbeit mit SAP oder Microsoft Dynamics.',
+    umsetzung:
+      'In Odoo arbeite ich die Module Einkauf, Lager, Verkauf und Rechnungswesen durch und verfolge, wie aus einer Bestellung ein Wareneingang, aus einem Kundenauftrag eine Lieferung und daraus eine Rechnung wird.',
+    ergebnis:
+      'Ich kenne die Grundabläufe vom Einkauf bis zur Rechnung und weiß, an welchen Stellen die Module Daten aneinander übergeben.',
+    image: '/projects/odoo-erp.webp',
+    imageAlt:
+      'Screenshot aus Odoo: App-Übersicht mit Modulen wie Verkauf, Lager, Rechnungsstellung, CRM, Buchhaltung und Projekt.',
+    tags: ['Odoo', 'ERP', 'Geschäftsprozesse'],
+    // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
   {
-    id: 'ki-assistent-jackie',
-    title: 'KI-Assistent „Jackie“',
-    subtitle: 'Workflow mit n8n',
-    category: 'Lernprojekt',
-    description: 'Ein mit n8n entwickelter Assistent, an dem ich praktische Erfahrungen mit KI-gestützten Workflows gesammelt habe.',
-    tags: ['n8n', 'KI-Assistent', 'Automatisierung'],
+    id: 'business-dashboard',
+    title: 'Smart Business Dashboard',
+    description: 'Interaktives Dashboard zur Analyse von Umsatz, Gewinn, Lagerbestand und Produktleistung.',
+    status: 'Konzept',
+    image: '/projects/business-dashboard.webp',
+    imageAlt:
+      'Power-BI-Bericht „Customer Analysis“ mit synthetischen Beispieldaten: Filter für Jahr, Region, Kundensegment und Vertriebskanal, Kennzahl-Karten, Diagramme zu Umsatz und Gewinn nach Segment, aktive Kunden pro Monat und eine Top-10-Kundentabelle.',
+    tags: ['Power BI', 'Datenanalyse', 'KPIs'],
+    githubUrl: 'https://github.com/Adrian-Ta/PowerBI_Sales_Overview',
+  },
+  {
+    id: 'readnest',
+    title: 'ReadNest: Bibliotheks-App mit Java',
+    // Bitte prüfen: Beschreibung aus der README des Repos abgeleitet.
+    description:
+      'Im Team entwickelte JavaFX-Desktop-App für eine Online-Bibliothek: Bücher suchen, freie Exemplare ausleihen und direkt in der App als PDF lesen.',
+    image: '/projects/readnest.webp',
+    imageAlt:
+      'Drei Fenster der App ReadNest: Anmeldung, Katalog mit Buchcovern und Suche sowie die Detailansicht von „Die Verwandlung“ mit Beschreibung und zwei ausleihbaren Exemplaren.',
+    tags: ['Java', 'JavaFX', 'SQL', 'Teamprojekt'],
+    githubUrl: 'https://github.com/Adrian-Ta/ReadNest',
+  },
+  {
+    id: 'mahnwesen-debitoren',
+    title: 'KI-gestütztes Mahnwesen mit n8n',
+    // Bitte prüfen: Beschreibung aus dem Workflow-Screenshot abgeleitet.
+    description:
+      'Ein n8n-Workflow ermittelt fällige Mahnungen, lässt den Mahntext von einem KI-Agenten formulieren, verschickt ihn per E-Mail und protokolliert den Versand.',
+    image: '/projects/ai-agent-n8n.webp',
+    imageAlt:
+      'Screenshot aus n8n: Workflow „Mahnwesen Debitoren“ mit Zeitplan-Auslöser, Auswahl fälliger Mahnungen, KI-Agent mit OpenRouter-Sprachmodell, der den Mahntext erstellt, anschließend E-Mail-Versand und Protokollierung.',
+    tags: ['n8n', 'KI-Agent', 'Mahnwesen', 'Automatisierung'],
+    githubUrl: 'https://github.com/Adrian-Ta/mahnwesen-debitoren',
   },
 ];

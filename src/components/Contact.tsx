@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Mail, Send, CheckCircle, MapPin, Copy, Check } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Send, CheckCircle, Copy, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { profile } from '../content/profile';
 
@@ -7,10 +7,12 @@ import { profile } from '../content/profile';
 const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
+type CopyStatus = 'idle' | 'copied' | 'failed';
 
 export const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<FormStatus>('idle');
-  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>('idle');
+  const copyTimer = useRef<number | undefined>(undefined);
   const [botcheck, setBotcheck] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -19,10 +21,18 @@ export const Contact: React.FC = () => {
     message: '',
   });
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(profile.email);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2500);
+  useEffect(() => () => window.clearTimeout(copyTimer.current), []);
+
+  // „Kopiert“ nur bei echtem Erfolg; ohne Zwischenablage (z. B. kein HTTPS) eine klare Meldung
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopyStatus('copied');
+    } catch {
+      setCopyStatus('failed');
+    }
+    window.clearTimeout(copyTimer.current);
+    copyTimer.current = window.setTimeout(() => setCopyStatus('idle'), 3000);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -35,7 +45,7 @@ export const Contact: React.FC = () => {
         body: JSON.stringify({
           access_key: profile.formAccessKey,
           from_name: 'Portfolio-Kontaktformular',
-          subject: `Portfolio: ${formData.subject}`,
+          subject: `Portfolio: ${formData.subject.trim() || 'Neue Nachricht'}`,
           name: formData.name,
           // Web3Forms setzt diese Adresse als Antwort-Adresse
           email: formData.email,
@@ -43,94 +53,76 @@ export const Contact: React.FC = () => {
           botcheck,
         }),
       });
-      const result = await response.json();
-      setFormStatus(result.success ? 'success' : 'error');
+      const result = await response.json().catch(() => null);
+      setFormStatus(response.ok && result?.success ? 'success' : 'error');
     } catch {
       setFormStatus('error');
     }
   };
 
   return (
-    <section id="contact" className="section-wrapper contact-section dot-grid-bg">
+    <section id="contact" className="section-wrapper">
       <div className="container">
-        <div className="section-header-centered">
-          <span className="section-pill">Kontakt</span>
-          <h2 className="section-title">
-            Interesse an meinem <br />
-            <span className="text-accent">Profil?</span>
-          </h2>
+        <div className="section-header-left">
+          <h2 className="section-title">Kontakt</h2>
           <p className="section-subtitle">
-            Für Praktikums- und Werkstudentenangebote oder fachlichen Austausch freue ich mich über deine Nachricht.
+            Für eine Werkstudentenstelle in ERP, Prozessmanagement oder KI-Automatisierung oder für fachlichen Austausch freue ich mich über deine Nachricht.
           </p>
         </div>
 
         <div className="contact-grid">
-          {/* Left Column: Direct Info Cards */}
-          <div className="contact-info-col">
-            <div className="contact-card highlight">
-              <div className="contact-card-icon">
-                <Mail size={22} />
-              </div>
-              <div className="contact-card-body">
-                <span className="contact-label">Direkte E-Mail</span>
-                <span className="contact-value">{profile.email}</span>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="copy-email-btn"
-                  title="E-Mail in Zwischenablage kopieren"
-                >
-                  {copiedEmail ? (
-                    <>
-                      <Check size={14} className="copied-icon" />
-                      <span>Kopiert!</span>
-                    </>
+          {/* Linke Spalte: direkte Kontaktwege als ruhige Liste, ohne Karten */}
+          <dl className="contact-details">
+            <div className="contact-detail">
+              <dt>E-Mail</dt>
+              <dd>
+                <a href={`mailto:${profile.email}`} className="contact-value contact-email-link">
+                  {profile.email}
+                </a>
+                <button type="button" onClick={handleCopyEmail} className="copy-email-btn">
+                  {copyStatus === 'copied' ? (
+                    <Check size={14} className="copied-icon" aria-hidden="true" />
                   ) : (
-                    <>
-                      <Copy size={14} />
-                      <span>Adresse kopieren</span>
-                    </>
+                    <Copy size={14} aria-hidden="true" />
                   )}
+                  <span>Adresse kopieren</span>
                 </button>
-              </div>
+                {/* Meldung wird von Screenreadern vorgelesen */}
+                <span className="copy-status" aria-live="polite">
+                  {copyStatus === 'copied' && 'In die Zwischenablage kopiert.'}
+                  {copyStatus === 'failed' && 'Kopieren nicht möglich. Bitte die Adresse markieren und kopieren.'}
+                </span>
+              </dd>
             </div>
 
-            <div className="contact-card">
-              <div className="contact-card-icon">
-                <MapPin size={22} />
+            {(profile.linkedin.url || profile.github.url) && (
+              <div className="contact-detail">
+                <dt>Profile</dt>
+                <dd className="contact-profile-links">
+                  {profile.linkedin.url && (
+                    <a href={profile.linkedin.url} target="_blank" rel="noopener" className="project-link">
+                      <LinkedinIcon size={16} /> LinkedIn <ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  )}
+                  {profile.github.url && (
+                    <a href={profile.github.url} target="_blank" rel="noreferrer" className="project-link">
+                      <GithubIcon size={16} /> GitHub <ArrowUpRight size={15} aria-hidden="true" />
+                    </a>
+                  )}
+                </dd>
               </div>
-              <div className="contact-card-body">
-                <span className="contact-label">Standort & Verfügbarkeit</span>
-                <span className="contact-value">{profile.location}</span>
-                <p className="contact-note">{profile.availabilityNote}</p>
-              </div>
+            )}
+
+            <div className="contact-detail">
+              <dt>Verfügbarkeit</dt>
+              <dd>{profile.availabilityNote}</dd>
             </div>
 
-            <div className="contact-social-pills">
-              {profile.github.url && (
-                <a
-                  href={profile.github.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="social-pill-item"
-                >
-                  <GithubIcon size={18} />
-                  <span>GitHub Profil</span>
-                </a>
-              )}
-              {profile.linkedin.url && (
-                <a
-                  href={profile.linkedin.url}
-                  target="_blank"
-                  rel="noopener"
-                  className="social-pill-item"
-                >
-                  <LinkedinIcon size={18} />
-                  <span>LinkedIn Netzwerk</span>
-                </a>
-              )}
+            <div className="contact-detail">
+              <dt>Standort</dt>
+              <dd>{profile.location}</dd>
             </div>
-          </div>
+          </dl>
 
           {/* Right Column: Interactive Contact Form */}
           <div className="contact-form-col">
@@ -164,6 +156,8 @@ export const Contact: React.FC = () => {
                         id="name"
                         type="text"
                         required
+                        autoComplete="name"
+                        maxLength={100}
                         placeholder="Max Mustermann"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -178,6 +172,8 @@ export const Contact: React.FC = () => {
                         id="email"
                         type="email"
                         required
+                        autoComplete="email"
+                        maxLength={254}
                         placeholder="max@beispiel.de"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -188,13 +184,13 @@ export const Contact: React.FC = () => {
 
                   <div className="form-group">
                     <label htmlFor="subject" className="form-label">
-                      Betreff
+                      Betreff <span className="form-optional">(optional)</span>
                     </label>
                     <input
                       id="subject"
                       type="text"
-                      required
-                      placeholder="Praktikum / Werkstudentenstelle / Austausch"
+                      maxLength={150}
+                      placeholder="z. B. Werkstudentenstelle ERP"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="form-input"
@@ -209,7 +205,8 @@ export const Contact: React.FC = () => {
                       id="message"
                       required
                       rows={4}
-                      placeholder={`Hallo ${profile.name}, ich habe Interesse an einer Zusammenarbeit bezüglich...`}
+                      maxLength={5000}
+                      placeholder="Worum geht es?"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="form-textarea"

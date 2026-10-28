@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Sun, Moon, Menu, X, ArrowUpRight } from 'lucide-react';
 import { profile } from '../content/profile';
 
@@ -10,6 +10,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,13 +21,36 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Mobilmenü: Fokus beim Öffnen auf den ersten Link, Esc schließt und gibt den Fokus
+  // an den Menü-Knopf zurück. Wird das Fenster breit genug für das Desktop-Menü, schließt es.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    drawerRef.current?.querySelector('a')?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const desktop = window.matchMedia('(min-width: 1080px)');
+    const handleBreakpoint = () => {
+      if (desktop.matches) setMobileMenuOpen(false);
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    desktop.addEventListener('change', handleBreakpoint);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      desktop.removeEventListener('change', handleBreakpoint);
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
-    { label: 'Start', href: '#hero' },
-    { label: 'Über mich', href: '#about' },
-    { label: 'Praxisfelder', href: '#services' },
     { label: 'Projekte', href: '#projects' },
+    { label: 'Über mich', href: '#about' },
     { label: 'Laufbahn', href: '#experience' },
-    { label: 'Ausbildung', href: '#skills' },
     { label: 'Kontakt', href: '#contact' },
   ];
 
@@ -61,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
             className="theme-toggle-btn"
             onClick={toggleTheme}
             aria-label={`Zu ${theme === 'light' ? 'dunklem' : 'hellem'} Design wechseln`}
-            title={`Wechseln zu ${theme === 'light' ? 'Dark Mode' : 'Light Mode'}`}
+            title={`Zu ${theme === 'light' ? 'dunklem' : 'hellem'} Design wechseln`}
           >
             {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
           </button>
@@ -73,11 +98,13 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
             type="button"
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Menü öffnen/schließen"
+            aria-label={mobileMenuOpen ? 'Menü schließen' : 'Menü öffnen'}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -86,8 +113,8 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobilmenü">
-          <nav className="mobile-nav">
+        <div className="mobile-drawer">
+          <nav id="mobile-menu" ref={drawerRef} className="mobile-nav" aria-label="Mobilmenü">
             <ul className="mobile-nav-list">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -106,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                   className="mobile-nav-link cta"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Projekt anfragen ➔
+                  Kontakt aufnehmen
                 </a>
               </li>
             </ul>
