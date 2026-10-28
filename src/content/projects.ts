@@ -59,10 +59,9 @@ export const projects: Project[] = [
       'In Odoo arbeite ich die Module Einkauf, Lager, Verkauf und Rechnungswesen durch und verfolge, wie aus einer Bestellung ein Wareneingang, aus einem Kundenauftrag eine Lieferung und daraus eine Rechnung wird.',
     ergebnis:
       'Ich kenne die Grundabläufe vom Einkauf bis zur Rechnung und weiß, an welchen Stellen die Module Daten aneinander übergeben.',
-    image: '/projects/odoo-erp-prozesse.svg',
-    imageDark: '/projects/odoo-erp-prozesse-dark.svg',
+    image: '/projects/odoo-erp.webp',
     imageAlt:
-      'Ablaufdiagramm: Einkauf mit Bestellung, Lager mit Wareneingang und Lieferung, Verkauf mit Kundenauftrag, Rechnungswesen mit Rechnung und Buchung.',
+      'Screenshot aus Odoo: App-Übersicht mit Modulen wie Verkauf, Lager, Rechnungsstellung, CRM, Buchhaltung und Projekt.',
     tags: ['Odoo', 'ERP', 'Geschäftsprozesse'],
     // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
