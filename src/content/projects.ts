@@ -70,10 +70,9 @@ export const projects: Project[] = [
     title: 'Smart Business Dashboard',
     description: 'Interaktives Dashboard zur Analyse von Umsatz, Gewinn, Lagerbestand und Produktleistung.',
     status: 'Konzept',
-    image: '/projects/business-dashboard.svg',
-    imageDark: '/projects/business-dashboard-dark.svg',
+    image: '/projects/business-dashboard.webp',
     imageAlt:
-      'Konzept-Skizze eines Dashboards: Kennzahl-Karten für Umsatz, Gewinn und Lagerbestand, ein Umsatzdiagramm und eine Produktübersicht, ohne echte Zahlen.',
+      'Power-BI-Bericht „Customer Analysis“ mit synthetischen Beispieldaten: Filter für Jahr, Region, Kundensegment und Vertriebskanal, Kennzahl-Karten, Diagramme zu Umsatz und Gewinn nach Segment, aktive Kunden pro Monat und eine Top-10-Kundentabelle.',
     tags: ['Power BI', 'Datenanalyse', 'KPIs'],
   },
   {
