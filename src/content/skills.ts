@@ -42,6 +42,7 @@ export const skillAreas: SkillArea[] = [
   },
   {
     title: 'Automatisierung & KI',
+    projectId: 'mahnwesen-debitoren',
     skills: [
       { name: 'Workflows mit n8n', context: 'Lernprojekt' },
       { name: 'KI-Agenten und RAG', context: 'Lernpraxis' },

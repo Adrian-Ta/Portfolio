@@ -90,14 +90,15 @@ export const projects: Project[] = [
     // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
   {
-    id: 'ai-rag-chatbot',
-    title: 'AI Agent & RAG-Chatbot',
-    description: 'KI-Assistent, der Fragen anhand bereitgestellter Wissensquellen beantwortet.',
-    status: 'Konzept',
+    id: 'mahnwesen-debitoren',
+    title: 'KI-gestütztes Mahnwesen mit n8n',
+    // Bitte prüfen: Beschreibung aus dem Workflow-Screenshot abgeleitet.
+    description:
+      'Ein n8n-Workflow ermittelt fällige Mahnungen, lässt den Mahntext von einem KI-Agenten formulieren, verschickt ihn per E-Mail und protokolliert den Versand.',
     image: '/projects/ai-agent-n8n.webp',
     imageAlt:
       'Screenshot aus n8n: Workflow „Mahnwesen Debitoren“ mit Zeitplan-Auslöser, Auswahl fälliger Mahnungen, KI-Agent mit OpenRouter-Sprachmodell, der den Mahntext erstellt, anschließend E-Mail-Versand und Protokollierung.',
-    tags: ['LLM', 'RAG', 'KI-Automatisierung'],
-    // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
+    tags: ['n8n', 'KI-Agent', 'Mahnwesen', 'Automatisierung'],
+    githubUrl: 'https://github.com/Adrian-Ta/mahnwesen-debitoren',
   },
 ];
