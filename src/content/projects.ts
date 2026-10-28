@@ -94,10 +94,9 @@ export const projects: Project[] = [
     title: 'AI Agent & RAG-Chatbot',
     description: 'KI-Assistent, der Fragen anhand bereitgestellter Wissensquellen beantwortet.',
     status: 'Konzept',
-    image: '/projects/ai-rag-chatbot.svg',
-    imageDark: '/projects/ai-rag-chatbot-dark.svg',
+    image: '/projects/ai-agent-n8n.webp',
     imageAlt:
-      'Konzept-Skizze: Chatfenster mit Frage und Antwort, daneben der Ablauf Dokumente, Wissenssuche, Sprachmodell, Antwort.',
+      'Screenshot aus n8n: Workflow „Mahnwesen Debitoren“ mit Zeitplan-Auslöser, Auswahl fälliger Mahnungen, KI-Agent mit OpenRouter-Sprachmodell, der den Mahntext erstellt, anschließend E-Mail-Versand und Protokollierung.',
     tags: ['LLM', 'RAG', 'KI-Automatisierung'],
     // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
