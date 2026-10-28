@@ -56,6 +56,7 @@ export const skillAreas: SkillArea[] = [
   },
   {
     title: 'Entwicklung',
+    projectId: 'readnest',
     skills: [
       { name: 'Java und Python', context: 'Studium & Projekte' },
       { name: 'Datenbanken', context: 'Studium' },

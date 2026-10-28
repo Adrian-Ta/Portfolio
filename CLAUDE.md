@@ -32,7 +32,7 @@ Regeln dafür:
 1. Komponenten lesen ihre Inhalte nur aus `src/content/`. Typen (z. B. `Project`) liegen neben den Daten.
 2. Ein neues Projekt = ein neuer Eintrag in `projects.ts`. Es erscheint automatisch. Bei leerer Liste zeigt der Bereich „Projekte folgen bald“, keine leeren Felder.
 3. Foto wechseln = Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen, die AVIF-Version (`photoAvif`) neu erzeugen oder die Zeile entfernen.
-4. Nichts erfinden: Links, Daten, Projektergebnisse und Erfahrungen nur nach Angaben von Adrian. Demo-Texte im Code mit `// DEMO-TEXT` markieren. Noch nicht umgesetzte Projekte tragen `status: 'Konzept'` (oder `'In Arbeit'`), ihre Bilder sind als „Konzept-Skizze“ beschriftet und enthalten keine erfundenen Zahlen (aktuell nur noch Camunda; das Business Dashboard zeigt einen echten Power-BI-Screenshot mit synthetischen Beispieldaten).
+4. Nichts erfinden: Links, Daten, Projektergebnisse und Erfahrungen nur nach Angaben von Adrian. Demo-Texte im Code mit `// DEMO-TEXT` markieren. Noch nicht umgesetzte Projekte tragen `status: 'Konzept'` (oder `'In Arbeit'`), ihre Bilder sind als „Konzept-Skizze“ beschriftet und enthalten keine erfundenen Zahlen (aktuell nur noch das Business Dashboard, das aber schon einen echten Power-BI-Screenshot mit synthetischen Beispieldaten zeigt).
 5. Layout passt sich dem Inhalt an: keine festen Höhen, bei 0, 1 und vielen Einträgen muss die Seite gut aussehen.
 
 ## Arbeitsweise (verbindlich)

@@ -77,17 +77,16 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/Adrian-Ta/PowerBI_Sales_Overview',
   },
   {
-    id: 'camunda-automation',
-    title: 'Prozessautomatisierung mit Camunda',
+    id: 'readnest',
+    title: 'ReadNest: Bibliotheks-App mit Java',
+    // Bitte prüfen: Beschreibung aus der README des Repos abgeleitet.
     description:
-      'Modellierung und Automatisierung eines Geschäftsprozesses mit BPMN und optionalen DMN-Entscheidungsregeln.',
-    status: 'Konzept',
-    image: '/projects/camunda-automation.svg',
-    imageDark: '/projects/camunda-automation-dark.svg',
+      'Im Team entwickelte JavaFX-Desktop-App für eine Online-Bibliothek: Bücher suchen, freie Exemplare ausleihen und direkt in der App als PDF lesen.',
+    image: '/projects/readnest.webp',
     imageAlt:
-      'Konzept-Skizze eines BPMN-Prozesses: Startereignis, Anfrage prüfen, Entscheidung per DMN-Regel, Verzweigung zu Freigeben oder Rückfrage, Endereignis.',
-    tags: ['Camunda', 'BPMN', 'DMN'],
-    // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
+      'Drei Fenster der App ReadNest: Anmeldung, Katalog mit Buchcovern und Suche sowie die Detailansicht von „Die Verwandlung“ mit Beschreibung und zwei ausleihbaren Exemplaren.',
+    tags: ['Java', 'JavaFX', 'SQL', 'Teamprojekt'],
+    githubUrl: 'https://github.com/Adrian-Ta/ReadNest',
   },
   {
     id: 'mahnwesen-debitoren',
