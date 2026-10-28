@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { projects, projectsSection } from '../content/projects';
+import { GithubIcon } from './Icons';
 
 const assetUrl = (path: string) =>
   path.startsWith('http') ? path : `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
@@ -73,8 +74,15 @@ export const Projects: React.FC<ProjectsProps> = ({ theme }) => {
                   {(project.githubUrl || project.liveUrl) && (
                     <div className="project-links">
                       {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noreferrer" className="project-link">
-                          Code auf GitHub <ArrowUpRight size={16} aria-hidden="true" />
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn-secondary small project-github"
+                          aria-label={`${project.title}: Code auf GitHub (öffnet in neuem Tab)`}
+                        >
+                          <GithubIcon size={17} />
+                          GitHub
                         </a>
                       )}
                       {project.liveUrl && (

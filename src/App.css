@@ -814,11 +814,20 @@
   color: var(--portfolio-accent);
 }
 
+/* `margin-top: auto` schiebt die Buttons ans Kartenende,
+   so stehen sie in einer Reihe auf gleicher Höhe */
 .project-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
-  margin-top: 20px;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+/* GitHub-Button: kleiner Zweitbutton, mindestens 44 px hoch (Touch-Ziel) */
+.project-github {
+  min-height: 44px;
 }
 
 .project-link {

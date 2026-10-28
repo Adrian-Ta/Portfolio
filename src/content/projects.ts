@@ -64,6 +64,7 @@ export const projects: Project[] = [
     imageAlt:
       'Ablaufdiagramm: Einkauf mit Bestellung, Lager mit Wareneingang und Lieferung, Verkauf mit Kundenauftrag, Rechnungswesen mit Rechnung und Buchung.',
     tags: ['Odoo', 'ERP', 'Geschäftsprozesse'],
+    // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
   {
     id: 'business-dashboard',
@@ -74,6 +75,7 @@ export const projects: Project[] = [
     imageAlt:
       'Power-BI-Bericht „Customer Analysis“ mit synthetischen Beispieldaten: Filter für Jahr, Region, Kundensegment und Vertriebskanal, Kennzahl-Karten, Diagramme zu Umsatz und Gewinn nach Segment, aktive Kunden pro Monat und eine Top-10-Kundentabelle.',
     tags: ['Power BI', 'Datenanalyse', 'KPIs'],
+    githubUrl: 'https://github.com/Adrian-Ta/PowerBI_Sales_Overview',
   },
   {
     id: 'camunda-automation',
@@ -86,6 +88,7 @@ export const projects: Project[] = [
     imageAlt:
       'Konzept-Skizze eines BPMN-Prozesses: Startereignis, Anfrage prüfen, Entscheidung per DMN-Regel, Verzweigung zu Freigeben oder Rückfrage, Endereignis.',
     tags: ['Camunda', 'BPMN', 'DMN'],
+    // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
   {
     id: 'ai-rag-chatbot',
@@ -97,5 +100,6 @@ export const projects: Project[] = [
     imageAlt:
       'Konzept-Skizze: Chatfenster mit Frage und Antwort, daneben der Ablauf Dokumente, Wissenssuche, Sprachmodell, Antwort.',
     tags: ['LLM', 'RAG', 'KI-Automatisierung'],
+    // githubUrl: 'https://github.com/Adrian-Ta/…', // Link eintragen, dann erscheint der GitHub-Button
   },
 ];
