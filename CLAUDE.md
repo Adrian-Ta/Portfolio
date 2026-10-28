@@ -22,7 +22,7 @@ Adrian pflegt Inhalte in eigenen Dateien (kein WordPress, kein CMS-Server). Die 
 ```
 src/content/
   profile.ts     Name, Rolle, Hero-Text, Foto-Pfade, Social-Links, E-Mail, Über-mich-Geschichte
-  projects.ts    Projekte (Ausgangslage → Umsetzung → Ergebnis), Überschrift, Text bei leerer Liste
+  projects.ts    Projektkarten (Bild, Titel, Kurzbeschreibung, Tags, Status), Überschrift, Text bei leerer Liste
   timeline.ts    Laufbahn inkl. Studium und Fachabitur
   skills.ts      Kenntnisse nach Bereich mit Werkzeugen (Logos), Lernfokus
   techLogos.ts   Logos der Werkzeuge (Simple Icons CC0, Devicon MIT)
@@ -32,7 +32,7 @@ Regeln dafür:
 1. Komponenten lesen ihre Inhalte nur aus `src/content/`. Typen (z. B. `Project`) liegen neben den Daten.
 2. Ein neues Projekt = ein neuer Eintrag in `projects.ts`. Es erscheint automatisch. Bei leerer Liste zeigt der Bereich „Projekte folgen bald“, keine leeren Felder.
 3. Foto wechseln = Bild nach `public/` legen, Pfad in `profile.ts` (`photo`) eintragen, die AVIF-Version (`photoAvif`) neu erzeugen oder die Zeile entfernen.
-4. Nichts erfinden: Links, Daten, Projektergebnisse und Erfahrungen nur nach Angaben von Adrian. Demo-Texte im Code mit `// DEMO-TEXT` markieren (betrifft aktuell „Jackie“ und die Bibliotheks-App).
+4. Nichts erfinden: Links, Daten, Projektergebnisse und Erfahrungen nur nach Angaben von Adrian. Demo-Texte im Code mit `// DEMO-TEXT` markieren. Noch nicht umgesetzte Projekte tragen `status: 'Konzept'` (oder `'In Arbeit'`), ihre Bilder sind als „Konzept-Skizze“ beschriftet und enthalten keine erfundenen Zahlen (aktuell: Business Dashboard, Camunda, RAG-Chatbot).
 5. Layout passt sich dem Inhalt an: keine festen Höhen, bei 0, 1 und vielen Einträgen muss die Seite gut aussehen.
 
 ## Arbeitsweise (verbindlich)
@@ -45,8 +45,9 @@ Regeln dafür:
 ## Was nicht verändert wird
 Der Grundstil bleibt: helle, großzügige Oberfläche, ein ruhiger Teal-Akzent (kein Violett-Blau-Verlauf), Punktraster im Hero, großes, freigestelltes Profilfoto rechts im Hero (`ProfilePhoto`, Pfade aus `profile.ts`), Dark/Light-Theme. Der frühere hängende Profil-Ausweis wurde bewusst entfernt und darf nicht wieder eingebaut werden. Design-Verbesserungen nur auf ausdrücklichen Wunsch und in eigenen Commits.
 
-Designrichtung „Prozess statt Kacheln“ (Redesign Oktober 2026):
-- Projekte stehen direkt nach dem Hero und werden als Ablauf Ausgangslage → Umsetzung → Ergebnis gezeigt.
+Designrichtung „Prozess statt Kacheln“ (Redesign Oktober 2026), Projektbereich danach nach `portfolio_entwurf_3_bildorientiert.md` umgebaut:
+- Projekte stehen direkt nach dem Hero als Kartenraster: mobil 1 Spalte, ab 720 px 2 Spalten. Karte = Bild (16:9), Titel mit Status-Label, Kurzbeschreibung, höchstens 3–4 Tags. Die Felder `ausgangslage`/`umsetzung`/`ergebnis` sind für spätere Detailseiten gedacht und werden auf der Karte nicht gezeigt.
+- Detailseiten gibt es noch nicht. Solange die Karte nicht anklickbar ist, hat sie keinen Rahmen, keinen Schatten und hebt sich nicht an; nur das Bild ist gerahmt (Klick öffnet es groß). Kommen Detailseiten, wird die ganze Karte zum Link und darf dann Schatten/Hover bekommen.
 - Abschnittsköpfe einheitlich links: nur Überschrift und ein Satz, keine Pille/Kicker darüber, keine zweifarbige Überschrift.
 - Gliederung durch Typografie, Abstand und feine Linien. Karten mit Rahmen und Schatten nur, wo etwas anklickbar ist; nicht klickbare Elemente heben sich beim Hover nicht an.
 - Keine Monospace-Schrift als „Technik-Look“, keine dekorativen Glow- oder Endlos-Animationen.
